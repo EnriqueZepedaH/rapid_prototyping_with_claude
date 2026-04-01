@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — V6: Event-Calendar Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 1rem 2rem;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back:hover { color: #111; }
+
+        header {
+            background: #fff;
+            border-bottom: 3px solid #4a90d9;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+        }
+
+        header p {
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .schedule-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .schedule-section h2 {
+            font-size: 1.3rem;
+            color: #4a90d9;
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #e8e8e8;
+        }
+
+        .day-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .day-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+        }
+
+        .event {
+            display: flex;
+            gap: 1rem;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .event-time {
+            flex-shrink: 0;
+            width: 70px;
+            text-align: right;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a90d9;
+            padding-top: 0.1rem;
+        }
+
+        .event-details h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .event-details .meta {
+            font-size: 0.82rem;
+            color: #999;
+        }
+
+        .event-details p {
+            font-size: 0.88rem;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+
+        .event-type {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+
+        .event-type.lesson {
+            background: #fff3e0;
+            color: #e67e22;
+        }
+
+        .event-type.social {
+            background: #e3f2fd;
+            color: #4a90d9;
+        }
+
+        .monthly-section {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .monthly-section h2 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1rem;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .monthly-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .monthly-item:last-child {
+            border-bottom: none;
+        }
+
+        .monthly-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .monthly-item .meta {
+            font-size: 0.82rem;
+            color: #999;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back">&larr; Back to all versions</a>
+
+<header>
+    <h1>Latin Dance Chicago</h1>
+    <p>Your weekly schedule for lessons &amp; socials</p>
+</header>
+
+<main>
+    <section class="schedule-section">
+        <h2>Weekly Schedule</h2>
+
+        <div class="day-group">
+            <div class="day-label">Monday</div>
+            <div class="event">
+                <div class="event-time">7:00 pm</div>
+                <div class="event-details">
+                    <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
+                    <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
+                    <p>Start the week with Latin rhythms. Beginner and intermediate levels.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-group">
+            <div class="day-label">Tuesday</div>
+            <div class="event">
+                <div class="event-time">7:30 pm</div>
+                <div class="event-details">
+                    <h3>Latin Street Dancing <span class="event-type lesson">Lesson</span></h3>
+                    <div class="meta">Salsa &amp; Bachata &bull; Pilsen</div>
+                    <p>High-energy classes for all levels. No partner required.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-group">
+            <div class="day-label">Wednesday</div>
+            <div class="event">
+                <div class="event-time">7:00 pm</div>
+                <div class="event-details">
+                    <h3>Enamorados Dance Academy <span class="event-type lesson">Lesson</span></h3>
+                    <div class="meta">Salsa &bull; Logan Square</div>
+                    <p>Structured salsa curriculum, beginner to advanced.</p>
+                </div>
+            </div>
+            <div class="event">
+                <div class="event-time">7:00 pm</div>
+                <div class="event-details">
+                    <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
+                    <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
+                    <p>Mid-week practice. Consistent schedule builds muscle memory.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-group">
+            <div class="day-label">Thursday</div>
+            <div class="event">
+                <div class="event-time">7:30 pm</div>
+                <div class="event-details">
+                    <h3>Latin Street Dancing <span class="event-type lesson">Lesson</span></h3>
+                    <div class="meta">Salsa &amp; Bachata &bull; Pilsen</div>
+                    <p>Second class of the week — build on Tuesday's material.</p>
+                </div>
+            </div>
+            <div class="event">
+                <div class="event-time">9:00 pm</div>
+                <div class="event-details">
+                    <h3>Latin Mix at The Midway <span class="event-type social">Social</span></h3>
+                    <div class="meta">Salsa, Bachata, Cumbia &bull; Logan Square</div>
+                    <p>Multi-genre social. Practice what you learned earlier in the week.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-group">
+            <div class="day-label">Friday</div>
+            <div class="event">
+                <div class="event-time">7:00 pm</div>
+                <div class="event-details">
+                    <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
+                    <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
+                    <p>End-of-week class to cap off your training.</p>
+                </div>
+            </div>
+            <div class="event">
+                <div class="event-time">9:00 pm</div>
+                <div class="event-details">
+                    <h3>Bachata Nights at Alegría <span class="event-type social">Social</span></h3>
+                    <div class="meta">DJ Sets &bull; Wicker Park</div>
+                    <p>The city's premier Friday night bachata social. Sensual &amp; Dominican styles.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-group">
+            <div class="day-label">Saturday</div>
+            <div class="event">
+                <div class="event-time">6:00 pm</div>
+                <div class="event-details">
+                    <h3>Cumbia en la Calle <span class="event-type social">Social</span></h3>
+                    <div class="meta">Outdoor Cumbia &bull; Pilsen &bull; June–Sept only</div>
+                    <p>Summer street dancing under the open sky. The highlight of the week.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-group">
+            <div class="day-label">Sunday</div>
+            <div class="event">
+                <div class="event-time">8:00 pm</div>
+                <div class="event-details">
+                    <h3>Salsa Sundays at Havana Club <span class="event-type social">Social</span></h3>
+                    <div class="meta">Live Band &bull; River North</div>
+                    <p>End the weekend right. Live orchestra, electric atmosphere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="monthly-section">
+        <h2>Monthly &amp; Quarterly Events</h2>
+        <div class="monthly-item">
+            <h3>Cumbia Collective Workshop <span class="event-type lesson">Lesson</span></h3>
+            <div class="meta">First Saturday of each month &bull; Little Village</div>
+        </div>
+        <div class="monthly-item">
+            <h3>Rueda de Casino Meetup <span class="event-type social">Social</span></h3>
+            <div class="meta">Second Sunday of each month &bull; Humboldt Park</div>
+        </div>
+        <div class="monthly-item">
+            <h3>Chicago Salsa Congress <span class="event-type lesson">Lesson</span></h3>
+            <div class="meta">Quarterly weekend intensives &bull; Downtown</div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>V6 — Event-Calendar Style</p>
+</footer>
+
+</body>
+</html>

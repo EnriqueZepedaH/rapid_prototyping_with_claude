@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — V5: Map / Location-Focused</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f0;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 1rem 2rem;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back:hover {
+            color: #111;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        header p {
+            color: #95a5a6;
+            margin-top: 0.4rem;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-lesson { background: #e74c3c; }
+        .dot-social { background: #3498db; }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .neighborhood {
+            margin-bottom: 2.5rem;
+        }
+
+        .neighborhood-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .neighborhood-header h2 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+        }
+
+        .neighborhood-header .area {
+            font-size: 0.8rem;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .location-list {
+            list-style: none;
+        }
+
+        .location-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .location-list li:last-child {
+            border-bottom: none;
+        }
+
+        .type-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .type-lesson { background: #e74c3c; }
+        .type-social { background: #3498db; }
+
+        .location-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .location-info .meta {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .location-info p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.2rem;
+        }
+
+        .type-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            margin-left: 0.4rem;
+            vertical-align: middle;
+        }
+
+        .type-label.lesson {
+            background: #fde8e8;
+            color: #e74c3c;
+        }
+
+        .type-label.social {
+            background: #e8f0fd;
+            color: #3498db;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back">&larr; Back to all versions</a>
+
+<header>
+    <h1>Latin Dance Chicago</h1>
+    <p>Organized by neighborhood — find what's near you</p>
+</header>
+
+<div class="legend">
+    <div class="legend-item"><span class="dot dot-lesson"></span> Lesson</div>
+    <div class="legend-item"><span class="dot dot-social"></span> Social</div>
+</div>
+
+<main>
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>Pilsen</h2>
+            <span class="area">South Side</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-lesson"></span>
+                <div class="location-info">
+                    <h3>Latin Street Dancing <span class="type-label lesson">Lesson</span></h3>
+                    <div class="meta">Salsa &amp; Bachata &bull; Tue &amp; Thu</div>
+                    <p>High-energy beginner and intermediate classes in the cultural heart of Pilsen.</p>
+                </div>
+            </li>
+            <li>
+                <span class="type-indicator type-social"></span>
+                <div class="location-info">
+                    <h3>Cumbia en la Calle <span class="type-label social">Social</span></h3>
+                    <div class="meta">Outdoor Cumbia &bull; Sat 6pm &bull; June–Sept</div>
+                    <p>Summer street dancing — the whole neighborhood comes out for this one.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>Logan Square</h2>
+            <span class="area">Northwest Side</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-lesson"></span>
+                <div class="location-info">
+                    <h3>Enamorados Dance Academy <span class="type-label lesson">Lesson</span></h3>
+                    <div class="meta">Salsa &bull; Wednesdays</div>
+                    <p>Beginner to advanced salsa. A neighborhood staple for over a decade.</p>
+                </div>
+            </li>
+            <li>
+                <span class="type-indicator type-social"></span>
+                <div class="location-info">
+                    <h3>Latin Mix at The Midway <span class="type-label social">Social</span></h3>
+                    <div class="meta">Multi-Genre &bull; Thu 9pm</div>
+                    <p>The DJ spins salsa, bachata, and cumbia all night. A local favorite.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>Humboldt Park</h2>
+            <span class="area">West Side</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-lesson"></span>
+                <div class="location-info">
+                    <h3>Ritmo Latino Studio <span class="type-label lesson">Lesson</span></h3>
+                    <div class="meta">Bachata &amp; Merengue &bull; Mon/Wed/Fri</div>
+                    <p>Three classes a week with clear progression levels. Consistent and reliable.</p>
+                </div>
+            </li>
+            <li>
+                <span class="type-indicator type-social"></span>
+                <div class="location-info">
+                    <h3>Rueda de Casino Meetup <span class="type-label social">Social</span></h3>
+                    <div class="meta">Group Salsa &bull; Second Sunday monthly</div>
+                    <p>Circle-style salsa in the park. Rotating partners, called moves, all-level fun.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>Little Village</h2>
+            <span class="area">South Side</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-lesson"></span>
+                <div class="location-info">
+                    <h3>Cumbia Collective <span class="type-label lesson">Lesson</span></h3>
+                    <div class="meta">Cumbia &bull; First Saturday monthly</div>
+                    <p>Monthly workshops rooted in tradition. A celebration of cumbia culture.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>River North</h2>
+            <span class="area">Near North Side</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-social"></span>
+                <div class="location-info">
+                    <h3>Salsa Sundays at Havana Club <span class="type-label social">Social</span></h3>
+                    <div class="meta">Live Band &bull; Sun 8pm</div>
+                    <p>The iconic Sunday night salsa spot. Live orchestra, packed floor.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>Wicker Park</h2>
+            <span class="area">Northwest Side</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-social"></span>
+                <div class="location-info">
+                    <h3>Bachata Nights at Alegría <span class="type-label social">Social</span></h3>
+                    <div class="meta">DJ Sets &bull; Fri 9pm</div>
+                    <p>Friday night bachata in a stylish setting. Sensual and Dominican styles.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="neighborhood">
+        <div class="neighborhood-header">
+            <h2>Downtown / Loop</h2>
+            <span class="area">Central</span>
+        </div>
+        <ul class="location-list">
+            <li>
+                <span class="type-indicator type-lesson"></span>
+                <div class="location-info">
+                    <h3>Chicago Salsa Congress <span class="type-label lesson">Lesson</span></h3>
+                    <div class="meta">Intensive Workshops &bull; Quarterly</div>
+                    <p>Weekend intensives with world-class instructors. The city's premier salsa event.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<footer>
+    <p>V5 — Map / Location-Focused</p>
+</footer>
+
+</body>
+</html>

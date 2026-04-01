@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — Design Evolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #faf8f5;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 3rem auto 2rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .phase {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .phase-header {
+            border-bottom: 2px solid #1a1a2e;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-header h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #1a1a2e;
+        }
+
+        .phase-narrative {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .version-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .version-card {
+            background: #fff;
+            border: 1px solid #e0dcd6;
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .version-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .version-card .version-number {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 0.25rem;
+        }
+
+        .version-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-card h3 a {
+            color: #1a1a2e;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .version-card h3 a:hover {
+            border-bottom-color: #0f3460;
+        }
+
+        .version-card p {
+            font-size: 0.92rem;
+            color: #666;
+        }
+
+        .version-card.upcoming {
+            opacity: 0.5;
+            border-style: dashed;
+        }
+
+        .version-card.upcoming h3 {
+            color: #999;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 500px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .version-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Latin Dance Chicago</h1>
+    <p>A design evolution in 25 versions — exploring the best places to dance Latin rhythms in Chicago</p>
+</header>
+
+<section class="intro">
+    <p>This project traces the journey of designing a website about Chicago's Latin dance scene. Starting with 10 distinct explorations, then combining the strongest ideas, and finally refining them into a polished result. Each version is a snapshot in that evolution.</p>
+</section>
+
+<!-- Phase 1: Exploration -->
+<section class="phase">
+    <div class="phase-header">
+        <h2>Phase 1: Exploration</h2>
+    </div>
+    <p class="phase-narrative">The first ten versions each take a completely different approach — varying in visual style, layout, tone, and target audience. The goal is to cast a wide net and discover what works.</p>
+
+    <div class="version-grid">
+        <div class="version-card">
+            <div class="version-number">Version 1</div>
+            <h3><a href="v1.html">Clean &amp; Minimal</a></h3>
+            <p>A stripped-down, list-based layout that lets the content speak for itself. Simple typography, generous whitespace, and zero distractions. Our starting point — what does the content look like with nothing in the way?</p>
+        </div>
+
+        <div class="version-card">
+            <div class="version-number">Version 2</div>
+            <h3><a href="v2.html">Bold &amp; Colorful</a></h3>
+            <p>A vibrant, Latin-inspired color palette with energetic typography. Captures the warmth and excitement of the dance floor. What happens when we turn the energy all the way up?</p>
+        </div>
+
+        <div class="version-card">
+            <div class="version-number">Version 3</div>
+            <h3><a href="v3.html">Dark / Nightlife</a></h3>
+            <p>A moody, club-inspired aesthetic with dark backgrounds and glowing accents. Evokes the feeling of stepping into a salsa night. The dance scene lives after dark — should the site feel that way too?</p>
+        </div>
+
+        <div class="version-card">
+            <div class="version-number">Version 4</div>
+            <h3><a href="v4.html">Beginner-Friendly</a></h3>
+            <p>Approachable design with plenty of guidance text, welcoming language, and a FAQ section. What if the primary audience has never danced before?</p>
+        </div>
+
+        <div class="version-card">
+            <div class="version-number">Version 5</div>
+            <h3><a href="v5.html">Map / Location-Focused</a></h3>
+            <p>Organized by Chicago neighborhood with a color-coded legend. Instead of asking "what kind of dance?" this version asks "where are you?"</p>
+        </div>
+
+        <div class="version-card">
+            <div class="version-number">Version 6</div>
+            <h3><a href="v6.html">Event-Calendar Style</a></h3>
+            <p>A weekly schedule layout organized by day and time. Treats the content like a calendar — when can you dance, and where should you go?</p>
+        </div>
+
+        <div class="version-card">
+            <div class="version-number">Version 7</div>
+            <h3><a href="v7.html">Magazine / Editorial</a></h3>
+            <p>Editorial storytelling with a dropcap lede, pull quotes, and longform descriptions. What if the site read like a feature article in a magazine?</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 8</div>
+            <h3>Social-Media Inspired</h3>
+            <p>Card-based, Instagram-like layout with visual tiles. Designed to feel familiar to social media users.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 9</div>
+            <h3>Community / Forum</h3>
+            <p>Testimonials, dancer profiles, and a community-driven feel. Highlights the people behind the scene.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 10</div>
+            <h3>Mobile-First</h3>
+            <p>Designed primarily for phone screens. Thumb-friendly navigation, stacked layout, and fast-loading simplicity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Phase 2: Combinations -->
+<section class="phase">
+    <div class="phase-header">
+        <h2>Phase 2: Combinations</h2>
+    </div>
+    <p class="phase-narrative">After reviewing the first ten explorations, the strongest elements are combined. Each version in this phase blends ideas from two or three Phase 1 designs.</p>
+
+    <div class="version-grid">
+        <div class="version-card upcoming">
+            <div class="version-number">Version 11</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 12</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 13</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 14</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 15</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 16</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 17</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 18</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 19</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 20</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 1 review.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Phase 3: Refinements -->
+<section class="phase">
+    <div class="phase-header">
+        <h2>Phase 3: Refinements</h2>
+    </div>
+    <p class="phase-narrative">The final five versions take the best combinations and polish them — refining typography, spacing, accessibility, and adding subtle CSS transitions for a finished feel.</p>
+
+    <div class="version-grid">
+        <div class="version-card upcoming">
+            <div class="version-number">Version 21</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 2 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 22</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 2 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 23</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 2 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 24</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 2 review.</p>
+        </div>
+
+        <div class="version-card upcoming">
+            <div class="version-number">Version 25</div>
+            <h3>To be determined</h3>
+            <p>Awaiting Phase 2 review.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Latin Dance Chicago — Rapid Prototyping Project</p>
+</footer>
+
+</body>
+</html>

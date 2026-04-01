@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — V2: Bold &amp; Colorful</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff8f0;
+            color: #2d2d2d;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e63946, #f4a261, #e9c46a);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 1rem 2rem;
+            color: #e63946;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .lessons h2 {
+            color: #e63946;
+        }
+
+        .lessons h2::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: #e63946;
+            border-radius: 2px;
+            margin-top: 0.25rem;
+        }
+
+        .socials h2 {
+            color: #2a9d8f;
+        }
+
+        .socials h2::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: #2a9d8f;
+            border-radius: 2px;
+            margin-top: 0.25rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .lessons .card {
+            background: linear-gradient(145deg, #ffe8e8, #fff0e0);
+            border-left: 5px solid #e63946;
+        }
+
+        .socials .card {
+            background: linear-gradient(145deg, #e0f5f0, #e8faf5);
+            border-left: 5px solid #2a9d8f;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .card .style {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .lessons .card .style {
+            color: #e63946;
+        }
+
+        .socials .card .style {
+            color: #2a9d8f;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back">&larr; Back to all versions</a>
+
+<header>
+    <h1>Latin Dance Chicago</h1>
+    <p>Feel the rhythm of the city</p>
+</header>
+
+<main>
+    <section class="lessons">
+        <h2>Lessons</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Latin Street Dancing</h3>
+                <div class="style">Salsa &amp; Bachata</div>
+                <p>High-energy classes every Tuesday &amp; Thursday in the heart of Pilsen. All levels welcome.</p>
+            </div>
+            <div class="card">
+                <h3>Enamorados Dance Academy</h3>
+                <div class="style">Salsa</div>
+                <p>From your first step to performance-ready. Wednesday nights in Logan Square.</p>
+            </div>
+            <div class="card">
+                <h3>Cumbia Collective</h3>
+                <div class="style">Cumbia</div>
+                <p>Monthly workshops celebrating traditional and modern cumbia. First Saturday, Little Village.</p>
+            </div>
+            <div class="card">
+                <h3>Ritmo Latino Studio</h3>
+                <div class="style">Bachata &amp; Merengue</div>
+                <p>Three days a week in Humboldt Park. Structured progression from beginner to advanced.</p>
+            </div>
+            <div class="card">
+                <h3>Chicago Salsa Congress</h3>
+                <div class="style">Intensive Workshops</div>
+                <p>Quarterly weekend intensives with guest instructors from around the world. Downtown.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="socials">
+        <h2>Socials</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Salsa Sundays at Havana Club</h3>
+                <div class="style">Live Band</div>
+                <p>The classic Sunday night tradition. Live orchestra, packed dance floor, River North. 8pm.</p>
+            </div>
+            <div class="card">
+                <h3>Bachata Nights at Alegría</h3>
+                <div class="style">DJ Night</div>
+                <p>Wicker Park's favorite Friday night spot. Sensual &amp; Dominican bachata mix. 9pm.</p>
+            </div>
+            <div class="card">
+                <h3>Cumbia en la Calle</h3>
+                <div class="style">Outdoor Social</div>
+                <p>Summer Saturday evenings in Pilsen. Bring your dancing shoes to the street. June–Sept, 6pm.</p>
+            </div>
+            <div class="card">
+                <h3>Latin Mix at The Midway</h3>
+                <div class="style">Multi-Genre</div>
+                <p>Salsa, bachata, cumbia — the DJ plays it all. Thursday nights in Logan Square. 9pm.</p>
+            </div>
+            <div class="card">
+                <h3>Rueda de Casino Meetup</h3>
+                <div class="style">Group Salsa</div>
+                <p>Circle-style salsa with rotating partners. Second Sunday monthly, Humboldt Park.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>V2 — Bold &amp; Colorful</p>
+</footer>
+
+</body>
+</html>

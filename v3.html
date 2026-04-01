@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — V3: Dark / Nightlife</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 1.5rem 2rem;
+            color: #777;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .back:hover {
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0d0d0d 70%);
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            font-weight: 200;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ff6b6b, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .lessons h2 {
+            border-left: 3px solid #ff6b6b;
+            padding-left: 0.75rem;
+        }
+
+        .socials h2 {
+            border-left: 3px solid #c084fc;
+            padding-left: 0.75rem;
+        }
+
+        .item {
+            background: #151515;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 0.75rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .item:hover {
+            border-color: #333;
+            box-shadow: 0 0 20px rgba(192, 132, 252, 0.05);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .lessons .tag {
+            background: rgba(255, 107, 107, 0.15);
+            color: #ff6b6b;
+        }
+
+        .socials .tag {
+            background: rgba(192, 132, 252, 0.15);
+            color: #c084fc;
+        }
+
+        .item p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.4rem;
+        }
+
+        .divider {
+            border: none;
+            height: 1px;
+            background: #1a1a1a;
+            margin: 3rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.75rem;
+            color: #333;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back">&larr; All versions</a>
+
+<header>
+    <h1>Latin Dance Chicago</h1>
+    <p>where the city comes alive after dark</p>
+</header>
+
+<main>
+    <section class="lessons">
+        <h2>Lessons</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Latin Street Dancing</h3>
+                <span class="tag">Salsa &amp; Bachata</span>
+            </div>
+            <p>Tue &amp; Thu nights in Pilsen. Learn the fundamentals under low lights and good music.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Enamorados Dance Academy</h3>
+                <span class="tag">Salsa</span>
+            </div>
+            <p>Wednesday evenings, Logan Square. Beginner to advanced. The studio that built Chicago's salsa scene.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Cumbia Collective</h3>
+                <span class="tag">Cumbia</span>
+            </div>
+            <p>First Saturday monthly. Little Village. Traditional roots meet modern movement.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Ritmo Latino Studio</h3>
+                <span class="tag">Bachata &amp; Merengue</span>
+            </div>
+            <p>Mon/Wed/Fri in Humboldt Park. Progressive curriculum, social dancing focus.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Chicago Salsa Congress</h3>
+                <span class="tag">Intensive</span>
+            </div>
+            <p>Quarterly weekend intensives downtown. World-class instructors. Not for the faint of heart.</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="socials">
+        <h2>Socials</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Salsa Sundays at Havana Club</h3>
+                <span class="tag">Live Band</span>
+            </div>
+            <p>River North. 8pm. Live orchestra. The floor fills fast — arrive early or dance late.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Bachata Nights at Alegría</h3>
+                <span class="tag">DJ Sets</span>
+            </div>
+            <p>Friday 9pm, Wicker Park. Dim lights, great sound, and the city's best bachata dancers.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Cumbia en la Calle</h3>
+                <span class="tag">Outdoor</span>
+            </div>
+            <p>Pilsen summer nights, Sat 6pm (June–Sept). Stars above, cumbia below.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Latin Mix at The Midway</h3>
+                <span class="tag">Multi-Genre</span>
+            </div>
+            <p>Thursday 9pm, Logan Square. The DJ reads the room — salsa, bachata, cumbia, whatever moves.</p>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <h3>Rueda de Casino Meetup</h3>
+                <span class="tag">Group Salsa</span>
+            </div>
+            <p>Second Sunday monthly, Humboldt Park. Circle up, switch partners, keep moving.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    V3 — DARK / NIGHTLIFE
+</footer>
+
+</body>
+</html>
