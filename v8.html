@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — V8: Social-Media Inspired</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #262626;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            color: #8e8e8e;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .back:hover { color: #262626; }
+
+        .top-bar {
+            background: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .top-bar h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stories-bar {
+            background: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 1rem 1.5rem;
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+        }
+
+        .story {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        .story-ring {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            padding: 3px;
+        }
+
+        .story-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .story span {
+            font-size: 0.7rem;
+            color: #262626;
+            max-width: 64px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .feed {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #8e8e8e;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .post {
+            background: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            margin: 0.5rem 1rem 1rem;
+            overflow: hidden;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .avatar-lesson { background: #e6683c; }
+        .avatar-social { background: #bc1888; }
+
+        .post-header .username {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .post-header .badge {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            margin-left: auto;
+        }
+
+        .badge-lesson { background: #fff3e8; color: #e6683c; }
+        .badge-social { background: #f8e8f5; color: #bc1888; }
+
+        .post-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .post-image.warm {
+            background: linear-gradient(135deg, #f09433, #e6683c);
+        }
+
+        .post-image.cool {
+            background: linear-gradient(135deg, #833ab4, #bc1888);
+        }
+
+        .post-image.sunset {
+            background: linear-gradient(135deg, #dc2743, #f09433);
+        }
+
+        .post-image.ocean {
+            background: linear-gradient(135deg, #405de6, #833ab4);
+        }
+
+        .post-image.tropical {
+            background: linear-gradient(135deg, #2a9d8f, #e9c46a);
+        }
+
+        .post-image h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .post-image p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 0.3rem;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 1rem 0.25rem;
+            font-size: 0.85rem;
+            color: #8e8e8e;
+        }
+
+        .post-caption {
+            padding: 0.25rem 1rem 0.75rem;
+        }
+
+        .post-caption .username {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .post-caption p {
+            font-size: 0.9rem;
+            color: #262626;
+            margin-top: 0.15rem;
+        }
+
+        .post-caption .meta {
+            font-size: 0.75rem;
+            color: #8e8e8e;
+            margin-top: 0.4rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #c7c7c7;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back">&larr; Back to all versions</a>
+
+<div class="top-bar">
+    <h1>LatinDanceChi</h1>
+</div>
+
+<div class="stories-bar">
+    <div class="story">
+        <div class="story-ring"><div class="story-inner">💃</div></div>
+        <span>Salsa</span>
+    </div>
+    <div class="story">
+        <div class="story-ring"><div class="story-inner">🎵</div></div>
+        <span>Bachata</span>
+    </div>
+    <div class="story">
+        <div class="story-ring"><div class="story-inner">🎶</div></div>
+        <span>Cumbia</span>
+    </div>
+    <div class="story">
+        <div class="story-ring"><div class="story-inner">🌙</div></div>
+        <span>Nightlife</span>
+    </div>
+    <div class="story">
+        <div class="story-ring"><div class="story-inner">📍</div></div>
+        <span>Pilsen</span>
+    </div>
+    <div class="story">
+        <div class="story-ring"><div class="story-inner">🏙️</div></div>
+        <span>Downtown</span>
+    </div>
+</div>
+
+<div class="feed">
+    <div class="section-label">Lessons</div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-lesson">LS</div>
+            <span class="username">latinstreetdancing</span>
+            <span class="badge badge-lesson">Lesson</span>
+        </div>
+        <div class="post-image warm">
+            <div>
+                <h2>Salsa &amp; Bachata</h2>
+                <p>Pilsen &bull; Tue &amp; Thu</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 142 likes &nbsp;&bull;&nbsp; 💬 23 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">latinstreetdancing</span>
+            <p>High-energy classes for all levels. No partner needed — just bring your energy and your dancing shoes. 🔥</p>
+            <div class="meta">Pilsen, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-lesson">EA</div>
+            <span class="username">enamoradosdance</span>
+            <span class="badge badge-lesson">Lesson</span>
+        </div>
+        <div class="post-image sunset">
+            <div>
+                <h2>Salsa Academy</h2>
+                <p>Logan Square &bull; Wednesdays</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 98 likes &nbsp;&bull;&nbsp; 💬 15 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">enamoradosdance</span>
+            <p>From first step to performance-ready. Our structured curriculum has been shaping Chicago's salseros for over a decade. 🕺</p>
+            <div class="meta">Logan Square, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-lesson">CC</div>
+            <span class="username">cumbiacollective</span>
+            <span class="badge badge-lesson">Lesson</span>
+        </div>
+        <div class="post-image tropical">
+            <div>
+                <h2>Cumbia Workshops</h2>
+                <p>Little Village &bull; Monthly</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 76 likes &nbsp;&bull;&nbsp; 💬 11 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">cumbiacollective</span>
+            <p>First Saturday of every month. Traditional meets modern cumbia. Come celebrate the rhythm. 🎵</p>
+            <div class="meta">Little Village, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-lesson">RL</div>
+            <span class="username">ritmolatino</span>
+            <span class="badge badge-lesson">Lesson</span>
+        </div>
+        <div class="post-image warm">
+            <div>
+                <h2>Bachata &amp; Merengue</h2>
+                <p>Humboldt Park &bull; Mon/Wed/Fri</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 89 likes &nbsp;&bull;&nbsp; 💬 9 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">ritmolatino</span>
+            <p>Three days a week. Clear levels. Real progression. Your bachata home base in Humboldt Park. 💃</p>
+            <div class="meta">Humboldt Park, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-lesson">SC</div>
+            <span class="username">chicagosalsacongress</span>
+            <span class="badge badge-lesson">Lesson</span>
+        </div>
+        <div class="post-image ocean">
+            <div>
+                <h2>Salsa Congress</h2>
+                <p>Downtown &bull; Quarterly</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 215 likes &nbsp;&bull;&nbsp; 💬 34 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">chicagosalsacongress</span>
+            <p>Weekend intensives with world-class instructors. The biggest salsa event in the Midwest. Save the date! 🌟</p>
+            <div class="meta">Downtown, Chicago</div>
+        </div>
+    </div>
+
+    <div class="section-label">Socials</div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-social">HC</div>
+            <span class="username">havanaclubchi</span>
+            <span class="badge badge-social">Social</span>
+        </div>
+        <div class="post-image cool">
+            <div>
+                <h2>Salsa Sundays</h2>
+                <p>River North &bull; 8pm</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 287 likes &nbsp;&bull;&nbsp; 💬 42 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">havanaclubchi</span>
+            <p>Live band. Packed floor. The Sunday night tradition that keeps Chicago's salsa scene alive. See you there. 🎺</p>
+            <div class="meta">River North, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-social">AL</div>
+            <span class="username">alegriabachata</span>
+            <span class="badge badge-social">Social</span>
+        </div>
+        <div class="post-image cool">
+            <div>
+                <h2>Bachata Nights</h2>
+                <p>Wicker Park &bull; Fri 9pm</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 193 likes &nbsp;&bull;&nbsp; 💬 28 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">alegriabachata</span>
+            <p>Sensual &amp; Dominican bachata every Friday. Mini-lesson at 9, social dancing all night. 🌹</p>
+            <div class="meta">Wicker Park, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-social">CC</div>
+            <span class="username">cumbiaenlacalle</span>
+            <span class="badge badge-social">Social</span>
+        </div>
+        <div class="post-image tropical">
+            <div>
+                <h2>Cumbia en la Calle</h2>
+                <p>Pilsen &bull; Sat 6pm &bull; Summer</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 164 likes &nbsp;&bull;&nbsp; 💬 19 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">cumbiaenlacalle</span>
+            <p>Street dancing under the summer sky. No tickets, no dress code, just good vibes. June–September. ☀️</p>
+            <div class="meta">Pilsen, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-social">TM</div>
+            <span class="username">themidwaychi</span>
+            <span class="badge badge-social">Social</span>
+        </div>
+        <div class="post-image sunset">
+            <div>
+                <h2>Latin Mix Thursdays</h2>
+                <p>Logan Square &bull; 9pm</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 108 likes &nbsp;&bull;&nbsp; 💬 14 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">themidwaychi</span>
+            <p>Salsa, bachata, cumbia — the DJ plays it all. The perfect Thursday night warm-up for the weekend. 🎧</p>
+            <div class="meta">Logan Square, Chicago</div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar avatar-social">RC</div>
+            <span class="username">ruedachi</span>
+            <span class="badge badge-social">Social</span>
+        </div>
+        <div class="post-image ocean">
+            <div>
+                <h2>Rueda de Casino</h2>
+                <p>Humboldt Park &bull; Monthly</p>
+            </div>
+        </div>
+        <div class="post-actions">
+            ♡ 72 likes &nbsp;&bull;&nbsp; 💬 8 comments
+        </div>
+        <div class="post-caption">
+            <span class="username">ruedachi</span>
+            <p>Circle salsa with rotating partners. Second Sunday of every month. All levels, all smiles. 🔄</p>
+            <div class="meta">Humboldt Park, Chicago</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>V8 — Social-Media Inspired</p>
+</footer>
+
+</body>
+</html>
