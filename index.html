@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latin Dance Chicago — Design Evolution</title>
+    <title>Latin Dance Chicago — Design Evolution Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,143 +13,324 @@
         }
 
         body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background-color: #faf8f5;
-            color: #2c2c2c;
+            font-family: 'Lato', sans-serif;
+            background: #0c1a0f;
+            color: #e8e0d4;
             line-height: 1.7;
         }
 
+        /* Tropical leaf texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(34, 87, 49, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(34, 87, 49, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== HEADER / HERO ===== */
         header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #fff;
+            position: relative;
             text-align: center;
-            padding: 4rem 2rem 3rem;
+            padding: 5rem 2rem 4rem;
+            overflow: hidden;
+            background: linear-gradient(
+                180deg,
+                #0c1a0f 0%,
+                #112216 30%,
+                #1a3324 60%,
+                #0c1a0f 100%
+            );
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -25%;
+            width: 150%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(34, 87, 49, 0.12) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .header-accent {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+            margin: 0 auto 2rem;
+        }
+
+        .course-badge {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #c9a96e;
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            padding: 0.4rem 1.5rem;
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         header h1 {
-            font-size: 2.8rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        header p {
-            font-size: 1.15rem;
-            opacity: 0.85;
-            max-width: 600px;
-            margin: 0 auto;
+        header h1 span {
+            display: block;
+            background: linear-gradient(135deg, #c9a96e, #e8d5a3, #c9a96e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
             font-style: italic;
+            color: rgba(232, 224, 212, 0.6);
+            max-width: 550px;
+            margin: 1rem auto 0;
+            position: relative;
+            z-index: 1;
         }
 
+        .header-byline {
+            font-size: 0.8rem;
+            color: rgba(201, 169, 110, 0.7);
+            margin-top: 2.5rem;
+            letter-spacing: 0.08em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-byline strong {
+            color: #c9a96e;
+            font-weight: 700;
+        }
+
+        /* ===== INTRO ===== */
         .intro {
-            max-width: 800px;
-            margin: 3rem auto 2rem;
-            padding: 0 2rem;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem 3rem;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .intro p {
             font-size: 1.05rem;
-            color: #555;
+            color: rgba(232, 224, 212, 0.65);
+            line-height: 1.9;
         }
 
+        .gold-divider {
+            width: 40px;
+            height: 1px;
+            background: #c9a96e;
+            margin: 3rem auto;
+            opacity: 0.5;
+        }
+
+        /* ===== PHASE SECTIONS ===== */
         .phase {
-            max-width: 900px;
-            margin: 0 auto 3rem;
+            max-width: 1100px;
+            margin: 0 auto 4rem;
             padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .phase-header {
-            border-bottom: 2px solid #1a1a2e;
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .phase-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #c9a96e;
+            margin-bottom: 0.75rem;
         }
 
         .phase-header h2 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: #1a1a2e;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
         }
 
         .phase-narrative {
             font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1.5rem;
+            color: rgba(232, 224, 212, 0.5);
+            max-width: 600px;
+            margin: 0 auto;
             font-style: italic;
+            font-family: 'Playfair Display', serif;
         }
 
+        /* ===== VERSION CARDS ===== */
         .version-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.75rem;
         }
 
         .version-card {
-            background: #fff;
-            border: 1px solid #e0dcd6;
-            border-radius: 6px;
-            padding: 1.5rem;
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            background: linear-gradient(145deg, #142118, #0f1a12);
+            border: 1px solid rgba(201, 169, 110, 0.12);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .version-card:hover {
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            border-color: rgba(201, 169, 110, 0.3);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(201, 169, 110, 0.04);
+            transform: translateY(-4px);
+        }
+
+        .version-card:hover::before {
+            opacity: 1;
         }
 
         .version-card .version-number {
-            font-size: 0.8rem;
+            font-size: 0.65rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #999;
-            margin-bottom: 0.25rem;
+            letter-spacing: 0.25em;
+            color: #c9a96e;
+            margin-bottom: 0.75rem;
         }
 
         .version-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.75rem;
         }
 
         .version-card h3 a {
-            color: #1a1a2e;
+            color: #fff;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+            transition: color 0.3s;
         }
 
         .version-card h3 a:hover {
-            border-bottom-color: #0f3460;
+            color: #c9a96e;
         }
 
         .version-card p {
-            font-size: 0.92rem;
-            color: #666;
+            font-size: 0.9rem;
+            color: rgba(232, 224, 212, 0.55);
+            line-height: 1.7;
         }
 
+        /* Upcoming / placeholder cards */
         .version-card.upcoming {
-            opacity: 0.5;
+            opacity: 0.35;
             border-style: dashed;
+            border-color: rgba(201, 169, 110, 0.08);
         }
 
         .version-card.upcoming h3 {
-            color: #999;
+            color: rgba(255, 255, 255, 0.4);
+            font-style: italic;
         }
 
+        .version-card.upcoming:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(201, 169, 110, 0.08);
+        }
+
+        .version-card.upcoming::before {
+            display: none;
+        }
+
+        /* ===== FOOTER ===== */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
-            color: #999;
-            font-size: 0.85rem;
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            z-index: 1;
         }
 
-        @media (max-width: 500px) {
+        .footer-divider {
+            width: 30px;
+            height: 1px;
+            background: rgba(201, 169, 110, 0.3);
+            margin: 0 auto 2rem;
+        }
+
+        footer p {
+            font-size: 0.78rem;
+            color: rgba(232, 224, 212, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        footer .footer-course {
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            color: rgba(201, 169, 110, 0.35);
+            letter-spacing: 0.1em;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
             header h1 {
-                font-size: 1.8rem;
+                font-size: 2.5rem;
             }
 
             .version-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .phase-header h2 {
+                font-size: 1.7rem;
             }
         }
     </style>
@@ -156,26 +338,32 @@
 <body>
 
 <header>
-    <h1>Latin Dance Chicago</h1>
-    <p>A design evolution in 25 versions — exploring the best places to dance Latin rhythms in Chicago</p>
+    <div class="header-accent"></div>
+    <div class="course-badge">MPCS 51238 &middot; Spring 2026 &middot; Assignment 1</div>
+    <h1>Latin Dance <span>Chicago</span></h1>
+    <p class="header-subtitle">A design evolution in 25 versions &mdash; exploring the best places to dance Latin rhythms in the city</p>
+    <p class="header-byline">by <strong>Enrique Zepeda</strong></p>
 </header>
 
 <section class="intro">
-    <p>This project traces the journey of designing a website about Chicago's Latin dance scene. Starting with 10 distinct explorations, then combining the strongest ideas, and finally refining them into a polished result. Each version is a snapshot in that evolution.</p>
+    <p>This gallery traces the journey of designing a website about Chicago's Latin dance scene. Beginning with ten distinct explorations, then combining the strongest ideas, and finally refining them into a polished result. Each version is a snapshot in that evolution &mdash; a frame on the wall of this design story.</p>
 </section>
+
+<div class="gold-divider"></div>
 
 <!-- Phase 1: Exploration -->
 <section class="phase">
     <div class="phase-header">
-        <h2>Phase 1: Exploration</h2>
+        <div class="phase-label">Phase I</div>
+        <h2>Exploration</h2>
+        <p class="phase-narrative">Ten distinct approaches &mdash; varying in style, layout, tone, and audience. Casting a wide net to discover what resonates.</p>
     </div>
-    <p class="phase-narrative">The first ten versions each take a completely different approach — varying in visual style, layout, tone, and target audience. The goal is to cast a wide net and discover what works.</p>
 
     <div class="version-grid">
         <div class="version-card">
             <div class="version-number">Version 1</div>
             <h3><a href="v1.html">Clean &amp; Minimal</a></h3>
-            <p>A stripped-down, list-based layout that lets the content speak for itself. Simple typography, generous whitespace, and zero distractions. Our starting point — what does the content look like with nothing in the way?</p>
+            <p>A stripped-down, list-based layout that lets the content speak for itself. Simple typography, generous whitespace, and zero distractions. Our starting point &mdash; what does the content look like with nothing in the way?</p>
         </div>
 
         <div class="version-card">
@@ -187,7 +375,7 @@
         <div class="version-card">
             <div class="version-number">Version 3</div>
             <h3><a href="v3.html">Dark / Nightlife</a></h3>
-            <p>A moody, club-inspired aesthetic with dark backgrounds and glowing accents. Evokes the feeling of stepping into a salsa night. The dance scene lives after dark — should the site feel that way too?</p>
+            <p>A moody, club-inspired aesthetic with dark backgrounds and glowing accents. Evokes the feeling of stepping into a salsa night. The dance scene lives after dark &mdash; should the site feel that way too?</p>
         </div>
 
         <div class="version-card">
@@ -199,13 +387,13 @@
         <div class="version-card">
             <div class="version-number">Version 5</div>
             <h3><a href="v5.html">Map / Location-Focused</a></h3>
-            <p>Organized by Chicago neighborhood with a color-coded legend. Instead of asking "what kind of dance?" this version asks "where are you?"</p>
+            <p>Organized by Chicago neighborhood with a color-coded legend. Instead of asking &ldquo;what kind of dance?&rdquo; this version asks &ldquo;where are you?&rdquo;</p>
         </div>
 
         <div class="version-card">
             <div class="version-number">Version 6</div>
             <h3><a href="v6.html">Event-Calendar Style</a></h3>
-            <p>A weekly schedule layout organized by day and time. Treats the content like a calendar — when can you dance, and where should you go?</p>
+            <p>A weekly schedule layout organized by day and time. Treats the content like a calendar &mdash; when can you dance, and where should you go?</p>
         </div>
 
         <div class="version-card">
@@ -229,123 +417,131 @@
         <div class="version-card">
             <div class="version-number">Version 10</div>
             <h3><a href="v10.html">Mobile-First</a></h3>
-            <p>Designed for phone screens with a sticky tab bar, bottom navigation, "tonight" banner, and compact cards. What if the user is checking this on their phone before heading out?</p>
+            <p>Designed for phone screens with a sticky tab bar, bottom navigation, &ldquo;tonight&rdquo; banner, and compact cards. What if the user is checking this on their phone before heading out?</p>
         </div>
     </div>
 </section>
 
+<div class="gold-divider"></div>
+
 <!-- Phase 2: Combinations -->
 <section class="phase">
     <div class="phase-header">
-        <h2>Phase 2: Combinations</h2>
+        <div class="phase-label">Phase II</div>
+        <h2>Combinations</h2>
+        <p class="phase-narrative">The strongest elements from Phase I are blended together. Each version combines ideas from two or three earlier explorations.</p>
     </div>
-    <p class="phase-narrative">After reviewing the first ten explorations, the strongest elements are combined. Each version in this phase blends ideas from two or three Phase 1 designs.</p>
 
     <div class="version-grid">
         <div class="version-card upcoming">
             <div class="version-number">Version 11</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 12</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 13</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 14</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 15</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 16</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 17</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 18</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 19</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 20</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 1 review.</p>
+            <p>Awaiting Phase I review.</p>
         </div>
     </div>
 </section>
 
+<div class="gold-divider"></div>
+
 <!-- Phase 3: Refinements -->
 <section class="phase">
     <div class="phase-header">
-        <h2>Phase 3: Refinements</h2>
+        <div class="phase-label">Phase III</div>
+        <h2>Refinements</h2>
+        <p class="phase-narrative">The final five versions polish the strongest combinations &mdash; refining typography, spacing, accessibility, and adding finishing touches.</p>
     </div>
-    <p class="phase-narrative">The final five versions take the best combinations and polish them — refining typography, spacing, accessibility, and adding subtle CSS transitions for a finished feel.</p>
 
     <div class="version-grid">
         <div class="version-card upcoming">
             <div class="version-number">Version 21</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 2 review.</p>
+            <p>Awaiting Phase II review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 22</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 2 review.</p>
+            <p>Awaiting Phase II review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 23</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 2 review.</p>
+            <p>Awaiting Phase II review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 24</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 2 review.</p>
+            <p>Awaiting Phase II review.</p>
         </div>
 
         <div class="version-card upcoming">
             <div class="version-number">Version 25</div>
             <h3>To be determined</h3>
-            <p>Awaiting Phase 2 review.</p>
+            <p>Awaiting Phase II review.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>Latin Dance Chicago — Rapid Prototyping Project</p>
+    <div class="footer-divider"></div>
+    <p>Latin Dance Chicago &mdash; A Rapid Prototyping Project</p>
+    <p class="footer-course">MPCS 51238 &middot; Design, Build &amp; Ship &middot; Spring 2026 &middot; Enrique Zepeda</p>
 </footer>
 
 </body>
