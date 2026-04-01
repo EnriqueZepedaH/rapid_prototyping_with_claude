@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Dance Chicago — V10: Mobile-First</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f8f8;
+            color: #1c1c1e;
+            line-height: 1.6;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 0.75rem 1rem;
+            color: #007aff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .top-section {
+            background: #fff;
+            padding: 1.5rem 1rem 1rem;
+            border-bottom: 1px solid #e5e5ea;
+        }
+
+        .top-section h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .top-section p {
+            font-size: 0.88rem;
+            color: #8e8e93;
+            margin-top: 0.2rem;
+        }
+
+        .tab-bar {
+            display: flex;
+            background: #fff;
+            border-bottom: 1px solid #e5e5ea;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8e8e93;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #007aff;
+            border-bottom-color: #007aff;
+        }
+
+        .section-header {
+            padding: 1.25rem 1rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #8e8e93;
+        }
+
+        .card-stack {
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.1rem;
+        }
+
+        .card .card-type {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .type-lesson { background: #fff2e8; color: #ff9500; }
+        .type-social { background: #e8f0ff; color: #007aff; }
+
+        .card .subtitle {
+            font-size: 0.82rem;
+            color: #8e8e93;
+        }
+
+        .card .description {
+            font-size: 0.88rem;
+            color: #48484a;
+            margin-top: 0.5rem;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.78rem;
+            color: #636366;
+        }
+
+        .meta-chip .icon {
+            font-size: 0.85rem;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .quick-action {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .quick-action .qa-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .quick-action .qa-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #1c1c1e;
+        }
+
+        .quick-action .qa-sub {
+            font-size: 0.72rem;
+            color: #8e8e93;
+            margin-top: 0.1rem;
+        }
+
+        .tonight-banner {
+            margin: 0.75rem 1rem;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            border-radius: 12px;
+            padding: 1.25rem;
+            color: #fff;
+        }
+
+        .tonight-banner h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .tonight-banner p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 430px;
+            background: #fff;
+            border-top: 1px solid #e5e5ea;
+            display: flex;
+            padding: 0.5rem 0 1.25rem;
+            z-index: 10;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            font-size: 0.65rem;
+            color: #8e8e93;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15rem;
+        }
+
+        .nav-item.active {
+            color: #007aff;
+        }
+
+        .nav-item .nav-icon {
+            font-size: 1.3rem;
+        }
+
+        .spacer {
+            height: 5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.75rem;
+            color: #c7c7cc;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="back">&larr; All versions</a>
+
+<div class="top-section">
+    <h1>Latin Dance Chi</h1>
+    <p>Find your rhythm in the city</p>
+</div>
+
+<div class="tab-bar">
+    <a class="tab active" href="#">All</a>
+    <a class="tab" href="#">Lessons</a>
+    <a class="tab" href="#">Socials</a>
+    <a class="tab" href="#">Near Me</a>
+</div>
+
+<div class="tonight-banner">
+    <h2>Dancing Tonight</h2>
+    <p>Bachata Nights at Alegria — Wicker Park, 9pm. Tap for details.</p>
+</div>
+
+<div class="quick-actions">
+    <div class="quick-action">
+        <div class="qa-icon">📚</div>
+        <div class="qa-label">5 Lessons</div>
+        <div class="qa-sub">This week</div>
+    </div>
+    <div class="quick-action">
+        <div class="qa-icon">🎉</div>
+        <div class="qa-label">5 Socials</div>
+        <div class="qa-sub">This week</div>
+    </div>
+</div>
+
+<div class="section-header">Lessons</div>
+<div class="card-stack">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Latin Street Dancing</h3>
+                    <div class="subtitle">Salsa &amp; Bachata</div>
+                </div>
+                <span class="card-type type-lesson">Lesson</span>
+            </div>
+            <p class="description">High-energy classes for all levels. No partner needed.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Pilsen</span>
+                <span class="meta-chip"><span class="icon">📅</span> Tue &amp; Thu</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Enamorados Academy</h3>
+                    <div class="subtitle">Salsa</div>
+                </div>
+                <span class="card-type type-lesson">Lesson</span>
+            </div>
+            <p class="description">Structured curriculum from first step to advanced. The city's salsa institution.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Logan Square</span>
+                <span class="meta-chip"><span class="icon">📅</span> Wednesdays</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Cumbia Collective</h3>
+                    <div class="subtitle">Cumbia</div>
+                </div>
+                <span class="card-type type-lesson">Lesson</span>
+            </div>
+            <p class="description">Monthly workshops celebrating traditional and modern cumbia.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Little Village</span>
+                <span class="meta-chip"><span class="icon">📅</span> 1st Saturday</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Ritmo Latino Studio</h3>
+                    <div class="subtitle">Bachata &amp; Merengue</div>
+                </div>
+                <span class="card-type type-lesson">Lesson</span>
+            </div>
+            <p class="description">Three days a week. Clear levels, real progression.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Humboldt Park</span>
+                <span class="meta-chip"><span class="icon">📅</span> Mon/Wed/Fri</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Salsa Congress</h3>
+                    <div class="subtitle">Intensive Workshops</div>
+                </div>
+                <span class="card-type type-lesson">Lesson</span>
+            </div>
+            <p class="description">Weekend intensives with world-class instructors. Quarterly.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Downtown</span>
+                <span class="meta-chip"><span class="icon">📅</span> Quarterly</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-header">Socials</div>
+<div class="card-stack">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Salsa Sundays</h3>
+                    <div class="subtitle">Havana Club — Live Band</div>
+                </div>
+                <span class="card-type type-social">Social</span>
+            </div>
+            <p class="description">The Sunday tradition. Live orchestra, packed floor, unforgettable energy.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> River North</span>
+                <span class="meta-chip"><span class="icon">🕗</span> Sun 8pm</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Bachata Nights</h3>
+                    <div class="subtitle">Alegria — DJ Sets</div>
+                </div>
+                <span class="card-type type-social">Social</span>
+            </div>
+            <p class="description">Friday bachata with a mini-lesson first. Sensual &amp; Dominican styles.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Wicker Park</span>
+                <span class="meta-chip"><span class="icon">🕘</span> Fri 9pm</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Cumbia en la Calle</h3>
+                    <div class="subtitle">Outdoor Street Dancing</div>
+                </div>
+                <span class="card-type type-social">Social</span>
+            </div>
+            <p class="description">Summer Saturday evenings in Pilsen. No tickets, no pressure, just dance.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Pilsen</span>
+                <span class="meta-chip"><span class="icon">🕕</span> Sat 6pm (Jun–Sep)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Latin Mix Thursdays</h3>
+                    <div class="subtitle">The Midway — Multi-Genre</div>
+                </div>
+                <span class="card-type type-social">Social</span>
+            </div>
+            <p class="description">Salsa, bachata, cumbia all night. The DJ reads the room.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Logan Square</span>
+                <span class="meta-chip"><span class="icon">🕘</span> Thu 9pm</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-top">
+                <div>
+                    <h3>Rueda de Casino</h3>
+                    <div class="subtitle">Group Salsa Meetup</div>
+                </div>
+                <span class="card-type type-social">Social</span>
+            </div>
+            <p class="description">Circle salsa with rotating partners. All levels, all fun.</p>
+            <div class="card-meta">
+                <span class="meta-chip"><span class="icon">📍</span> Humboldt Park</span>
+                <span class="meta-chip"><span class="icon">📅</span> 2nd Sunday</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spacer"></div>
+
+<footer>
+    <p>V10 — Mobile-First</p>
+</footer>
+
+<nav class="bottom-nav">
+    <a class="nav-item active" href="#">
+        <span class="nav-icon">🏠</span>
+        Home
+    </a>
+    <a class="nav-item" href="#">
+        <span class="nav-icon">🔍</span>
+        Search
+    </a>
+    <a class="nav-item" href="#">
+        <span class="nav-icon">📅</span>
+        Schedule
+    </a>
+    <a class="nav-item" href="#">
+        <span class="nav-icon">👤</span>
+        Profile
+    </a>
+</nav>
+
+</body>
+</html>
