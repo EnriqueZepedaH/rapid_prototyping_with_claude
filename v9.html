@@ -21,37 +21,81 @@
         .back {
             display: inline-block;
             padding: 1rem 2rem;
-            color: #888;
+            color: #fff;
             text-decoration: none;
             font-size: 0.85rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        .back:hover { color: #333; }
+        .back:hover { color: #ffd700; }
 
-        header {
-            background: #fff;
-            padding: 2.5rem 2rem;
+        /* Hero Banner */
+        .hero {
+            position: relative;
+            height: 480px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-bottom: 1px solid #ddd;
         }
 
-        header h1 {
-            font-size: 2rem;
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #e63946;
+            color: #fff;
+            padding: 0.85rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 700;
-            color: #1a1a2e;
+            font-size: 1rem;
+            transition: background 0.2s;
+            box-shadow: 0 4px 15px rgba(230,57,70,0.4);
         }
 
-        header p {
-            color: #777;
-            font-size: 0.95rem;
-            margin-top: 0.3rem;
-        }
+        .hero-cta:hover { background: #d62839; }
 
         .stats-bar {
             display: flex;
             justify-content: center;
             gap: 2.5rem;
-            padding: 1rem 2rem;
+            padding: 1.25rem 2rem;
             background: #fff;
             border-bottom: 1px solid #eee;
         }
@@ -61,9 +105,9 @@
         }
 
         .stat .number {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #1a1a2e;
+            color: #e63946;
         }
 
         .stat .label {
@@ -80,15 +124,16 @@
         }
 
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #1a1a2e;
-            margin: 1.5rem 0 1rem;
+            margin: 2rem 0 1rem;
             padding-bottom: 0.4rem;
-            border-bottom: 2px solid #1a1a2e;
+            border-bottom: 3px solid #e63946;
             display: inline-block;
         }
 
+        /* Testimonials */
         .testimonials {
             display: grid;
             gap: 1rem;
@@ -97,9 +142,10 @@
 
         .testimonial {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.25rem 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid #e63946;
         }
 
         .testimonial-header {
@@ -110,8 +156,8 @@
         }
 
         .profile-pic {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -120,6 +166,13 @@
             font-size: 0.9rem;
             color: #fff;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .profile-info .name {
@@ -132,21 +185,28 @@
             color: #999;
         }
 
+        .testimonial .stars {
+            color: #ffc107;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
         .testimonial blockquote {
             font-size: 0.93rem;
             color: #555;
             font-style: italic;
-            border-left: 3px solid #e0e0e0;
-            padding-left: 1rem;
+            border-left: none;
+            padding-left: 0;
             margin: 0;
         }
 
+        /* Venue Threads */
         .venue-thread {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 0.75rem;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .thread-main {
@@ -174,7 +234,7 @@
         .thread-votes .count {
             font-weight: 700;
             font-size: 1rem;
-            color: #1a1a2e;
+            color: #e63946;
         }
 
         .thread-content h3 {
@@ -192,6 +252,14 @@
         .thread-content p {
             font-size: 0.9rem;
             color: #555;
+        }
+
+        .thread-venue-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 0.75rem;
         }
 
         .thread-tags {
@@ -215,6 +283,7 @@
         .tag-salsa { background: #fce4ec; color: #c62828; }
         .tag-bachata { background: #f3e5f5; color: #7b1fa2; }
         .tag-cumbia { background: #fff3e0; color: #e65100; }
+        .tag-hot { background: #e63946; color: #fff; }
 
         .thread-replies {
             background: #f9f9fb;
@@ -230,8 +299,8 @@
         }
 
         .reply-avatar {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -240,6 +309,13 @@
             font-weight: 700;
             color: #fff;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .reply-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .reply-text {
@@ -251,6 +327,74 @@
             color: #333;
         }
 
+        /* Video Spotlight */
+        .video-spotlight {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .video-spotlight-header {
+            padding: 1.25rem 1.5rem 0.75rem;
+        }
+
+        .video-spotlight-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .video-spotlight-header p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.2rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .photo-gallery .gallery-img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .photo-gallery .gallery-img:hover {
+            transform: scale(1.03);
+        }
+
+        .photo-gallery .gallery-img.tall {
+            grid-row: span 2;
+            aspect-ratio: auto;
+            height: 100%;
+        }
+
+        /* Dancer Profiles */
         .dancer-profiles {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -260,17 +404,18 @@
 
         .profile-card {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .profile-card .profile-pic {
-            width: 56px;
-            height: 56px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto 0.75rem;
             font-size: 1.2rem;
+            border: 3px solid #e63946;
         }
 
         .profile-card h3 {
@@ -280,7 +425,8 @@
 
         .profile-card .dancer-style {
             font-size: 0.8rem;
-            color: #999;
+            color: #e63946;
+            font-weight: 600;
             margin-top: 0.1rem;
         }
 
@@ -290,11 +436,75 @@
             margin-top: 0.5rem;
         }
 
+        /* Join CTA */
+        .join-cta {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 2rem 0;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .join-cta-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35);
+        }
+
+        .join-cta-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .join-cta-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .join-cta-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.25rem;
+            max-width: 400px;
+        }
+
+        .join-btn {
+            display: inline-block;
+            background: #e63946;
+            color: #fff;
+            padding: 0.85rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(230,57,70,0.4);
+        }
+
+        .join-btn:hover { background: #d62839; }
+
         footer {
             text-align: center;
             padding: 2rem;
             font-size: 0.8rem;
             color: #bbb;
+        }
+
+        @media (max-width: 600px) {
+            .hero { height: 360px; }
+            .hero-content h1 { font-size: 2rem; }
+            .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+            .stats-bar { gap: 1.5rem; }
         }
     </style>
 </head>
@@ -302,10 +512,15 @@
 
 <a href="index.html" class="back">&larr; Back to all versions</a>
 
-<header>
-    <h1>Latin Dance Chicago</h1>
-    <p>A community-driven guide to the city's Latin dance scene</p>
-</header>
+<!-- Hero Banner -->
+<div class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1200&q=80" alt="Group of dancers in a lively Latin dance social">
+    <div class="hero-content">
+        <h1>Latin Dance Chicago</h1>
+        <p>Join 1,200+ dancers who found their rhythm in the city. Learn salsa, bachata, and cumbia from the best community in the Midwest.</p>
+        <a href="#lessons" class="hero-cta">Start Dancing Today</a>
+    </div>
+</div>
 
 <div class="stats-bar">
     <div class="stat">
@@ -320,6 +535,10 @@
         <div class="number">1.2k</div>
         <div class="label">Community Members</div>
     </div>
+    <div class="stat">
+        <div class="number">5</div>
+        <div class="label">Socials / Week</div>
+    </div>
 </div>
 
 <main>
@@ -328,60 +547,85 @@
     <div class="testimonials">
         <div class="testimonial">
             <div class="testimonial-header">
-                <div class="profile-pic" style="background: #e63946;">M</div>
+                <div class="profile-pic">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="Maria G.">
+                </div>
                 <div class="profile-info">
                     <div class="name">Maria G.</div>
                     <div class="role">Salsa dancer &bull; 3 years</div>
                 </div>
             </div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <blockquote>"I started at Latin Street Dancing with zero experience. Two years later, I'm at Havana Club every Sunday. This city's dance community changed my life."</blockquote>
         </div>
         <div class="testimonial">
             <div class="testimonial-header">
-                <div class="profile-pic" style="background: #2a9d8f;">D</div>
+                <div class="profile-pic">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="David R.">
+                </div>
                 <div class="profile-info">
                     <div class="name">David R.</div>
                     <div class="role">Bachata &amp; cumbia &bull; 5 years</div>
                 </div>
             </div>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <blockquote>"Cumbia en la Calle is pure magic. Dancing outside in Pilsen on a summer night — there's nothing else like it in the city."</blockquote>
         </div>
         <div class="testimonial">
             <div class="testimonial-header">
-                <div class="profile-pic" style="background: #6c63ff;">J</div>
+                <div class="profile-pic">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="Jessica T.">
+                </div>
                 <div class="profile-info">
                     <div class="name">Jessica T.</div>
                     <div class="role">Beginner &bull; 6 months</div>
                 </div>
             </div>
-            <blockquote>"I was so nervous to try bachata, but the Friday nights at Alegría have a mini-lesson first. Everyone was so welcoming. I go every week now."</blockquote>
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"I was so nervous to try bachata, but the Friday nights at Alegria have a mini-lesson first. Everyone was so welcoming. I go every week now."</blockquote>
+        </div>
+    </div>
+
+    <!-- Community Spotlight Video -->
+    <div class="section-title">Community Spotlight</div>
+    <div class="video-spotlight">
+        <div class="video-spotlight-header">
+            <h3>Feel the Rhythm: Chicago Latin Dance Scene</h3>
+            <p>Watch our community in action at socials and events across the city</p>
+        </div>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/V0OY_rkSBSQ?rel=0" title="Latin Dance Chicago Community Spotlight" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
     <!-- Lessons Threads -->
-    <div class="section-title">Lessons</div>
+    <div id="lessons" class="section-title">Lessons</div>
 
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">47</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Latin Street Dancing</h3>
                 <div class="thread-meta">Pilsen &bull; Tue &amp; Thu &bull; Posted by dancerchi</div>
                 <p>Best place to start salsa and bachata in Chicago. The vibe is super welcoming and the instructors break everything down step by step.</p>
+                <img class="thread-venue-img" src="https://images.unsplash.com/photo-1524117853209-b4012c0f2b4f?w=700&q=80" alt="Dance studio with warm lighting">
                 <div class="thread-tags">
                     <span class="tag tag-lesson">Lesson</span>
                     <span class="tag tag-salsa">Salsa</span>
                     <span class="tag tag-bachata">Bachata</span>
+                    <span class="tag tag-hot">Popular</span>
                 </div>
             </div>
         </div>
         <div class="thread-replies">
             <div class="reply">
-                <div class="reply-avatar" style="background: #f09433;">A</div>
+                <div class="reply-avatar">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&q=80" alt="Ana">
+                </div>
                 <div class="reply-text"><strong>ana_moves:</strong> +1, the Tuesday class is my favorite. Great energy.</div>
             </div>
         </div>
@@ -390,14 +634,15 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">38</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Enamorados Dance Academy</h3>
                 <div class="thread-meta">Logan Square &bull; Wednesdays &bull; Posted by salsero_mike</div>
                 <p>The academy that built Chicago's salsa scene. Structured levels, great musicality focus. Wednesday nights are the best.</p>
+                <img class="thread-venue-img" src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=700&q=80" alt="Dance class in progress">
                 <div class="thread-tags">
                     <span class="tag tag-lesson">Lesson</span>
                     <span class="tag tag-salsa">Salsa</span>
@@ -409,9 +654,9 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">29</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Cumbia Collective</h3>
@@ -428,9 +673,9 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">34</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Ritmo Latino Studio</h3>
@@ -447,23 +692,27 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">52</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Chicago Salsa Congress</h3>
                 <div class="thread-meta">Downtown &bull; Quarterly &bull; Posted by congress_crew</div>
                 <p>Weekend intensives with world-class guest instructors. The biggest salsa event in the Midwest. Worth every minute.</p>
+                <img class="thread-venue-img" src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=700&q=80" alt="Large dance event with performers on stage">
                 <div class="thread-tags">
                     <span class="tag tag-lesson">Lesson</span>
                     <span class="tag tag-salsa">Salsa</span>
+                    <span class="tag tag-hot">Popular</span>
                 </div>
             </div>
         </div>
         <div class="thread-replies">
             <div class="reply">
-                <div class="reply-avatar" style="background: #bc1888;">L</div>
+                <div class="reply-avatar">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&q=80" alt="Lucia">
+                </div>
                 <div class="reply-text"><strong>lucia_spins:</strong> The workshops are intense but SO worth it. I learned more in one weekend than a month of classes.</div>
             </div>
         </div>
@@ -475,23 +724,27 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">89</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Salsa Sundays at Havana Club</h3>
                 <div class="thread-meta">River North &bull; Sundays 8pm &bull; Posted by havana_regular</div>
                 <p>THE salsa night in Chicago. Live orchestra, packed floor, incredible energy. If you only go to one social, make it this one.</p>
+                <img class="thread-venue-img" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=700&q=80" alt="Vibrant nightclub with warm lighting and dance floor">
                 <div class="thread-tags">
                     <span class="tag tag-social">Social</span>
                     <span class="tag tag-salsa">Salsa</span>
+                    <span class="tag tag-hot">Most Popular</span>
                 </div>
             </div>
         </div>
         <div class="thread-replies">
             <div class="reply">
-                <div class="reply-avatar" style="background: #2a9d8f;">K</div>
+                <div class="reply-avatar">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&q=80" alt="Kevin">
+                </div>
                 <div class="reply-text"><strong>kevin_on1:</strong> Get there early — by 9:30 the floor is packed. But that's part of the fun.</div>
             </div>
         </div>
@@ -500,14 +753,15 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">61</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
-                <h3>Bachata Nights at Alegría</h3>
+                <h3>Bachata Nights at Alegria</h3>
                 <div class="thread-meta">Wicker Park &bull; Fridays 9pm &bull; Posted by bachata_queen</div>
                 <p>Friday night bachata done right. The first hour is a lesson, then the social kicks in. Sensual and Dominican styles all night.</p>
+                <img class="thread-venue-img" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80" alt="Couple dancing bachata in moody lighting">
                 <div class="thread-tags">
                     <span class="tag tag-social">Social</span>
                     <span class="tag tag-bachata">Bachata</span>
@@ -519,14 +773,15 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">73</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Cumbia en la Calle</h3>
                 <div class="thread-meta">Pilsen &bull; Sat 6pm (summer) &bull; Posted by pilsen_dancer</div>
                 <p>Summer street cumbia in Pilsen. Families, friends, everyone. The most joyful night of the week from June through September.</p>
+                <img class="thread-venue-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=700&q=80" alt="Outdoor street festival with people dancing">
                 <div class="thread-tags">
                     <span class="tag tag-social">Social</span>
                     <span class="tag tag-cumbia">Cumbia</span>
@@ -538,9 +793,9 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">42</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Latin Mix at The Midway</h3>
@@ -558,9 +813,9 @@
     <div class="venue-thread">
         <div class="thread-main">
             <div class="thread-votes">
-                <span class="arrow">▲</span>
+                <span class="arrow">&#9650;</span>
                 <span class="count">31</span>
-                <span class="arrow">▼</span>
+                <span class="arrow">&#9660;</span>
             </div>
             <div class="thread-content">
                 <h3>Rueda de Casino Meetup</h3>
@@ -574,26 +829,55 @@
         </div>
     </div>
 
+    <!-- Photo Gallery -->
+    <div class="section-title">From the Dance Floor</div>
+    <div class="photo-gallery">
+        <img class="gallery-img tall" src="https://images.unsplash.com/photo-1547153760-18fc86c39815?w=500&q=80" alt="Dancer mid-spin">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80" alt="Group salsa social">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80" alt="Dance event crowd">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80" alt="Outdoor festival">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80" alt="DJ and dance floor">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=400&q=80" alt="Concert crowd">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&q=80" alt="Dance party lights">
+        <img class="gallery-img" src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=400&q=80" alt="Performance on stage">
+    </div>
+
     <!-- Community Profiles -->
     <div class="section-title">Featured Dancers</div>
     <div class="dancer-profiles">
         <div class="profile-card">
-            <div class="profile-pic" style="background: #e63946;">C</div>
+            <div class="profile-pic">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=160&q=80" alt="Carlos M.">
+            </div>
             <h3>Carlos M.</h3>
             <div class="dancer-style">Salsa &bull; 8 years</div>
             <p class="dancer-bio">Started at Enamorados, now teaches at the Salsa Congress. "Chicago made me the dancer I am."</p>
         </div>
         <div class="profile-card">
-            <div class="profile-pic" style="background: #6c63ff;">S</div>
+            <div class="profile-pic">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=160&q=80" alt="Sofia L.">
+            </div>
             <h3>Sofia L.</h3>
             <div class="dancer-style">Bachata &bull; 4 years</div>
-            <p class="dancer-bio">You'll find her at Alegría every Friday. "Bachata is how I decompress from the week."</p>
+            <p class="dancer-bio">You'll find her at Alegria every Friday. "Bachata is how I decompress from the week."</p>
         </div>
         <div class="profile-card">
-            <div class="profile-pic" style="background: #2a9d8f;">R</div>
+            <div class="profile-pic">
+                <img src="https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=160&q=80" alt="Roberto P.">
+            </div>
             <h3>Roberto P.</h3>
             <div class="dancer-style">Cumbia &bull; 12 years</div>
             <p class="dancer-bio">One of the organizers of Cumbia en la Calle. "This dance connects generations."</p>
+        </div>
+    </div>
+
+    <!-- Join CTA -->
+    <div class="join-cta">
+        <img class="join-cta-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1000&q=80" alt="Group of friends laughing and celebrating together">
+        <div class="join-cta-content">
+            <h2>Ready to Join the Community?</h2>
+            <p>Whether you're a total beginner or an experienced dancer, there's a place for you on the floor. Your first class is on us.</p>
+            <a href="#" class="join-btn">Join Free &mdash; Start Dancing</a>
         </div>
     </div>
 </main>

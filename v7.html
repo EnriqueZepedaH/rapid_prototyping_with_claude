@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latin Dance Chicago — V7: Magazine / Editorial</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,7 +14,7 @@
         }
 
         body {
-            font-family: Georgia, 'Times New Roman', serif;
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
             background: #fff;
             color: #222;
             line-height: 1.9;
@@ -24,69 +26,203 @@
             color: #999;
             text-decoration: none;
             font-size: 0.85rem;
-            font-family: sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
+            position: relative;
+            z-index: 100;
         }
 
         .back:hover { color: #333; }
 
-        .hero {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 6rem 2rem 5rem;
+        /* ── Masthead ── */
+        .masthead {
             text-align: center;
+            padding: 1.5rem 2rem 1rem;
+            border-bottom: 3px double #c9a96e;
+            font-family: 'Source Sans 3', sans-serif;
+        }
+
+        .masthead-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            color: #c9a96e;
+        }
+
+        .masthead-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #999;
+        }
+
+        .masthead-nav a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .masthead-nav a:hover {
+            color: #c9a96e;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1545959570-a94084071b5f?w=1600&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            filter: brightness(0.35);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            padding: 2rem;
+            max-width: 800px;
         }
 
         .hero .kicker {
-            font-family: sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.3em;
             color: #c9a96e;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border: 1px solid rgba(201,169,110,0.4);
+            padding: 0.4rem 1.2rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 400;
-            line-height: 1.15;
-            max-width: 700px;
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.08;
             margin: 0 auto;
+            text-shadow: 0 2px 40px rgba(0,0,0,0.5);
         }
 
         .hero .deck {
-            font-size: 1.15rem;
-            color: #aaa;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
             max-width: 550px;
-            margin: 1.5rem auto 0;
+            margin: 2rem auto 0;
             font-style: italic;
+            font-weight: 400;
+            line-height: 1.7;
         }
 
+        .hero-cta {
+            display: inline-block;
+            margin-top: 2.5rem;
+            padding: 0.9rem 2.5rem;
+            background: #c9a96e;
+            color: #1a1a1a;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: #dfc08a;
+        }
+
+        /* ── Issue Info Bar ── */
+        .issue-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            padding: 1rem 2rem;
+            background: #1a1a1a;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #777;
+        }
+
+        .issue-bar span {
+            color: #c9a96e;
+        }
+
+        /* ── Lede ── */
         .lede {
             max-width: 650px;
-            margin: 3rem auto;
+            margin: 4rem auto 3rem;
             padding: 0 2rem;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: #444;
+            line-height: 2;
         }
 
         .lede .dropcap {
-            font-size: 3.5rem;
+            font-size: 5rem;
             float: left;
-            line-height: 1;
-            margin-right: 0.15rem;
-            margin-top: 0.05rem;
+            line-height: 0.82;
+            margin-right: 0.1rem;
+            margin-top: 0.08rem;
             color: #c9a96e;
-            font-weight: 700;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
         }
 
+        /* ── Full-bleed Photo Breaks ── */
+        .photo-break {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-break img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-break-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 3rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Section Break ── */
         .section-break {
             text-align: center;
             font-size: 1.5rem;
             color: #ddd;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             letter-spacing: 0.5em;
         }
 
+        /* ── Editorial Section ── */
         .editorial-section {
             max-width: 650px;
             margin: 0 auto 3rem;
@@ -94,22 +230,24 @@
         }
 
         .editorial-section h2 {
-            font-size: 2rem;
-            font-weight: 400;
+            font-size: 2.5rem;
+            font-weight: 900;
             margin-bottom: 0.25rem;
             color: #111;
+            line-height: 1.2;
         }
 
         .editorial-section .section-sub {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #999;
             font-style: italic;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .feature {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
             border-bottom: 1px solid #eee;
         }
 
@@ -118,43 +256,337 @@
         }
 
         .feature h3 {
-            font-size: 1.35rem;
-            font-weight: 400;
-            margin-bottom: 0.15rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: #1a1a1a;
         }
 
         .feature .byline {
-            font-family: sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 0.78rem;
             color: #bbb;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
         }
 
         .feature p {
             color: #555;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        /* ── Feature images ── */
+        .feature-img {
+            width: 100%;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-img-float {
+            float: right;
+            width: 260px;
+            margin: 0 0 1rem 1.5rem;
+            border-radius: 2px;
+        }
+
+        .feature-img-caption {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* ── Pullquote ── */
+        .pullquote {
+            border-left: 4px solid #c9a96e;
+            padding: 1.5rem 0 1.5rem 2rem;
+            margin: 3rem auto;
+            max-width: 650px;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .pullquote-attr {
+            display: block;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: #aaa;
+            margin-top: 0.75rem;
+            font-family: 'Source Sans 3', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Video Feature ── */
+        .video-feature {
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .video-feature-label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #c9a96e;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .video-feature h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .video-feature-sub {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            margin-bottom: 1.5rem;
             font-size: 1rem;
         }
 
-        .pullquote {
-            border-left: 3px solid #c9a96e;
-            padding: 1rem 0 1rem 1.5rem;
-            margin: 2rem auto;
-            max-width: 650px;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #555;
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #111;
+            overflow: hidden;
         }
 
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ── Dual Image Grid ── */
+        .dual-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            margin: 3rem 0;
+        }
+
+        .dual-images img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── Subscribe CTA ── */
+        .subscribe-section {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscribe-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+
+        .subscribe-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .subscribe-section .sub-kicker {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #c9a96e;
+            margin-bottom: 1.5rem;
+        }
+
+        .subscribe-section h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .subscribe-section p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 0;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #444;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .subscribe-form input::placeholder {
+            color: #666;
+        }
+
+        .subscribe-form button {
+            padding: 0.9rem 2rem;
+            background: #c9a96e;
+            color: #1a1a1a;
+            border: none;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+        }
+
+        .subscribe-form button:hover {
+            background: #dfc08a;
+        }
+
+        .subscribe-note {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            color: #555;
+            margin-top: 1rem;
+        }
+
+        /* ── Trio Feature Cards ── */
+        .trio-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .trio-label {
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #c9a96e;
+            margin-bottom: 0.5rem;
+        }
+
+        .trio-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+        }
+
+        .trio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .trio-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .trio-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .trio-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .trio-card-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 2rem 1.25rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            width: 100%;
+            color: #fff;
+        }
+
+        .trio-card-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .trio-card-overlay p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ── Footer ── */
         footer {
             text-align: center;
             padding: 3rem 2rem;
-            font-family: sans-serif;
+            font-family: 'Source Sans 3', sans-serif;
             font-size: 0.75rem;
             color: #ccc;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            border-top: 1px solid #eee;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero { min-height: 70vh; }
+            .trio-grid { grid-template-columns: 1fr; }
+            .dual-images { grid-template-columns: 1fr; }
+            .dual-images img { height: 250px; }
+            .feature-img-float {
+                float: none;
+                width: 100%;
+                margin: 0 0 1rem 0;
+            }
+            .subscribe-form {
+                flex-direction: column;
+            }
+            .subscribe-section h2 { font-size: 2rem; }
+            .masthead-nav { display: none; }
         }
     </style>
 </head>
@@ -162,32 +594,67 @@
 
 <a href="index.html" class="back">&larr; Back to all versions</a>
 
-<div class="hero">
-    <div class="kicker">A Guide to Chicago's Latin Dance Scene</div>
-    <h1>Where the City Moves to Latin Rhythms</h1>
-    <p class="deck">From Pilsen street corners to River North dance floors, Chicago pulses with salsa, bachata, and cumbia every night of the week.</p>
+<!-- Masthead -->
+<div class="masthead">
+    <div class="masthead-brand">Latin Dance Chicago</div>
+    <nav class="masthead-nav">
+        <a href="#lessons">Lessons</a>
+        <a href="#socials">Socials</a>
+        <a href="#watch">Watch</a>
+        <a href="#subscribe">Subscribe</a>
+    </nav>
 </div>
 
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="kicker">A Guide to Chicago's Latin Dance Scene</div>
+        <h1>Where the City Moves to Latin Rhythms</h1>
+        <p class="deck">From Pilsen street corners to River North dance floors, Chicago pulses with salsa, bachata, and cumbia every night of the week.</p>
+        <a href="#lessons" class="hero-cta">Find Your First Class</a>
+    </div>
+</div>
+
+<!-- Issue Info -->
+<div class="issue-bar">
+    <span>Spring 2026</span>
+    Chicago, Illinois
+    <span>The Dance Issue</span>
+</div>
+
+<!-- Lede -->
 <div class="lede">
     <p><span class="dropcap">C</span>hicago has always been a city of movement. Its Latin dance scene is one of the most vibrant in the Midwest — a living, breathing network of studios, clubs, and community spaces where the rhythms of salsa, bachata, cumbia, and merengue bring people together every single week. Whether you're taking your first step or your ten-thousandth, there's a place for you here.</p>
 </div>
 
+<!-- Photo Break -->
+<div class="photo-break">
+    <img src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?w=1600&q=80" alt="Dance studio with warm lighting">
+    <div class="photo-break-caption">Chicago's dance studios come alive every evening, filling with music and movement.</div>
+</div>
+
 <div class="section-break">&#8226; &#8226; &#8226;</div>
 
-<section class="editorial-section">
+<!-- Lessons Section -->
+<section class="editorial-section" id="lessons">
     <h2>The Classroom</h2>
     <p class="section-sub">Where Chicago learns to dance</p>
 
     <div class="feature">
+        <img class="feature-img" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=900&q=80" alt="Salsa dancers in a studio">
+        <div class="feature-img-caption">An evening class at a Pilsen studio</div>
         <h3>Latin Street Dancing</h3>
         <div class="byline">Pilsen &bull; Tuesdays &amp; Thursdays</div>
         <p>In a bright studio just off 18th Street, instructors break down salsa and bachata with an energy that's contagious. The classes are designed for real social dancing — no choreography, just connection. Tuesday and Thursday nights, the room fills with beginners finding their groove and regulars sharpening their technique.</p>
     </div>
 
     <div class="feature">
+        <img class="feature-img-float" src="https://images.unsplash.com/photo-1533735297942-8c93c7e6a8e0?w=600&q=80" alt="Dance couple practicing">
         <h3>Enamorados Dance Academy</h3>
         <div class="byline">Logan Square &bull; Wednesdays</div>
         <p>This is the studio that shaped a generation of Chicago salseros. Their Wednesday night classes follow a progressive curriculum — you start in Level 1 and work your way up. The emphasis is on musicality, not just moves. By the time you "graduate," you can hear the break in the music before your feet even think about it.</p>
+        <div style="clear:both"></div>
     </div>
 
     <div class="feature">
@@ -197,9 +664,11 @@
     </div>
 
     <div class="feature">
+        <img class="feature-img-float" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Dance floor energy">
         <h3>Ritmo Latino Studio</h3>
         <div class="byline">Humboldt Park &bull; Mon / Wed / Fri</div>
-        <p>Three days a week, this Humboldt Park studio offers a reliable home for bachata and merengue lovers. The level system is clear, the progression is real, and the community is tight-knit.</p>
+        <p>Three days a week, this Humboldt Park studio offers a reliable home for bachata and merengue lovers. The level system is clear, the progression is real, and the community is tight-knit. New dancers always remark on how welcoming the regulars are.</p>
+        <div style="clear:both"></div>
     </div>
 
     <div class="feature">
@@ -209,26 +678,49 @@
     </div>
 </section>
 
+<!-- Pullquote -->
 <div class="pullquote">
     "You don't need to be a great dancer to start. You just need to start. The rest comes from showing up."
+    <span class="pullquote-attr">— Longtime Chicago salsera</span>
+</div>
+
+<!-- Video Feature -->
+<div class="video-feature" id="watch">
+    <div class="video-feature-label">Watch</div>
+    <h3>Feel the Rhythm of Latin Dance</h3>
+    <p class="video-feature-sub">A glimpse into the world of salsa and bachata</p>
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/V0OOiyGGCaA?rel=0" title="Latin Dance Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Dual Image Break -->
+<div class="dual-images">
+    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=800&q=80" alt="Couple dancing salsa">
+    <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800&q=80" alt="Night club dance floor">
 </div>
 
 <div class="section-break">&#8226; &#8226; &#8226;</div>
 
-<section class="editorial-section">
+<!-- Socials Section -->
+<section class="editorial-section" id="socials">
     <h2>The Dance Floor</h2>
     <p class="section-sub">Where Chicago dances after dark</p>
 
     <div class="feature">
+        <img class="feature-img" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=900&q=80" alt="Live music night club">
+        <div class="feature-img-caption">The energy of a live salsa night in River North</div>
         <h3>Salsa Sundays at Havana Club</h3>
         <div class="byline">River North &bull; Sundays 8pm</div>
         <p>This is the one. A live orchestra fills the room with son and timba while couples weave through the crowd in effortless spins. It's crowded, it's loud, it's everything a Sunday night should be. If you dance salsa in Chicago, you end up here eventually.</p>
     </div>
 
     <div class="feature">
-        <h3>Bachata Nights at Alegría</h3>
+        <img class="feature-img-float" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80" alt="Intimate dance atmosphere">
+        <h3>Bachata Nights at Alegria</h3>
         <div class="byline">Wicker Park &bull; Fridays 9pm</div>
-        <p>Alegría is intimate in the best way — dim lighting, good speakers, and a floor full of dancers who came specifically for bachata. The DJ mixes sensual and Dominican styles, and the first hour includes a mini-lesson for newcomers.</p>
+        <p>Alegria is intimate in the best way — dim lighting, good speakers, and a floor full of dancers who came specifically for bachata. The DJ mixes sensual and Dominican styles, and the first hour includes a mini-lesson for newcomers.</p>
+        <div style="clear:both"></div>
     </div>
 
     <div class="feature">
@@ -250,8 +742,57 @@
     </div>
 </section>
 
+<!-- Photo Break -->
+<div class="photo-break">
+    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1600&q=80" alt="Concert crowd with vibrant lights">
+    <div class="photo-break-caption">The energy never stops — Chicago's Latin dance scene runs seven nights a week.</div>
+</div>
+
+<!-- Trio Feature Cards -->
+<div class="trio-section">
+    <div class="trio-label">Don't Miss</div>
+    <h2 class="trio-title">This Week in Chicago</h2>
+    <div class="trio-grid">
+        <div class="trio-card">
+            <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=600&q=80" alt="Salsa class">
+            <div class="trio-card-overlay">
+                <h4>Beginner Salsa</h4>
+                <p>Tuesday at Latin Street Dancing, Pilsen. No experience needed.</p>
+            </div>
+        </div>
+        <div class="trio-card">
+            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80" alt="Bachata night">
+            <div class="trio-card-overlay">
+                <h4>Bachata Friday</h4>
+                <p>Friday 9pm at Alegria, Wicker Park. Mini-lesson included.</p>
+            </div>
+        </div>
+        <div class="trio-card">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80" alt="Salsa Sunday">
+            <div class="trio-card-overlay">
+                <h4>Salsa Sundays</h4>
+                <p>Live orchestra at Havana Club, River North. The can't-miss night.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subscribe CTA -->
+<div class="subscribe-section" id="subscribe">
+    <div class="subscribe-content">
+        <div class="sub-kicker">Subscribe to the Scene</div>
+        <h2>Never Miss a Beat</h2>
+        <p>Get weekly updates on classes, socials, and events from Chicago's Latin dance community. Delivered to your inbox every Thursday.</p>
+        <form class="subscribe-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Subscribe</button>
+        </form>
+        <div class="subscribe-note">Free. No spam. Unsubscribe anytime.</div>
+    </div>
+</div>
+
 <footer>
-    V7 — Magazine / Editorial
+    V7 — Magazine / Editorial &bull; Latin Dance Chicago
 </footer>
 
 </body>

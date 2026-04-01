@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latin Dance Chicago — V1: Clean &amp; Minimal</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,64 +14,16 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             color: #333;
             background: #fff;
             line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
         }
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 0.25rem;
-        }
-
-        .subtitle {
-            color: #999;
-            font-size: 0.95rem;
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #111;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .name {
-            font-weight: 500;
-        }
-
-        .details {
-            font-size: 0.88rem;
-            color: #888;
-            margin-top: 0.15rem;
-        }
-
+        /* Back link */
         .back {
             display: inline-block;
-            margin-bottom: 2rem;
+            padding: 1.25rem 2rem;
             color: #999;
             text-decoration: none;
             font-size: 0.85rem;
@@ -79,12 +33,323 @@
             color: #333;
         }
 
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #fff;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .subtitle {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.15rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.8);
+        }
+
+        /* Content wrapper */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section headings */
+        h2 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #111;
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        /* Lesson items with images */
+        .listing {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            padding: 1.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .listing-image {
+            flex-shrink: 0;
+            width: 140px;
+            height: 100px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .listing-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .listing-content {
+            flex: 1;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #111;
+            margin-bottom: 0.2rem;
+        }
+
+        .details {
+            font-size: 0.88rem;
+            color: #888;
+            margin-top: 0.15rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #c45a3c;
+            background: #fdf2ef;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Intro text */
+        .section-intro {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #555;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Image break between sections */
+        .image-break {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 350px;
+        }
+
+        .image-break img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Video Section */
+        .video-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            text-align: center;
+        }
+
+        .video-section p {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            width: 100%;
+            padding: 8rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.3);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            border: none;
+            text-transform: none;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #fff;
+            color: #111;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Gallery strip */
+        .gallery-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .gallery-strip img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Footer */
         footer {
-            margin-top: 4rem;
-            padding-top: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
             border-top: 1px solid #eee;
             font-size: 0.8rem;
             color: #ccc;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .listing {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .listing-image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .gallery-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-strip img {
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -92,63 +357,175 @@
 
 <a href="index.html" class="back">&larr; Back to all versions</a>
 
-<h1>Latin Dance Chicago</h1>
-<p class="subtitle">Where to learn and dance Latin rhythms in the city</p>
+<!-- Hero -->
+<div class="hero">
+    <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1600&q=80" alt="Latin dance couple in motion">
+    <div class="hero-overlay">
+        <h1>Latin Dance Chicago</h1>
+        <p class="subtitle">Where to learn and dance Latin rhythms in the city</p>
+        <a href="#lessons" class="hero-cta">Explore Classes</a>
+    </div>
+</div>
 
-<section>
-    <h2>Lessons</h2>
-    <ul>
-        <li>
-            <div class="name">Latin Street Dancing</div>
-            <div class="details">Salsa &amp; bachata classes — Tuesdays &amp; Thursdays, Pilsen</div>
-        </li>
-        <li>
-            <div class="name">Enamorados Dance Academy</div>
-            <div class="details">Beginner to advanced salsa — Wednesdays, Logan Square</div>
-        </li>
-        <li>
-            <div class="name">Cumbia Collective</div>
-            <div class="details">Cumbia workshops — First Saturday of each month, Little Village</div>
-        </li>
-        <li>
-            <div class="name">Ritmo Latino Studio</div>
-            <div class="details">Bachata &amp; merengue — Mon/Wed/Fri, Humboldt Park</div>
-        </li>
-        <li>
-            <div class="name">Chicago Salsa Congress Workshops</div>
-            <div class="details">Intensive weekend workshops — Quarterly, Downtown</div>
-        </li>
-    </ul>
-</section>
+<!-- Lessons -->
+<div class="content">
+    <section id="lessons">
+        <h2>Lessons</h2>
+        <p class="section-intro">Step into the rhythm. Chicago's best Latin dance studios are ready to welcome you, from your very first step to the stage.</p>
 
-<section>
-    <h2>Socials</h2>
-    <ul>
-        <li>
-            <div class="name">Salsa Sundays at Havana Club</div>
-            <div class="details">Live band, open floor — Sundays 8pm, River North</div>
-        </li>
-        <li>
-            <div class="name">Bachata Nights at Alegría</div>
-            <div class="details">DJ sets, social dancing — Fridays 9pm, Wicker Park</div>
-        </li>
-        <li>
-            <div class="name">Cumbia en la Calle</div>
-            <div class="details">Outdoor summer social — Saturdays 6pm, Pilsen (June–Sept)</div>
-        </li>
-        <li>
-            <div class="name">Latin Mix at The Midway</div>
-            <div class="details">Salsa, bachata, cumbia rotation — Thursdays 9pm, Logan Square</div>
-        </li>
-        <li>
-            <div class="name">Rueda de Casino Meetup</div>
-            <div class="details">Group salsa rueda — Second Sunday of each month, Humboldt Park</div>
-        </li>
-    </ul>
-</section>
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=400&q=80" alt="Salsa dancing">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Salsa &amp; Bachata</span>
+                <div class="name">Latin Street Dancing</div>
+                <div class="details">High-energy classes every Tuesday &amp; Thursday in Pilsen. All levels welcome.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80" alt="Dance class">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Salsa</span>
+                <div class="name">Enamorados Dance Academy</div>
+                <div class="details">From your first step to performance-ready. Wednesday nights in Logan Square.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&q=80" alt="Cumbia dance">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Cumbia</span>
+                <div class="name">Cumbia Collective</div>
+                <div class="details">Monthly workshops celebrating traditional and modern cumbia. First Saturday, Little Village.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?w=400&q=80" alt="Bachata dancing">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Bachata &amp; Merengue</span>
+                <div class="name">Ritmo Latino Studio</div>
+                <div class="details">Three days a week in Humboldt Park. Structured progression from beginner to advanced.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1547153760-18fc86c498c4?w=400&q=80" alt="Dance workshop">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Intensive Workshops</span>
+                <div class="name">Chicago Salsa Congress Workshops</div>
+                <div class="details">Quarterly weekend intensives with guest instructors from around the world. Downtown.</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Image Break -->
+<div class="image-break">
+    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600&q=80" alt="Dancing at a social event">
+</div>
+
+<!-- Socials -->
+<div class="content">
+    <section id="socials">
+        <h2>Socials</h2>
+        <p class="section-intro">The classes are where you learn. The socials are where you live it. Join Chicago's vibrant Latin dance nights.</p>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=400&q=80" alt="Live band night">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Live Band</span>
+                <div class="name">Salsa Sundays at Havana Club</div>
+                <div class="details">The classic Sunday night tradition. Live orchestra, packed dance floor, River North. 8pm.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=400&q=80" alt="DJ night dancing">
+            </div>
+            <div class="listing-content">
+                <span class="tag">DJ Night</span>
+                <div class="name">Bachata Nights at Alegria</div>
+                <div class="details">Wicker Park's favorite Friday night spot. Sensual &amp; Dominican bachata mix. 9pm.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&q=80" alt="Outdoor dancing">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Outdoor Social</span>
+                <div class="name">Cumbia en la Calle</div>
+                <div class="details">Summer Saturday evenings in Pilsen. Bring your dancing shoes to the street. June-Sept, 6pm.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&q=80" alt="Latin mix night">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Multi-Genre</span>
+                <div class="name">Latin Mix at The Midway</div>
+                <div class="details">Salsa, bachata, cumbia -- the DJ plays it all. Thursday nights in Logan Square. 9pm.</div>
+            </div>
+        </div>
+
+        <div class="listing">
+            <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80" alt="Group dancing">
+            </div>
+            <div class="listing-content">
+                <span class="tag">Group Salsa</span>
+                <div class="name">Rueda de Casino Meetup</div>
+                <div class="details">Circle-style salsa with rotating partners. Second Sunday monthly, Humboldt Park.</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Video Section -->
+<div class="video-section">
+    <h2>See the Energy</h2>
+    <p>There is nothing quite like a packed Latin dance floor. Get a feel for what awaits you.</p>
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/V0OOyyg6lNM" title="Social Latin Dancing" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Gallery Strip -->
+<div class="gallery-strip">
+    <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=800&q=80" alt="Couple dancing salsa">
+    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80" alt="Social dance floor">
+    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80" alt="Dance party">
+</div>
+
+<!-- CTA Section -->
+<div class="cta-section">
+    <img class="cta-bg" src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=1600&q=80" alt="Dancing background">
+    <div class="cta-content">
+        <h2>Your First Dance Starts Here</h2>
+        <p>You do not need a partner. You do not need experience. You just need to show up. Chicago's Latin dance community is one of the most welcoming in the country -- come find out for yourself.</p>
+        <a href="#lessons" class="cta-button">Find a Class</a>
+    </div>
+</div>
 
 <footer>
-    <p>V1 — Clean &amp; Minimal</p>
+    <p>V1 -- Clean &amp; Minimal</p>
 </footer>
 
 </body>

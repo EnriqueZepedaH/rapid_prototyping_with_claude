@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latin Dance Chicago — V4: Beginner-Friendly</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,8 +14,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f7f4;
+            font-family: 'DM Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #faf9f6;
             color: #333;
             line-height: 1.8;
         }
@@ -30,33 +32,318 @@
             text-decoration: underline;
         }
 
+        /* ===== HERO ===== */
         .hero {
-            background: #fff;
-            text-align: center;
-            padding: 3.5rem 2rem 2.5rem;
-            border-bottom: 3px solid #d4edda;
+            position: relative;
+            width: 100%;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #2d6a4f;
         }
 
-        .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #2d6a4f;
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: brightness(0.8);
         }
 
-        .hero .welcome {
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(45, 106, 79, 0.85) 0%,
+                rgba(45, 106, 79, 0.6) 50%,
+                rgba(64, 145, 108, 0.7) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 4rem 3rem;
+            margin-left: 5%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
             font-size: 1.15rem;
-            color: #555;
-            max-width: 600px;
-            margin: 1rem auto 0;
+            color: rgba(255,255,255,0.85);
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
         }
 
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #fff;
+            color: #2d6a4f;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-cta-secondary {
+            display: inline-block;
+            margin-left: 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.4);
+            padding-bottom: 2px;
+            transition: border-color 0.3s;
+        }
+
+        .hero-cta-secondary:hover {
+            border-color: #fff;
+        }
+
+        /* ===== REASSURANCE STRIP ===== */
+        .reassurance-strip {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2.5rem 2rem;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .reassurance-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .reassurance-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #d4edda;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== YOUR FIRST CLASS SECTION ===== */
+        .first-class-section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .first-class-section .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #2d6a4f;
+            margin-bottom: 0.5rem;
+        }
+
+        .first-class-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+        }
+
+        .first-class-section .section-desc {
+            font-size: 1.05rem;
+            color: #777;
+            max-width: 550px;
+            margin: 0 auto 3rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #2d6a4f;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            background: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .video-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .video-header {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .video-header-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .video-header-text .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #2d6a4f;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-header-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+        }
+
+        .video-header-text p {
+            font-size: 0.95rem;
+            color: #777;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== IMAGE BANNER ===== */
+        .image-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .image-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .image-banner img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== TIP BANNER ===== */
         .tip-banner {
             background: #d4edda;
             border-left: 5px solid #2d6a4f;
             max-width: 800px;
-            margin: 2rem auto;
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 8px 8px 0;
+            margin: 3rem auto;
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
             font-size: 0.95rem;
             color: #2d6a4f;
         }
@@ -64,8 +351,10 @@
         .tip-banner strong {
             display: block;
             margin-bottom: 0.25rem;
+            font-size: 1rem;
         }
 
+        /* ===== MAIN ===== */
         main {
             max-width: 800px;
             margin: 0 auto;
@@ -73,27 +362,64 @@
         }
 
         section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            color: #2d6a4f;
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 0.5rem;
+        }
+
+        .section-title-row h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #1a1a1a;
+        }
+
+        .section-title-row .section-count {
+            background: #d4edda;
+            color: #2d6a4f;
+            padding: 0.2rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         .section-intro {
             font-size: 0.95rem;
-            color: #666;
+            color: #888;
             margin-bottom: 1.5rem;
         }
 
         .venue {
             background: #fff;
-            border-radius: 10px;
-            padding: 1.5rem;
+            border-radius: 14px;
             margin-bottom: 1rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .venue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .venue-with-image {
+            display: flex;
+        }
+
+        .venue-image {
+            width: 160px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .venue-content {
+            padding: 1.5rem;
+            flex: 1;
         }
 
         .venue h3 {
@@ -104,7 +430,7 @@
 
         .venue-meta {
             font-size: 0.85rem;
-            color: #888;
+            color: #aaa;
             margin-bottom: 0.5rem;
         }
 
@@ -127,37 +453,197 @@
             vertical-align: middle;
         }
 
-        .faq {
-            background: #fff;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        /* ===== ENCOURAGEMENT CTA ===== */
+        .encouragement-section {
+            position: relative;
+            padding: 6rem 2rem;
+            text-align: center;
+            overflow: hidden;
+            background: #2d6a4f;
         }
 
-        .faq h2 {
+        .encouragement-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+        }
+
+        .encouragement-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45,106,79,0.9), rgba(64,145,108,0.85));
+        }
+
+        .encouragement-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .encouragement-content h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            color: #fff;
             margin-bottom: 1rem;
         }
 
+        .encouragement-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .encouragement-cta {
+            display: inline-block;
+            padding: 1.1rem 3rem;
+            background: #fff;
+            color: #2d6a4f;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .encouragement-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        /* ===== TESTIMONIAL ===== */
+        .testimonial-strip {
+            background: #fff;
+            padding: 4rem 2rem;
+        }
+
+        .testimonial-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-inner .quote-mark {
+            font-size: 4rem;
+            color: #d4edda;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-inner blockquote {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-inner .attribution {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .faq h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
         .faq-item {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
         .faq-item dt {
             font-weight: 600;
             color: #2d6a4f;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
         }
 
         .faq-item dd {
             font-size: 0.93rem;
-            color: #555;
+            color: #666;
         }
 
         footer {
             text-align: center;
             padding: 2rem;
             font-size: 0.8rem;
-            color: #aaa;
+            color: #ccc;
+            background: #faf9f6;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-content {
+                margin-left: 0;
+                padding: 3rem 2rem;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .reassurance-strip {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .image-banner {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .image-banner img {
+                height: 200px;
+            }
+            .venue-with-image {
+                flex-direction: column;
+            }
+            .venue-image {
+                width: 100%;
+                height: 180px;
+            }
+            .encouragement-content h2 {
+                font-size: 2rem;
+            }
+            .hero-cta-secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -165,87 +651,253 @@
 
 <a href="index.html" class="back">&larr; Back to all versions</a>
 
+<!-- ===== HERO ===== -->
 <div class="hero">
-    <h1>Welcome to Latin Dance in Chicago!</h1>
-    <p class="welcome">Never danced before? No problem. Chicago has an incredibly welcoming Latin dance community. Here's everything you need to get started — no experience required.</p>
+    <img
+        class="hero-bg"
+        src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1600&q=80"
+        alt="People joyfully dancing in a bright dance class"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-badge">No experience needed</span>
+        <h1>Your Latin Dance Journey Starts Here</h1>
+        <p>
+            Chicago has one of the warmest, most welcoming Latin dance communities
+            in the country. Whether you have two left feet or just need a
+            friendly push, we'll help you find your first class.
+        </p>
+        <a href="#lessons" class="hero-cta">Find a Beginner Class</a>
+        <a href="#first-class" class="hero-cta-secondary">How does my first class work?</a>
+    </div>
 </div>
 
+<!-- ===== REASSURANCE STRIP ===== -->
+<div class="reassurance-strip">
+    <div class="reassurance-item">
+        <div class="reassurance-icon">&#128101;</div>
+        <span>No partner required</span>
+    </div>
+    <div class="reassurance-item">
+        <div class="reassurance-icon">&#128147;</div>
+        <span>Super friendly community</span>
+    </div>
+    <div class="reassurance-item">
+        <div class="reassurance-icon">&#127925;</div>
+        <span>All styles welcome</span>
+    </div>
+    <div class="reassurance-item">
+        <div class="reassurance-icon">&#128170;</div>
+        <span>No fitness level needed</span>
+    </div>
+</div>
+
+<!-- ===== YOUR FIRST CLASS STEPS ===== -->
+<div class="first-class-section" id="first-class">
+    <p class="section-label">Getting started is easy</p>
+    <h2>Your First Class in 4 Simple Steps</h2>
+    <p class="section-desc">Here's exactly what to expect so you feel prepared and confident walking in.</p>
+
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">&#128197;</div>
+            <h3>Pick a Class</h3>
+            <p>Browse our beginner-friendly options below and choose a day that works for you.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">&#128090;</div>
+            <h3>Show Up Comfy</h3>
+            <p>Wear comfortable clothes and smooth-soled shoes. No special gear needed.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">&#128578;</div>
+            <h3>Follow Along</h3>
+            <p>The instructor breaks everything down step by step. Everyone starts at zero.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-icon">&#127881;</div>
+            <h3>Have Fun!</h3>
+            <p>Laugh, make mistakes, meet new people. That's literally the whole point.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== IMAGE BANNER ===== -->
+<div class="image-banner">
+    <img src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?w=600&q=80" alt="Couple dancing together in class">
+    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80" alt="Joyful group dancing at a Latin event">
+    <img src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=600&q=80" alt="People smiling while dancing salsa">
+</div>
+
+<!-- ===== VIDEO ===== -->
+<div class="video-section">
+    <div class="video-inner">
+        <div class="video-header">
+            <div class="video-header-text">
+                <p class="section-label">See what it's like</p>
+                <h2>A Beginner Lesson Looks Like This</h2>
+                <p>No pressure, no judgment, just step-by-step instruction in a supportive environment. Watch and see how approachable it really is.</p>
+            </div>
+        </div>
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/bMSHMFMJpSg?rel=0&modestbranding=1"
+                title="Beginner Latin Dance Lesson"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TIP BANNER ===== -->
 <div class="tip-banner">
     <strong>New to Latin dance?</strong>
     Start with a beginner class (look for the "Beginner Friendly" badge below). Most classes don't require a partner — just show up and have fun!
 </div>
 
+<!-- ===== LESSONS & SOCIALS ===== -->
 <main>
-    <section>
-        <h2>Lessons</h2>
+    <section id="lessons">
+        <div class="section-title-row">
+            <h2>Lessons</h2>
+            <span class="section-count">5 options</span>
+        </div>
         <p class="section-intro">These studios and classes are great places to learn. We've marked the ones that are especially welcoming to complete beginners.</p>
 
         <div class="venue">
-            <h3>Latin Street Dancing <span class="beginner-badge">Beginner Friendly</span></h3>
-            <div class="venue-meta">Salsa &amp; Bachata &bull; Tuesdays &amp; Thursdays &bull; Pilsen</div>
-            <p>Their beginner class starts from absolute zero — no dance experience needed. The instructors break down every step slowly and the vibe is super encouraging.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?w=400&q=80" alt="Dance partners in a salsa class">
+                <div class="venue-content">
+                    <h3>Latin Street Dancing <span class="beginner-badge">Beginner Friendly</span></h3>
+                    <div class="venue-meta">Salsa &amp; Bachata &bull; Tuesdays &amp; Thursdays &bull; Pilsen</div>
+                    <p>Their beginner class starts from absolute zero — no dance experience needed. The instructors break down every step slowly and the vibe is super encouraging.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Enamorados Dance Academy <span class="beginner-badge">Beginner Friendly</span></h3>
-            <div class="venue-meta">Salsa &bull; Wednesdays &bull; Logan Square</div>
-            <p>A structured curriculum that takes you from your very first salsa step to confident social dancing. They have a dedicated beginner track every Wednesday.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&q=80" alt="Welcoming dance studio">
+                <div class="venue-content">
+                    <h3>Enamorados Dance Academy <span class="beginner-badge">Beginner Friendly</span></h3>
+                    <div class="venue-meta">Salsa &bull; Wednesdays &bull; Logan Square</div>
+                    <p>A structured curriculum that takes you from your very first salsa step to confident social dancing. They have a dedicated beginner track every Wednesday.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Cumbia Collective</h3>
-            <div class="venue-meta">Cumbia &bull; First Saturday monthly &bull; Little Village</div>
-            <p>Fun monthly workshops. Cumbia is one of the easiest Latin dances to pick up — great if you want something less intimidating than salsa.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=400&q=80" alt="Fun cumbia workshop">
+                <div class="venue-content">
+                    <h3>Cumbia Collective</h3>
+                    <div class="venue-meta">Cumbia &bull; First Saturday monthly &bull; Little Village</div>
+                    <p>Fun monthly workshops. Cumbia is one of the easiest Latin dances to pick up — great if you want something less intimidating than salsa.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Ritmo Latino Studio</h3>
-            <div class="venue-meta">Bachata &amp; Merengue &bull; Mon/Wed/Fri &bull; Humboldt Park</div>
-            <p>Bachata and merengue are very beginner-approachable dances. This studio has a clear level system so you always know where you fit.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=80" alt="Latin dance performance">
+                <div class="venue-content">
+                    <h3>Ritmo Latino Studio</h3>
+                    <div class="venue-meta">Bachata &amp; Merengue &bull; Mon/Wed/Fri &bull; Humboldt Park</div>
+                    <p>Bachata and merengue are very beginner-approachable dances. This studio has a clear level system so you always know where you fit.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Chicago Salsa Congress</h3>
-            <div class="venue-meta">Intensive Workshops &bull; Quarterly &bull; Downtown</div>
-            <p>Best for dancers with some experience, but they do offer beginner workshops during the congress weekends. A great way to get inspired!</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Dance workshop">
+                <div class="venue-content">
+                    <h3>Chicago Salsa Congress</h3>
+                    <div class="venue-meta">Intensive Workshops &bull; Quarterly &bull; Downtown</div>
+                    <p>Best for dancers with some experience, but they do offer beginner workshops during the congress weekends. A great way to get inspired!</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ===== TESTIMONIAL ===== -->
+    <div class="testimonial-strip" style="margin: 0 -2rem 3rem; padding: 3rem 2rem; border-radius: 16px;">
+        <div class="testimonial-inner">
+            <div class="quote-mark">"</div>
+            <blockquote>I walked in knowing absolutely nothing. Three months later, I'm going to socials every weekend. The community here is like a second family.</blockquote>
+            <p class="attribution">— Sarah K., started as a complete beginner</p>
+        </div>
+    </div>
+
     <section>
-        <h2>Socials</h2>
+        <div class="section-title-row">
+            <h2>Socials</h2>
+            <span class="section-count">5 options</span>
+        </div>
         <p class="section-intro">Social dancing is where you practice what you've learned. Don't worry — everyone was a beginner once, and the community is friendly.</p>
 
         <div class="venue">
-            <h3>Salsa Sundays at Havana Club</h3>
-            <div class="venue-meta">Live Band &bull; Sundays 8pm &bull; River North</div>
-            <p>A lively atmosphere with a live band. It can be busy, but people are happy to dance with beginners. A great way to experience the energy of salsa.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&q=80" alt="Live band at a salsa club">
+                <div class="venue-content">
+                    <h3>Salsa Sundays at Havana Club</h3>
+                    <div class="venue-meta">Live Band &bull; Sundays 8pm &bull; River North</div>
+                    <p>A lively atmosphere with a live band. It can be busy, but people are happy to dance with beginners. A great way to experience the energy of salsa.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Bachata Nights at Alegría <span class="beginner-badge">Beginner Friendly</span></h3>
-            <div class="venue-meta">DJ Sets &bull; Fridays 9pm &bull; Wicker Park</div>
-            <p>The first hour is a mini-lesson before the social starts. Perfect if you want a little warm-up before hitting the floor.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=400&q=80" alt="Bachata social night">
+                <div class="venue-content">
+                    <h3>Bachata Nights at Alegria <span class="beginner-badge">Beginner Friendly</span></h3>
+                    <div class="venue-meta">DJ Sets &bull; Fridays 9pm &bull; Wicker Park</div>
+                    <p>The first hour is a mini-lesson before the social starts. Perfect if you want a little warm-up before hitting the floor.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Cumbia en la Calle <span class="beginner-badge">Beginner Friendly</span></h3>
-            <div class="venue-meta">Outdoor &bull; Saturdays 6pm &bull; Pilsen (June–Sept)</div>
-            <p>Super casual outdoor vibes. No dress code, no pressure. Just show up and move. Great for dipping your toes in.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&q=80" alt="Outdoor summer dancing in a park">
+                <div class="venue-content">
+                    <h3>Cumbia en la Calle <span class="beginner-badge">Beginner Friendly</span></h3>
+                    <div class="venue-meta">Outdoor &bull; Saturdays 6pm &bull; Pilsen (June-Sept)</div>
+                    <p>Super casual outdoor vibes. No dress code, no pressure. Just show up and move. Great for dipping your toes in.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Latin Mix at The Midway</h3>
-            <div class="venue-meta">Multi-Genre &bull; Thursdays 9pm &bull; Logan Square</div>
-            <p>A fun mix of styles. The variety means you can try different dances in one night and see what clicks for you.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1501386761578-0a55d6fec483?w=400&q=80" alt="DJ playing music at a Latin night">
+                <div class="venue-content">
+                    <h3>Latin Mix at The Midway</h3>
+                    <div class="venue-meta">Multi-Genre &bull; Thursdays 9pm &bull; Logan Square</div>
+                    <p>A fun mix of styles. The variety means you can try different dances in one night and see what clicks for you.</p>
+                </div>
+            </div>
         </div>
 
         <div class="venue">
-            <h3>Rueda de Casino Meetup</h3>
-            <div class="venue-meta">Group Salsa &bull; Second Sunday monthly &bull; Humboldt Park</div>
-            <p>Rueda is group salsa in a circle — it's social by nature and everyone rotates partners. Low pressure, lots of laughs.</p>
+            <div class="venue-with-image">
+                <img class="venue-image" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&q=80" alt="Group salsa dancing in a circle">
+                <div class="venue-content">
+                    <h3>Rueda de Casino Meetup</h3>
+                    <div class="venue-meta">Group Salsa &bull; Second Sunday monthly &bull; Humboldt Park</div>
+                    <p>Rueda is group salsa in a circle — it's social by nature and everyone rotates partners. Low pressure, lots of laughs.</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- ===== FAQ ===== -->
     <section class="faq">
         <h2>Common Questions</h2>
         <dl>
@@ -261,9 +913,36 @@
                 <dt>I have no rhythm — is that okay?</dt>
                 <dd>Absolutely. Rhythm is learned, not born. A good class will teach you how to find the beat.</dd>
             </div>
+            <div class="faq-item">
+                <dt>Will I look silly?</dt>
+                <dd>Everyone looks a little awkward at first — that's completely normal! The other students and instructors have all been there. You'll be surprised how quickly you pick things up.</dd>
+            </div>
+            <div class="faq-item">
+                <dt>How many classes before I can social dance?</dt>
+                <dd>Most people feel ready for a casual social after 4-6 classes. But honestly, some brave souls go after their very first lesson!</dd>
+            </div>
         </dl>
     </section>
 </main>
+
+<!-- ===== ENCOURAGEMENT CTA ===== -->
+<div class="encouragement-section">
+    <img
+        class="encouragement-bg"
+        src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=1400&q=80"
+        alt="People dancing joyfully"
+    >
+    <div class="encouragement-overlay"></div>
+    <div class="encouragement-content">
+        <h2>No Experience Needed — Just Show Up</h2>
+        <p>
+            Every amazing dancer you see on the floor started exactly where you are right now.
+            The only step that matters is the first one. Chicago's Latin dance
+            community is waiting to welcome you.
+        </p>
+        <a href="#lessons" class="encouragement-cta">Find Your First Class</a>
+    </div>
+</div>
 
 <footer>
     <p>V4 — Beginner-Friendly</p>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latin Dance Chicago — V6: Event-Calendar Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,8 +13,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fafafa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f6f3;
             color: #333;
             line-height: 1.6;
         }
@@ -21,163 +22,570 @@
         .back {
             display: inline-block;
             padding: 1rem 2rem;
-            color: #666;
+            color: #999;
             text-decoration: none;
             font-size: 0.9rem;
         }
 
-        .back:hover { color: #111; }
+        .back:hover { color: #333; }
 
-        header {
-            background: #fff;
-            border-bottom: 3px solid #4a90d9;
-            padding: 2.5rem 2rem;
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 70vh;
+            min-height: 480px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
-        header h1 {
-            font-size: 2rem;
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.3) saturate(1.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.2) 0%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(248,246,243,1) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 0 2rem;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #f39c12);
+            color: #fff;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            margin-bottom: 1.25rem;
         }
 
-        header p {
-            color: #888;
-            font-size: 0.95rem;
-            margin-top: 0.3rem;
-        }
-
-        main {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .schedule-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .schedule-section h2 {
-            font-size: 1.3rem;
-            color: #4a90d9;
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
             margin-bottom: 1rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 2px solid #e8e8e8;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
         }
 
-        .day-group {
-            margin-bottom: 1.5rem;
+        .hero-content p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
         }
 
-        .day-label {
-            font-size: 0.8rem;
+        .hero-cta {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            background: #fff;
+            color: #e74c3c;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        /* ===== FEATURED EVENT ===== */
+        .featured {
+            max-width: 900px;
+            margin: -3rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .featured-card {
+            display: flex;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .featured-image {
+            width: 40%;
+            min-height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #999;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+        }
+
+        .featured-info {
+            flex: 1;
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-info .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #e74c3c;
             margin-bottom: 0.5rem;
+        }
+
+        .featured-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #222;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .featured-info .when {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 0.75rem;
+        }
+
+        .featured-info p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+        }
+
+        /* ===== SCHEDULE SECTION ===== */
+        .schedule-section {
+            margin-bottom: 3rem;
+        }
+
+        .schedule-section > h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #222;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .schedule-section > h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #e74c3c, #f39c12);
+            border-radius: 2px;
+        }
+
+        .day-group {
+            margin-bottom: 2rem;
+        }
+
+        .day-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #bbb;
+            margin-bottom: 0.75rem;
             padding-left: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .day-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8e5e0;
         }
 
         .event {
             display: flex;
             gap: 1rem;
             background: #fff;
-            border: 1px solid #eee;
-            border-radius: 6px;
+            border-radius: 14px;
+            padding: 0;
+            margin-bottom: 0.75rem;
+            align-items: stretch;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+        }
+
+        .event-color-bar {
+            width: 5px;
+            flex-shrink: 0;
+        }
+
+        .event-color-bar.lesson {
+            background: linear-gradient(180deg, #e74c3c, #f39c12);
+        }
+
+        .event-color-bar.social {
+            background: linear-gradient(180deg, #3498db, #9b59b6);
+        }
+
+        .event-thumb {
+            width: 90px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .event-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .event-body {
+            display: flex;
+            gap: 1rem;
             padding: 1rem 1.25rem;
-            margin-bottom: 0.5rem;
+            flex: 1;
             align-items: flex-start;
         }
 
         .event-time {
             flex-shrink: 0;
-            width: 70px;
+            width: 65px;
             text-align: right;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: #4a90d9;
+            font-weight: 700;
             padding-top: 0.1rem;
+        }
+
+        .event-time.lesson-time {
+            color: #e74c3c;
+        }
+
+        .event-time.social-time {
+            color: #3498db;
         }
 
         .event-details h3 {
             font-size: 1rem;
             font-weight: 600;
+            color: #222;
         }
 
         .event-details .meta {
             font-size: 0.82rem;
-            color: #999;
+            color: #aaa;
         }
 
         .event-details p {
             font-size: 0.88rem;
-            color: #666;
+            color: #777;
             margin-top: 0.2rem;
         }
 
         .event-type {
             display: inline-block;
-            font-size: 0.65rem;
-            font-weight: 600;
+            font-size: 0.6rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.1rem 0.4rem;
-            border-radius: 3px;
-            margin-left: 0.3rem;
+            letter-spacing: 0.08em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 50px;
+            margin-left: 0.4rem;
             vertical-align: middle;
         }
 
         .event-type.lesson {
-            background: #fff3e0;
-            color: #e67e22;
+            background: linear-gradient(135deg, rgba(231,76,60,0.1), rgba(243,156,18,0.1));
+            color: #e74c3c;
+            border: 1px solid rgba(231,76,60,0.2);
         }
 
         .event-type.social {
-            background: #e3f2fd;
-            color: #4a90d9;
+            background: linear-gradient(135deg, rgba(52,152,219,0.1), rgba(155,89,182,0.1));
+            color: #3498db;
+            border: 1px solid rgba(52,152,219,0.2);
         }
 
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-section > p {
+            color: #999;
+            margin-bottom: 2rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== MONTHLY SECTION ===== */
         .monthly-section {
             background: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 1.5rem;
+            border-radius: 20px;
+            padding: 2rem;
             margin-top: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .monthly-section h2 {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 1rem;
-            border-bottom: none;
-            padding-bottom: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #222;
+            margin-bottom: 1.25rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .monthly-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(135deg, #e74c3c, #f39c12);
+            border-radius: 2px;
         }
 
         .monthly-item {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f5f2ee;
         }
 
         .monthly-item:last-child {
             border-bottom: none;
         }
 
-        .monthly-item h3 {
+        .monthly-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .monthly-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .monthly-item-info h3 {
             font-size: 0.95rem;
             font-weight: 600;
+            color: #222;
         }
 
-        .monthly-item .meta {
+        .monthly-item-info .meta {
             font-size: 0.82rem;
-            color: #999;
+            color: #aaa;
         }
 
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            margin-top: 4rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.25) saturate(1.4);
+        }
+
+        .cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(231,76,60,0.4), rgba(155,89,182,0.4));
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .cta-content p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn.primary {
+            background: #fff;
+            color: #e74c3c;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        /* ===== FOOTER ===== */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             font-size: 0.8rem;
             color: #ccc;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .featured-card {
+                flex-direction: column;
+            }
+
+            .featured-image {
+                width: 100%;
+                min-height: 200px;
+            }
+
+            .event-thumb {
+                display: none;
+            }
+
+            .cta-content h2 {
+                font-size: 1.7rem;
+            }
         }
     </style>
 </head>
@@ -185,143 +593,278 @@
 
 <a href="index.html" class="back">&larr; Back to all versions</a>
 
-<header>
-    <h1>Latin Dance Chicago</h1>
-    <p>Your weekly schedule for lessons &amp; socials</p>
-</header>
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1600&q=80" alt="Latin dancers in motion">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-eyebrow">Updated Weekly</div>
+        <h1>This Week in Latin Dance</h1>
+        <p>Every lesson, every social, every night &mdash; your complete guide to Latin dance in Chicago.</p>
+        <a href="#schedule" class="hero-cta">See This Week's Schedule</a>
+    </div>
+</section>
 
-<main>
+<!-- ===== FEATURED EVENT ===== -->
+<div class="featured">
+    <div class="featured-card">
+        <div class="featured-image">
+            <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=600&q=80" alt="Live salsa band performing">
+            <div class="featured-badge">Don't Miss</div>
+        </div>
+        <div class="featured-info">
+            <div class="label">Featured This Week</div>
+            <h3>Salsa Sundays at Havana Club</h3>
+            <div class="when">Sunday &bull; 8:00 PM &bull; River North</div>
+            <p>The legendary Sunday night salsa social with a full live orchestra. Whether you're a seasoned dancer or stepping on the floor for the first time, this is where Chicago's salsa community comes alive. Don't miss it.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main id="schedule">
     <section class="schedule-section">
         <h2>Weekly Schedule</h2>
 
+        <!-- MONDAY -->
         <div class="day-group">
             <div class="day-label">Monday</div>
             <div class="event">
-                <div class="event-time">7:00 pm</div>
-                <div class="event-details">
-                    <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
-                    <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
-                    <p>Start the week with Latin rhythms. Beginner and intermediate levels.</p>
+                <div class="event-color-bar lesson"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?w=200&q=80" alt="Bachata dance class">
+                </div>
+                <div class="event-body">
+                    <div class="event-time lesson-time">7:00 pm</div>
+                    <div class="event-details">
+                        <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
+                        <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
+                        <p>Start the week with Latin rhythms. Beginner and intermediate levels.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- TUESDAY -->
         <div class="day-group">
             <div class="day-label">Tuesday</div>
             <div class="event">
-                <div class="event-time">7:30 pm</div>
-                <div class="event-details">
-                    <h3>Latin Street Dancing <span class="event-type lesson">Lesson</span></h3>
-                    <div class="meta">Salsa &amp; Bachata &bull; Pilsen</div>
-                    <p>High-energy classes for all levels. No partner required.</p>
+                <div class="event-color-bar lesson"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86c39830?w=200&q=80" alt="Dance studio">
+                </div>
+                <div class="event-body">
+                    <div class="event-time lesson-time">7:30 pm</div>
+                    <div class="event-details">
+                        <h3>Latin Street Dancing <span class="event-type lesson">Lesson</span></h3>
+                        <div class="meta">Salsa &amp; Bachata &bull; Pilsen</div>
+                        <p>High-energy classes for all levels. No partner required.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- WEDNESDAY -->
         <div class="day-group">
             <div class="day-label">Wednesday</div>
             <div class="event">
-                <div class="event-time">7:00 pm</div>
-                <div class="event-details">
-                    <h3>Enamorados Dance Academy <span class="event-type lesson">Lesson</span></h3>
-                    <div class="meta">Salsa &bull; Logan Square</div>
-                    <p>Structured salsa curriculum, beginner to advanced.</p>
+                <div class="event-color-bar lesson"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=200&q=80" alt="Salsa class in session">
+                </div>
+                <div class="event-body">
+                    <div class="event-time lesson-time">7:00 pm</div>
+                    <div class="event-details">
+                        <h3>Enamorados Dance Academy <span class="event-type lesson">Lesson</span></h3>
+                        <div class="meta">Salsa &bull; Logan Square</div>
+                        <p>Structured salsa curriculum, beginner to advanced.</p>
+                    </div>
                 </div>
             </div>
             <div class="event">
-                <div class="event-time">7:00 pm</div>
-                <div class="event-details">
-                    <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
-                    <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
-                    <p>Mid-week practice. Consistent schedule builds muscle memory.</p>
+                <div class="event-color-bar lesson"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&q=80" alt="Latin dance practice">
+                </div>
+                <div class="event-body">
+                    <div class="event-time lesson-time">7:00 pm</div>
+                    <div class="event-details">
+                        <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
+                        <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
+                        <p>Mid-week practice. Consistent schedule builds muscle memory.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- THURSDAY -->
         <div class="day-group">
             <div class="day-label">Thursday</div>
             <div class="event">
-                <div class="event-time">7:30 pm</div>
-                <div class="event-details">
-                    <h3>Latin Street Dancing <span class="event-type lesson">Lesson</span></h3>
-                    <div class="meta">Salsa &amp; Bachata &bull; Pilsen</div>
-                    <p>Second class of the week — build on Tuesday's material.</p>
+                <div class="event-color-bar lesson"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=200&q=80" alt="Dance instruction">
+                </div>
+                <div class="event-body">
+                    <div class="event-time lesson-time">7:30 pm</div>
+                    <div class="event-details">
+                        <h3>Latin Street Dancing <span class="event-type lesson">Lesson</span></h3>
+                        <div class="meta">Salsa &amp; Bachata &bull; Pilsen</div>
+                        <p>Second class of the week &mdash; build on Tuesday's material.</p>
+                    </div>
                 </div>
             </div>
             <div class="event">
-                <div class="event-time">9:00 pm</div>
-                <div class="event-details">
-                    <h3>Latin Mix at The Midway <span class="event-type social">Social</span></h3>
-                    <div class="meta">Salsa, Bachata, Cumbia &bull; Logan Square</div>
-                    <p>Multi-genre social. Practice what you learned earlier in the week.</p>
+                <div class="event-color-bar social"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=200&q=80" alt="Latin music DJ night">
+                </div>
+                <div class="event-body">
+                    <div class="event-time social-time">9:00 pm</div>
+                    <div class="event-details">
+                        <h3>Latin Mix at The Midway <span class="event-type social">Social</span></h3>
+                        <div class="meta">Salsa, Bachata, Cumbia &bull; Logan Square</div>
+                        <p>Multi-genre social. Practice what you learned earlier in the week.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- FRIDAY -->
         <div class="day-group">
             <div class="day-label">Friday</div>
             <div class="event">
-                <div class="event-time">7:00 pm</div>
-                <div class="event-details">
-                    <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
-                    <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
-                    <p>End-of-week class to cap off your training.</p>
+                <div class="event-color-bar lesson"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200&q=80" alt="Dance class Friday">
+                </div>
+                <div class="event-body">
+                    <div class="event-time lesson-time">7:00 pm</div>
+                    <div class="event-details">
+                        <h3>Ritmo Latino Studio <span class="event-type lesson">Lesson</span></h3>
+                        <div class="meta">Bachata &amp; Merengue &bull; Humboldt Park</div>
+                        <p>End-of-week class to cap off your training.</p>
+                    </div>
                 </div>
             </div>
             <div class="event">
-                <div class="event-time">9:00 pm</div>
-                <div class="event-details">
-                    <h3>Bachata Nights at Alegría <span class="event-type social">Social</span></h3>
-                    <div class="meta">DJ Sets &bull; Wicker Park</div>
-                    <p>The city's premier Friday night bachata social. Sensual &amp; Dominican styles.</p>
+                <div class="event-color-bar social"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=200&q=80" alt="Bachata night DJ">
+                </div>
+                <div class="event-body">
+                    <div class="event-time social-time">9:00 pm</div>
+                    <div class="event-details">
+                        <h3>Bachata Nights at Alegr&iacute;a <span class="event-type social">Social</span></h3>
+                        <div class="meta">DJ Sets &bull; Wicker Park</div>
+                        <p>The city's premier Friday night bachata social. Sensual &amp; Dominican styles.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- SATURDAY -->
         <div class="day-group">
             <div class="day-label">Saturday</div>
             <div class="event">
-                <div class="event-time">6:00 pm</div>
-                <div class="event-details">
-                    <h3>Cumbia en la Calle <span class="event-type social">Social</span></h3>
-                    <div class="meta">Outdoor Cumbia &bull; Pilsen &bull; June–Sept only</div>
-                    <p>Summer street dancing under the open sky. The highlight of the week.</p>
+                <div class="event-color-bar social"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=200&q=80" alt="Outdoor cumbia dancing">
+                </div>
+                <div class="event-body">
+                    <div class="event-time social-time">6:00 pm</div>
+                    <div class="event-details">
+                        <h3>Cumbia en la Calle <span class="event-type social">Social</span></h3>
+                        <div class="meta">Outdoor Cumbia &bull; Pilsen &bull; June&ndash;Sept only</div>
+                        <p>Summer street dancing under the open sky. The highlight of the week.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- SUNDAY -->
         <div class="day-group">
             <div class="day-label">Sunday</div>
             <div class="event">
-                <div class="event-time">8:00 pm</div>
-                <div class="event-details">
-                    <h3>Salsa Sundays at Havana Club <span class="event-type social">Social</span></h3>
-                    <div class="meta">Live Band &bull; River North</div>
-                    <p>End the weekend right. Live orchestra, electric atmosphere.</p>
+                <div class="event-color-bar social"></div>
+                <div class="event-thumb">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=200&q=80" alt="Live salsa band">
+                </div>
+                <div class="event-body">
+                    <div class="event-time social-time">8:00 pm</div>
+                    <div class="event-details">
+                        <h3>Salsa Sundays at Havana Club <span class="event-type social">Social</span></h3>
+                        <div class="meta">Live Band &bull; River North</div>
+                        <p>End the weekend right. Live orchestra, electric atmosphere.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== VIDEO SECTION ===== -->
+    <section class="video-section">
+        <h2>See What You're Missing</h2>
+        <p>A glimpse of the Latin dance social scene</p>
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/V0OOyyICEbA"
+                title="Latin Dance Social"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ===== MONTHLY SECTION ===== -->
     <div class="monthly-section">
         <h2>Monthly &amp; Quarterly Events</h2>
         <div class="monthly-item">
-            <h3>Cumbia Collective Workshop <span class="event-type lesson">Lesson</span></h3>
-            <div class="meta">First Saturday of each month &bull; Little Village</div>
+            <div class="monthly-icon">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=100&q=80" alt="Cumbia workshop">
+            </div>
+            <div class="monthly-item-info">
+                <h3>Cumbia Collective Workshop <span class="event-type lesson">Lesson</span></h3>
+                <div class="meta">First Saturday of each month &bull; Little Village</div>
+            </div>
         </div>
         <div class="monthly-item">
-            <h3>Rueda de Casino Meetup <span class="event-type social">Social</span></h3>
-            <div class="meta">Second Sunday of each month &bull; Humboldt Park</div>
+            <div class="monthly-icon">
+                <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=100&q=80" alt="Rueda meetup">
+            </div>
+            <div class="monthly-item-info">
+                <h3>Rueda de Casino Meetup <span class="event-type social">Social</span></h3>
+                <div class="meta">Second Sunday of each month &bull; Humboldt Park</div>
+            </div>
         </div>
         <div class="monthly-item">
-            <h3>Chicago Salsa Congress <span class="event-type lesson">Lesson</span></h3>
-            <div class="meta">Quarterly weekend intensives &bull; Downtown</div>
+            <div class="monthly-icon">
+                <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=100&q=80" alt="Salsa congress">
+            </div>
+            <div class="monthly-item-info">
+                <h3>Chicago Salsa Congress <span class="event-type lesson">Lesson</span></h3>
+                <div class="meta">Quarterly weekend intensives &bull; Downtown</div>
+            </div>
         </div>
     </div>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta-section">
+        <img class="cta-bg" src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1200&q=80" alt="Dance floor">
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2>Never Miss a Night</h2>
+            <p>Bookmark this page and check back every week for the latest schedule. Your next dance is always just a scroll away.</p>
+            <div class="cta-actions">
+                <a href="#schedule" class="cta-btn primary">Back to Top</a>
+                <a href="#" class="cta-btn secondary">Bookmark This Page</a>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer>
-    <p>V6 — Event-Calendar Style</p>
+    <p>Latin Dance Chicago &mdash; V6: Event-Calendar Style</p>
 </footer>
 
 </body>

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latin Dance Chicago — V3: Dark / Nightlife</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,10 +14,11 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: #0d0d0d;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #0a0a0f;
             color: #e0e0e0;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
         .back {
@@ -24,36 +27,247 @@
             color: #777;
             text-decoration: none;
             font-size: 0.85rem;
+            position: relative;
+            z-index: 10;
         }
 
         .back:hover {
             color: #fff;
         }
 
-        header {
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 4rem 2rem 3rem;
-            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0d0d0d 70%);
+            overflow: hidden;
         }
 
-        header h1 {
-            font-size: 3.2rem;
-            font-weight: 200;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            filter: brightness(0.6) saturate(1.3);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 10, 15, 0.3) 0%,
+                rgba(10, 10, 15, 0.6) 50%,
+                rgba(10, 10, 15, 1) 100%
+            );
+        }
+
+        /* Neon light streak accents */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: -10%;
+            width: 120%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, #c084fc, #60a5fa, transparent);
+            opacity: 0.4;
+            transform: rotate(-3deg);
+            filter: blur(1px);
+            z-index: 2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 30%;
+            left: -10%;
+            width: 120%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #60a5fa, #c084fc, #ff6b6b, transparent);
+            opacity: 0.3;
+            transform: rotate(2deg);
+            filter: blur(1px);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
             background: linear-gradient(90deg, #ff6b6b, #c084fc, #60a5fa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: none;
         }
 
-        header p {
-            color: #666;
-            font-size: 1rem;
-            margin-top: 0.5rem;
+        .hero-content .tagline {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #999;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content .hero-desc {
+            font-size: 1.1rem;
+            color: #aaa;
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid #c084fc;
+            color: #c084fc;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta:hover {
+            background: #c084fc;
+            color: #0a0a0f;
+            box-shadow: 0 0 30px rgba(192, 132, 252, 0.4), 0 0 60px rgba(192, 132, 252, 0.15);
+        }
+
+        /* ===== NEON DIVIDER ===== */
+        .neon-divider {
+            border: none;
+            height: 1px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent, #ff6b6b44, #c084fc66, #60a5fa44, transparent);
+        }
+
+        /* ===== ATMOSPHERE SECTION (image gallery strip) ===== */
+        .atmosphere {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .atmosphere h2 {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .image-grid .img-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .image-grid .img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.7) saturate(1.2);
+        }
+
+        .image-grid .img-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.85) saturate(1.4);
+        }
+
+        .image-grid .img-card .img-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 1rem 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            font-size: 0.85rem;
+            color: #ccc;
             letter-spacing: 0.05em;
         }
 
+        /* ===== VIDEO SECTION ===== */
+        .video-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .video-section .video-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(192, 132, 252, 0.1), 0 0 80px rgba(255, 107, 107, 0.05);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== MAIN CONTENT ===== */
         main {
             max-width: 900px;
             margin: 0 auto;
@@ -64,37 +278,68 @@
             margin-bottom: 3rem;
         }
 
-        h2 {
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
             font-size: 0.85rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             color: #555;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
         }
 
-        .lessons h2 {
+        .section-header-line {
+            flex: 1;
+            height: 1px;
+            background: #222;
+        }
+
+        .lessons .section-header h2 {
             border-left: 3px solid #ff6b6b;
             padding-left: 0.75rem;
         }
 
-        .socials h2 {
+        .socials .section-header h2 {
             border-left: 3px solid #c084fc;
             padding-left: 0.75rem;
         }
 
         .item {
-            background: #151515;
-            border: 1px solid #222;
-            border-radius: 8px;
-            padding: 1.25rem 1.5rem;
+            background: #111116;
+            border: 1px solid #1e1e28;
+            border-radius: 10px;
+            padding: 1.5rem;
             margin-bottom: 0.75rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
         }
 
         .item:hover {
-            border-color: #333;
-            box-shadow: 0 0 20px rgba(192, 132, 252, 0.05);
+            border-color: #2a2a3a;
+            box-shadow: 0 4px 30px rgba(192, 132, 252, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .item-image {
+            width: 120px;
+            height: 90px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            filter: brightness(0.8) saturate(1.2);
+        }
+
+        .item-body {
+            flex: 1;
+            min-width: 0;
         }
 
         .item-header {
@@ -139,8 +384,185 @@
         .divider {
             border: none;
             height: 1px;
-            background: #1a1a1a;
+            background: linear-gradient(90deg, transparent, #1e1e28, transparent);
             margin: 3rem 0;
+        }
+
+        /* ===== TONIGHT CTA SECTION ===== */
+        .tonight-section {
+            position: relative;
+            padding: 6rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .tonight-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            filter: brightness(0.5) saturate(1.5);
+        }
+
+        .tonight-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 10, 15, 1) 0%,
+                rgba(10, 10, 15, 0.7) 50%,
+                rgba(10, 10, 15, 1) 100%
+            );
+        }
+
+        .tonight-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tonight-content .tonight-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .tonight-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+        }
+
+        .tonight-content p {
+            font-size: 1.05rem;
+            color: #999;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .tonight-cta {
+            display: inline-block;
+            padding: 1.1rem 3.5rem;
+            background: linear-gradient(135deg, #ff6b6b, #c084fc);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .tonight-cta:hover {
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.4), 0 0 80px rgba(192, 132, 252, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ===== NEON GLOW ACCENT BARS ===== */
+        .glow-bar {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, #c084fc, #60a5fa, transparent);
+            opacity: 0.5;
+            filter: blur(1px);
+        }
+
+        .glow-bar.subtle {
+            opacity: 0.2;
+        }
+
+        /* ===== STATS STRIP ===== */
+        .stats-strip {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b6b, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat .stat-label {
+            font-size: 0.75rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== FEATURED IMAGE BREAK ===== */
+        .featured-image-break {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .featured-image-break img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) saturate(1.3);
+        }
+
+        .featured-image-break .fib-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(10, 10, 15, 1) 0%,
+                transparent 30%,
+                transparent 70%,
+                rgba(10, 10, 15, 1) 100%
+            );
+        }
+
+        .featured-image-break .fib-text {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .featured-image-break .fib-text span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #c084fc;
         }
 
         footer {
@@ -150,108 +572,287 @@
             color: #333;
             letter-spacing: 0.1em;
         }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content .tagline {
+                font-size: 1rem;
+            }
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            .item {
+                flex-direction: column;
+            }
+            .item-image {
+                width: 100%;
+                height: 160px;
+            }
+            .stats-strip {
+                gap: 2rem;
+            }
+            .tonight-content h2 {
+                font-size: 2.2rem;
+            }
+        }
     </style>
 </head>
 <body>
 
 <a href="index.html" class="back">&larr; All versions</a>
 
-<header>
-    <h1>Latin Dance Chicago</h1>
-    <p>where the city comes alive after dark</p>
-</header>
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <img
+        class="hero-bg"
+        src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=1600&q=80"
+        alt="Dark nightclub dance floor with dramatic lighting"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Latin Dance Chicago</h1>
+        <p class="tagline">Where the city comes alive after dark</p>
+        <p class="hero-desc">
+            Every night, somewhere in Chicago, the music starts, the lights go low,
+            and the floor comes alive. Find your rhythm in the city's best Latin dance scene.
+        </p>
+        <a href="#lessons" class="hero-cta">Find Your Night</a>
+    </div>
+</div>
 
+<!-- ===== ATMOSPHERE IMAGES ===== -->
+<div class="atmosphere">
+    <h2>Feel the Energy</h2>
+    <div class="image-grid">
+        <div class="img-card">
+            <img
+                src="https://images.unsplash.com/photo-1545959570-a94084071b5d?w=600&q=80"
+                alt="Salsa dancers in a dimly lit club"
+            >
+            <div class="img-label">Salsa nights in the city</div>
+        </div>
+        <div class="img-card">
+            <img
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80"
+                alt="Dance floor with dramatic lighting"
+            >
+            <div class="img-label">Where the floor comes alive</div>
+        </div>
+        <div class="img-card">
+            <img
+                src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80"
+                alt="DJ mixing Latin music at nightclub"
+            >
+            <div class="img-label">The DJs who move us</div>
+        </div>
+    </div>
+</div>
+
+<hr class="neon-divider">
+
+<!-- ===== STATS ===== -->
+<div class="stats-strip">
+    <div class="stat">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Dance Studios</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Weekly Socials</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Nights a Week</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Incredible City</div>
+    </div>
+</div>
+
+<hr class="neon-divider">
+
+<!-- ===== VIDEO ===== -->
+<div class="video-section">
+    <h2>This Is What Awaits</h2>
+    <p class="video-subtitle">A taste of Chicago's electric salsa social scene</p>
+    <div class="video-wrapper">
+        <iframe
+            src="https://www.youtube.com/embed/V0OQmouC0q0?rel=0&modestbranding=1"
+            title="Social Salsa Dancing at Night"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    </div>
+</div>
+
+<div class="glow-bar"></div>
+
+<!-- ===== LESSONS ===== -->
 <main>
-    <section class="lessons">
-        <h2>Lessons</h2>
-
-        <div class="item">
-            <div class="item-header">
-                <h3>Latin Street Dancing</h3>
-                <span class="tag">Salsa &amp; Bachata</span>
-            </div>
-            <p>Tue &amp; Thu nights in Pilsen. Learn the fundamentals under low lights and good music.</p>
+    <section class="lessons" id="lessons">
+        <div class="section-header">
+            <h2>Lessons</h2>
+            <div class="section-header-line"></div>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Enamorados Dance Academy</h3>
-                <span class="tag">Salsa</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?w=300&q=80" alt="Latin dance class">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Latin Street Dancing</h3>
+                    <span class="tag">Salsa &amp; Bachata</span>
+                </div>
+                <p>Tue &amp; Thu nights in Pilsen. Learn the fundamentals under low lights and good music.</p>
             </div>
-            <p>Wednesday evenings, Logan Square. Beginner to advanced. The studio that built Chicago's salsa scene.</p>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Cumbia Collective</h3>
-                <span class="tag">Cumbia</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=300&q=80" alt="Salsa dance studio">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Enamorados Dance Academy</h3>
+                    <span class="tag">Salsa</span>
+                </div>
+                <p>Wednesday evenings, Logan Square. Beginner to advanced. The studio that built Chicago's salsa scene.</p>
             </div>
-            <p>First Saturday monthly. Little Village. Traditional roots meet modern movement.</p>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Ritmo Latino Studio</h3>
-                <span class="tag">Bachata &amp; Merengue</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=300&q=80" alt="Cumbia dancing">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Cumbia Collective</h3>
+                    <span class="tag">Cumbia</span>
+                </div>
+                <p>First Saturday monthly. Little Village. Traditional roots meet modern movement.</p>
             </div>
-            <p>Mon/Wed/Fri in Humboldt Park. Progressive curriculum, social dancing focus.</p>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Chicago Salsa Congress</h3>
-                <span class="tag">Intensive</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=300&q=80" alt="Latin dance performance">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Ritmo Latino Studio</h3>
+                    <span class="tag">Bachata &amp; Merengue</span>
+                </div>
+                <p>Mon/Wed/Fri in Humboldt Park. Progressive curriculum, social dancing focus.</p>
             </div>
-            <p>Quarterly weekend intensives downtown. World-class instructors. Not for the faint of heart.</p>
+        </div>
+
+        <div class="item">
+            <img class="item-image" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=80" alt="Dance intensive workshop">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Chicago Salsa Congress</h3>
+                    <span class="tag">Intensive</span>
+                </div>
+                <p>Quarterly weekend intensives downtown. World-class instructors. Not for the faint of heart.</p>
+            </div>
         </div>
     </section>
 
-    <hr class="divider">
+    <!-- Full-width image break -->
+</main>
 
-    <section class="socials">
-        <h2>Socials</h2>
+<div class="featured-image-break">
+    <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1400&q=80" alt="Crowded nightclub dance floor">
+    <div class="fib-overlay"></div>
+    <div class="fib-text">
+        <span>From studio to social floor</span>
+    </div>
+</div>
 
-        <div class="item">
-            <div class="item-header">
-                <h3>Salsa Sundays at Havana Club</h3>
-                <span class="tag">Live Band</span>
-            </div>
-            <p>River North. 8pm. Live orchestra. The floor fills fast — arrive early or dance late.</p>
+<main>
+    <section class="socials" id="socials">
+        <div class="section-header">
+            <h2>Socials</h2>
+            <div class="section-header-line"></div>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Bachata Nights at Alegría</h3>
-                <span class="tag">DJ Sets</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&q=80" alt="Live band performance">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Salsa Sundays at Havana Club</h3>
+                    <span class="tag">Live Band</span>
+                </div>
+                <p>River North. 8pm. Live orchestra. The floor fills fast — arrive early or dance late.</p>
             </div>
-            <p>Friday 9pm, Wicker Park. Dim lights, great sound, and the city's best bachata dancers.</p>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Cumbia en la Calle</h3>
-                <span class="tag">Outdoor</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?w=300&q=80" alt="Bachata night">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Bachata Nights at Alegria</h3>
+                    <span class="tag">DJ Sets</span>
+                </div>
+                <p>Friday 9pm, Wicker Park. Dim lights, great sound, and the city's best bachata dancers.</p>
             </div>
-            <p>Pilsen summer nights, Sat 6pm (June–Sept). Stars above, cumbia below.</p>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Latin Mix at The Midway</h3>
-                <span class="tag">Multi-Genre</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=300&q=80" alt="Outdoor summer dancing">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Cumbia en la Calle</h3>
+                    <span class="tag">Outdoor</span>
+                </div>
+                <p>Pilsen summer nights, Sat 6pm (June-Sept). Stars above, cumbia below.</p>
             </div>
-            <p>Thursday 9pm, Logan Square. The DJ reads the room — salsa, bachata, cumbia, whatever moves.</p>
         </div>
 
         <div class="item">
-            <div class="item-header">
-                <h3>Rueda de Casino Meetup</h3>
-                <span class="tag">Group Salsa</span>
+            <img class="item-image" src="https://images.unsplash.com/photo-1501386761578-0a55d6fec483?w=300&q=80" alt="DJ at Latin night">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Latin Mix at The Midway</h3>
+                    <span class="tag">Multi-Genre</span>
+                </div>
+                <p>Thursday 9pm, Logan Square. The DJ reads the room — salsa, bachata, cumbia, whatever moves.</p>
             </div>
-            <p>Second Sunday monthly, Humboldt Park. Circle up, switch partners, keep moving.</p>
+        </div>
+
+        <div class="item">
+            <img class="item-image" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&q=80" alt="Group salsa circle">
+            <div class="item-body">
+                <div class="item-header">
+                    <h3>Rueda de Casino Meetup</h3>
+                    <span class="tag">Group Salsa</span>
+                </div>
+                <p>Second Sunday monthly, Humboldt Park. Circle up, switch partners, keep moving.</p>
+            </div>
         </div>
     </section>
 </main>
+
+<div class="glow-bar"></div>
+
+<!-- ===== TONIGHT'S THE NIGHT CTA ===== -->
+<div class="tonight-section">
+    <img
+        class="tonight-bg"
+        src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1400&q=80"
+        alt="Atmospheric nightlife with colorful lights"
+    >
+    <div class="tonight-overlay"></div>
+    <div class="tonight-content">
+        <p class="tonight-label">Don't just watch</p>
+        <h2>Tonight's the Night</h2>
+        <p>
+            The music is already playing. The floor is waiting.
+            Whether you're a seasoned dancer or stepping out for the first time,
+            Chicago's Latin dance scene has a place for you — tonight.
+        </p>
+        <a href="#lessons" class="tonight-cta">Step onto the Floor</a>
+    </div>
+</div>
+
+<div class="glow-bar subtle"></div>
 
 <footer>
     V3 — DARK / NIGHTLIFE
