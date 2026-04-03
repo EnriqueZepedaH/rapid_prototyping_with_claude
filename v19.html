@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Dance Chicago &mdash; Date Night</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      color: #e0dce4;
+      background: #0d0a0e;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      line-height: 1.2;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #d4a574;
+      background: rgba(13, 10, 14, 0.88);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    .back-link:hover {
+      background: rgba(212, 165, 116, 0.12);
+      border-color: rgba(212, 165, 116, 0.6);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      filter: brightness(0.2);
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+        rgba(194, 24, 91, 0.18) 0%,
+        rgba(13, 10, 14, 0.5) 50%,
+        #0d0a0e 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: 0 24px;
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+      font-weight: 400;
+      color: rgba(212, 165, 116, 0.9);
+      margin-bottom: 44px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-rose {
+      display: inline-block;
+      padding: 15px 38px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      background: #c2185b;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 24px rgba(194, 24, 91, 0.35);
+    }
+    .btn-rose:hover {
+      box-shadow: 0 0 36px rgba(194, 24, 91, 0.55);
+    }
+    .btn-gold-outline {
+      display: inline-block;
+      padding: 14px 38px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #d4a574;
+      background: transparent;
+      border: 2px solid rgba(212, 165, 116, 0.5);
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    .btn-gold-outline:hover {
+      border-color: #d4a574;
+      color: #fff;
+    }
+
+    /* ===== TIMELINE SECTION ===== */
+    .timeline-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .timeline-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 56px;
+    }
+    /* Gold vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 19px;
+      bottom: 24px;
+      width: 2px;
+      background: rgba(212, 165, 116, 0.3);
+    }
+    .timeline-step {
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .timeline-step:last-child { margin-bottom: 0; }
+    .timeline-number {
+      position: absolute;
+      left: -56px;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(212, 165, 116, 0.15);
+      border: 2px solid #d4a574;
+      color: #d4a574;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .timeline-step p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(224, 220, 228, 0.6);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .timeline-step a {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #d4a574;
+    }
+    .timeline-step a:hover { color: #fff; }
+
+    /* ===== SECTIONS SHARED ===== */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .section-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(212, 165, 116, 0.7);
+      margin-bottom: 48px;
+      max-width: 560px;
+    }
+
+    /* ===== NEIGHBORHOOD / DATE DESTINATIONS ===== */
+    .hood-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .hood-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 24px;
+    }
+    .hood-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.3);
+      z-index: 0;
+    }
+    .hood-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13, 10, 14, 0.1) 0%, rgba(13, 10, 14, 0.85) 80%);
+      z-index: 1;
+    }
+    .hood-card-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hood-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hood-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(224, 220, 228, 0.75);
+      line-height: 1.55;
+    }
+
+    /* ===== LESSONS ===== */
+    .lessons-group { margin-bottom: 48px; }
+    .lessons-group:last-child { margin-bottom: 0; }
+    .lessons-group-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid;
+    }
+    .lessons-group-heading.date-night {
+      color: #c2185b;
+      border-color: rgba(194, 24, 91, 0.4);
+    }
+    .lessons-group-heading.secondary {
+      color: #d4a574;
+      border-color: rgba(212, 165, 116, 0.3);
+    }
+    .lesson-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .lesson-card {
+      background: #1a1520;
+      border-radius: 10px;
+      padding: 22px 24px;
+      border-left: 3px solid;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .lesson-card.rose { border-left-color: #c2185b; }
+    .lesson-card.gold { border-left-color: #d4a574; }
+    .lesson-name {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .lesson-meta {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(224, 220, 228, 0.55);
+      line-height: 1.65;
+    }
+    .lesson-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: rgba(212, 165, 116, 0.8);
+      margin-top: 6px;
+    }
+
+    /* ===== SOCIALS THIS WEEK ===== */
+    .day-block { margin-bottom: 36px; }
+    .day-block:last-of-type { margin-bottom: 0; }
+    .day-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      padding: 6px 16px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .day-label.thu { color: #c2185b; background: rgba(194, 24, 91, 0.1); }
+    .day-label.fri { color: #d4a574; background: rgba(212, 165, 116, 0.1); }
+    .day-label.sat { color: #d4a574; background: rgba(212, 165, 116, 0.1); }
+    .day-label.sun { color: #e8b4b8; background: rgba(232, 180, 184, 0.1); }
+    .day-label.monthly { color: #8a7a6b; background: rgba(138, 122, 107, 0.1); }
+
+    .event-cards { display: flex; flex-direction: column; gap: 14px; }
+    .event-card {
+      background: #1a1520;
+      border-radius: 10px;
+      padding: 22px 24px;
+      border-left: 3px solid;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .event-card.thu { border-left-color: #c2185b; }
+    .event-card.fri { border-left-color: #d4a574; }
+    .event-card.sat { border-left-color: #d4a574; }
+    .event-card.sun { border-left-color: #e8b4b8; }
+    .event-card.monthly { border-left-color: #8a7a6b; }
+
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .event-name {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .date-rating {
+      font-size: 0.85rem;
+      color: #d4a574;
+      white-space: nowrap;
+    }
+    .event-details {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(224, 220, 228, 0.55);
+      line-height: 1.7;
+    }
+    .event-details strong {
+      color: rgba(224, 220, 228, 0.8);
+      font-weight: 400;
+    }
+    .event-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: rgba(212, 165, 116, 0.75);
+      margin-top: 6px;
+    }
+
+    /* ===== SUBSCRIBE ===== */
+    .subscribe-block {
+      margin-top: 56px;
+      background: #1a1520;
+      border: 1px solid rgba(194, 24, 91, 0.2);
+      border-radius: 14px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+    .subscribe-block h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .subscribe-block p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: rgba(212, 165, 116, 0.65);
+      margin-bottom: 24px;
+    }
+    .subscribe-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .subscribe-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 12px 20px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: #e0dce4;
+      background: #0d0a0e;
+      border: 1px solid rgba(194, 24, 91, 0.3);
+      border-radius: 50px;
+      outline: none;
+    }
+    .subscribe-form input[type="email"]:focus {
+      border-color: #c2185b;
+      box-shadow: 0 0 12px rgba(194, 24, 91, 0.15);
+    }
+    .subscribe-form button {
+      padding: 12px 28px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      background: #c2185b;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(194, 24, 91, 0.3);
+    }
+    .subscribe-form button:hover {
+      box-shadow: 0 0 24px rgba(194, 24, 91, 0.45);
+    }
+
+    /* ===== CONCERTS / SPECIAL OCCASIONS ===== */
+    .concert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .concert-card {
+      background: #1a1520;
+      border-radius: 14px;
+      padding: 32px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .concert-card:hover {
+      border-color: rgba(194, 24, 91, 0.25);
+    }
+    .concert-date {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c2185b;
+      margin-bottom: 10px;
+    }
+    .concert-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .concert-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(224, 220, 228, 0.55);
+      line-height: 1.65;
+    }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      position: relative;
+      padding: 100px 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .bottom-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      filter: brightness(0.18);
+      z-index: 0;
+    }
+    .bottom-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(194, 24, 91, 0.35), rgba(212, 165, 116, 0.2));
+      z-index: 1;
+    }
+    .bottom-cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .bottom-cta h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .bottom-cta p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+    }
+    .bottom-cta .sub-text {
+      font-family: 'Lato', sans-serif;
+      font-style: normal;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 36px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(224, 220, 228, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.4rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .btn-rose, .btn-gold-outline { width: 100%; max-width: 280px; text-align: center; }
+
+      .timeline-section { padding: 56px 20px; }
+      .timeline { padding-left: 48px; }
+      .timeline::before { left: 15px; }
+      .timeline-number { left: -48px; width: 34px; height: 34px; font-size: 0.95rem; }
+
+      .section { padding: 56px 20px; }
+      .section-title { font-size: 1.6rem; }
+
+      .hood-grid { grid-template-columns: 1fr; }
+      .hood-card { min-height: 220px; }
+
+      .concert-grid { grid-template-columns: 1fr; }
+
+      .subscribe-form { flex-direction: column; align-items: center; }
+      .subscribe-form input[type="email"] { min-width: 0; width: 100%; }
+
+      .bottom-cta { padding: 72px 20px; }
+
+      .event-header { flex-direction: column; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Link -->
+  <a href="index.html" class="back-link">&larr; Back to all versions</a>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">The Best Date Night in Chicago</h1>
+      <p class="hero-subtitle">Forget dinner and a movie. Learn to dance together.</p>
+      <div class="hero-ctas">
+        <a href="#plan" class="btn-rose">Plan Your Date Night</a>
+        <a href="#socials" class="btn-gold-outline">See This Week's Options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== YOUR DATE NIGHT, PLANNED ===== -->
+  <section class="timeline-section" id="plan">
+    <h2>Your Date Night, Planned</h2>
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="timeline-number">1</div>
+        <h3>Take a Beginner Class Together</h3>
+        <p>No experience needed. Most studios welcome walk-in couples.</p>
+        <a href="#lessons">&darr; Browse lessons</a>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-number">2</div>
+        <h3>Stay for the Social</h3>
+        <p>Put your new moves to the test on a real dance floor.</p>
+        <a href="#socials">&darr; See this week's socials</a>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-number">3</div>
+        <h3>Make It a Night</h3>
+        <p>Dinner, drinks, and live music. Latin dance is just the beginning.</p>
+        <a href="#concerts">&darr; Special occasions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DATE DESTINATIONS ===== -->
+  <section class="section" id="neighborhoods">
+    <h2 class="section-title">Date Destinations</h2>
+    <p class="section-subtitle">Dinner-and-dance combos, neighborhood by neighborhood.</p>
+    <div class="hood-grid">
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">West Loop</div>
+          <div class="hood-desc">Take a class at Latin Rhythms, grab dinner on Randolph, then dance at Alhambra Palace.</div>
+        </div>
+      </div>
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">Six Corners</div>
+          <div class="hood-desc">Learn together at Dennis PaSamba, then stay for the Friday social. Dinner at 10:30 &mdash; perfect.</div>
+        </div>
+      </div>
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">River North</div>
+          <div class="hood-desc">Late-night Latin vibes after dinner at Havana Grill.</div>
+        </div>
+      </div>
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">Wrigleyville</div>
+          <div class="hood-desc">Sunday date night at The Cubby Bear. Free lesson at 8:15, dancing until 1am.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LESSONS ===== -->
+  <section class="section" id="lessons">
+    <h2 class="section-title">Lessons</h2>
+    <p class="section-subtitle">Where to learn, grouped by date-night suitability.</p>
+
+    <!-- Best for Date Night -->
+    <div class="lessons-group">
+      <h3 class="lessons-group-heading date-night">Best for Date Night</h3>
+      <div class="lesson-cards">
+        <div class="lesson-card rose">
+          <div class="lesson-name">Dennis PaSamba Friday Social</div>
+          <div class="lesson-meta">
+            <strong>4820 W Irving Park Rd, Six Corners</strong><br>
+            Class at 7pm + social same evening &middot; $10
+          </div>
+          <div class="lesson-tagline">"Learn and dance in one night. The perfect date."</div>
+        </div>
+        <div class="lesson-card rose">
+          <div class="lesson-name">Alhambra Palace Thursday</div>
+          <div class="lesson-meta">
+            <strong>1240 W Randolph St, West Loop</strong><br>
+            Lesson at 8pm + social at 9pm &middot; $10 before 9pm / $15 after
+          </div>
+          <div class="lesson-tagline">"Lesson, social, and a stunning venue &mdash; all in one evening."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Take a Class First -->
+    <div class="lessons-group">
+      <h3 class="lessons-group-heading secondary">Take a Class First</h3>
+      <div class="lesson-cards">
+        <div class="lesson-card gold">
+          <div class="lesson-name">Latin Street Music &amp; Dancing</div>
+          <div class="lesson-meta">
+            <strong>600 W Roosevelt Rd, South Loop</strong><br>
+            Mon&ndash;Fri 6&ndash;10pm
+          </div>
+          <div class="lesson-tagline">"80+ classes a week. Find one that fits your schedule as a couple."</div>
+        </div>
+        <div class="lesson-card gold">
+          <div class="lesson-name">Dance Academy of Salsa</div>
+          <div class="lesson-meta">
+            <strong>2246 N Western Ave, Logan Square</strong><br>
+            Mon&ndash;Fri 5:30&ndash;10pm
+          </div>
+          <div class="lesson-tagline">"Structured 4-week courses. A weekly date ritual."</div>
+        </div>
+        <div class="lesson-card gold">
+          <div class="lesson-name">Latin Rhythms Academy</div>
+          <div class="lesson-meta">
+            <strong>West Loop</strong>
+          </div>
+          <div class="lesson-tagline">"Curriculum-based. Build skills together over time."</div>
+        </div>
+        <div class="lesson-card gold">
+          <div class="lesson-name">Chicago International Salsa Congress</div>
+          <div class="lesson-meta">
+            <strong>Westin O'Hare, Rosemont</strong> &middot; Annual &mdash; February
+          </div>
+          <div class="lesson-tagline">"The ultimate dance weekend getaway."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIALS — THIS WEEK ===== -->
+  <section class="section" id="socials">
+    <h2 class="section-title">This Week</h2>
+    <p class="section-subtitle">Where to dance, with a date-night rating for each.</p>
+
+    <!-- Thursday -->
+    <div class="day-block">
+      <div class="day-label thu">Thursday</div>
+      <div class="event-cards">
+        <div class="event-card thu">
+          <div class="event-header">
+            <div class="event-name">Salsa &amp; Bachata at Alhambra Palace</div>
+            <div class="date-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="event-details">
+            <strong>1240 W Randolph St, West Loop</strong><br>
+            8pm&ndash;1am &middot; Lesson at 8pm, social at 9pm<br>
+            $10 before 9pm, $15 after &middot; DJs Matador &amp; Jesus Castro
+          </div>
+          <div class="event-tagline">"Stunning venue, great for a romantic evening. Lesson + social."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Friday -->
+    <div class="day-block">
+      <div class="day-label fri">Friday</div>
+      <div class="event-cards">
+        <div class="event-card fri">
+          <div class="event-header">
+            <div class="event-name">Dennis PaSamba Friday Social</div>
+            <div class="date-rating">&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="event-details">
+            <strong>4820 W Irving Park Rd, Six Corners</strong><br>
+            Free lesson at 7pm, social until 10:30pm &middot; $10
+          </div>
+          <div class="event-tagline">"Cozy and welcoming. Learn, dance, then grab dinner."</div>
+        </div>
+        <div class="event-card fri">
+          <div class="event-header">
+            <div class="event-name">Havana Grill Latin Nights</div>
+            <div class="date-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="event-details">
+            <strong>412 N Clark St, River North</strong><br>
+            Live Latin bands &middot; Music starts 11:30pm &middot; No cover
+          </div>
+          <div class="event-tagline">"Art-deco romance. Live music, mojitos, no cover."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saturday -->
+    <div class="day-block">
+      <div class="day-label sat">Saturday</div>
+      <div class="event-cards">
+        <div class="event-card sat">
+          <div class="event-header">
+            <div class="event-name">Havana Grill Latin Nights</div>
+            <div class="date-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="event-details">
+            <strong>412 N Clark St, River North</strong><br>
+            Live Latin bands &middot; Music starts 11:30pm &middot; No cover
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sunday -->
+    <div class="day-block">
+      <div class="day-label sun">Sunday</div>
+      <div class="event-cards">
+        <div class="event-card sun">
+          <div class="event-header">
+            <div class="event-name">Salsa Sundays at The Cubby Bear</div>
+            <div class="date-rating">&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="event-details">
+            <strong>1059 W Addison St, Wrigleyville</strong><br>
+            7pm&ndash;1am &middot; Free lesson by Latin Rhythms at 8:15pm<br>
+            DJ Marz &middot; $15 cover
+          </div>
+          <div class="event-tagline">"Casual but fun. Free lesson makes it easy for first-timers."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly -->
+    <div class="day-block">
+      <div class="day-label monthly">Monthly</div>
+      <div class="event-cards">
+        <div class="event-card monthly">
+          <div class="event-header">
+            <div class="event-name">Mayambo Monthly Social</div>
+            <div class="date-rating">&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="event-details">
+            <strong>Location varies</strong> &middot; <a href="https://mayambo.com" style="color: #d4a574; text-decoration: underline;">mayambo.com</a><br>
+            Salsa-focused community event
+          </div>
+          <div class="event-tagline">"More for the experienced crowd."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe -->
+    <div class="subscribe-block">
+      <h3>Plan Your Next Date Night</h3>
+      <p>Weekly ideas delivered. No spam, just salsa.</p>
+      <form class="subscribe-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== CONCERTS / SPECIAL OCCASIONS ===== -->
+  <section class="section" id="concerts">
+    <h2 class="section-title">Special Occasion Dates</h2>
+    <p class="section-subtitle">For anniversaries, celebrations, or when you're both hooked.</p>
+    <div class="concert-grid">
+      <div class="concert-card">
+        <div class="concert-date">February &middot; Annual</div>
+        <div class="concert-name">Chicago International Salsa Congress</div>
+        <div class="concert-desc">
+          Westin O'Hare, Rosemont. 60+ workshops, evening showcases, and social dancing until 3am. A weekend getaway without leaving the city.
+        </div>
+      </div>
+      <div class="concert-card">
+        <div class="concert-date">Next Date TBD</div>
+        <div class="concert-name">Mayambo Monthly Social</div>
+        <div class="concert-desc">
+          Location varies. For when you're both hooked and ready for the deep end. Check <a href="https://mayambo.com" style="color: #c2185b; text-decoration: underline;">mayambo.com</a> for the next date.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="bottom-cta">
+    <div class="bottom-cta-bg"></div>
+    <div class="bottom-cta-overlay"></div>
+    <div class="bottom-cta-content">
+      <h2>Dance Together Tonight</h2>
+      <p>The couple that dances together stays together.</p>
+      <p class="sub-text">No experience needed &mdash; just bring each other.</p>
+      <a href="#socials" class="btn-rose">Find Your Date Night</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    V19 &mdash; Date Night
+  </footer>
+
+</body>
+</html>

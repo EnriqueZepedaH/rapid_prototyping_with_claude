@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Dance Chicago — The Comeback Dancer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: #e0ddd8;
+      background: #0d0b0a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      color: #fff;
+      line-height: 1.15;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #d4a574;
+      background: rgba(13, 11, 10, 0.85);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      backdrop-filter: blur(10px);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .back-link:hover {
+      background: rgba(212, 165, 116, 0.15);
+      border-color: rgba(212, 165, 116, 0.6);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      filter: brightness(0.2);
+      z-index: 0;
+    }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,11,10,0.3) 0%, rgba(13,11,10,0.6) 60%, #0d0b0a 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      padding: 0 24px;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+      font-style: italic;
+    }
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.8);
+      margin-bottom: 44px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: #c0392b;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(192, 57, 43, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 32px rgba(192, 57, 43, 0.5);
+    }
+
+    /* ===== STICKY NAV ===== */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(13, 11, 10, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 165, 116, 0.1);
+      flex-wrap: wrap;
+    }
+    .nav-pill {
+      display: inline-block;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e0ddd8;
+      background: rgba(26, 22, 20, 0.8);
+      border: 1px solid rgba(212, 165, 116, 0.2);
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    .nav-pill:hover {
+      color: #fff;
+      border-color: #d4a574;
+      background: rgba(212, 165, 116, 0.1);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.55);
+      margin-bottom: 48px;
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    /* ===== WHAT'S CHANGED / WHAT HASN'T ===== */
+    .changed-section {
+      padding: 80px 24px;
+      background: #0d0b0a;
+    }
+    .changed-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .changed-heading {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .changed-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.55);
+      margin-bottom: 48px;
+      text-align: center;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .changed-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .changed-col h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid;
+    }
+    .changed-col h3.gold { color: #d4a574; border-color: rgba(212, 165, 116, 0.3); }
+    .changed-col h3.teal { color: #2a9d8f; border-color: rgba(42, 157, 143, 0.3); }
+    .changed-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .changed-list li {
+      background: #1a1614;
+      border-radius: 10px;
+      padding: 18px 22px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(224, 221, 216, 0.8);
+      line-height: 1.55;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .changed-list li a {
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .changed-list.gold li a { color: #d4a574; }
+    .changed-list.teal li a { color: #2a9d8f; }
+
+    /* ===== NEIGHBORHOOD / DISCOVERY ===== */
+    .hood-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .hood-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: transform 0.2s, border-color 0.3s;
+    }
+    .hood-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(212, 165, 116, 0.3);
+    }
+    .hood-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.25);
+      z-index: 0;
+    }
+    .hood-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,11,10,0.2) 0%, rgba(13,11,10,0.85) 100%);
+      z-index: 1;
+    }
+    .hood-card-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hood-card-plain {
+      background: #1a1614;
+      border-radius: 14px;
+      padding: 28px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: transform 0.2s, border-color 0.3s;
+    }
+    .hood-card-plain:hover {
+      transform: translateY(-3px);
+      border-color: rgba(212, 165, 116, 0.3);
+    }
+    .hood-name {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .hood-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.65);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    /* ===== LESSONS ===== */
+    .lesson-group { margin-bottom: 48px; }
+    .lesson-group:last-child { margin-bottom: 0; }
+    .lesson-group-heading {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid;
+    }
+    .lesson-group-heading.red { color: #c0392b; border-color: rgba(192, 57, 43, 0.3); }
+    .lesson-group-heading.teal { color: #2a9d8f; border-color: rgba(42, 157, 143, 0.3); }
+    .school-cards { display: flex; flex-direction: column; gap: 12px; }
+    .school-card {
+      background: #1a1614;
+      border-radius: 10px;
+      padding: 20px 24px;
+      border-left: 3px solid;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .school-card.red { border-left-color: #c0392b; }
+    .school-card.teal { border-left-color: #2a9d8f; }
+    .school-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .school-meta {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.55);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ===== SOCIALS — THIS WEEK ===== */
+    .day-block { margin-bottom: 36px; }
+    .day-block:last-of-type { margin-bottom: 0; }
+    .day-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      padding: 6px 16px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .day-label.thu { color: #c0392b; background: rgba(192, 57, 43, 0.1); }
+    .day-label.fri { color: #d4a574; background: rgba(212, 165, 116, 0.1); }
+    .day-label.sat { color: #d4a574; background: rgba(212, 165, 116, 0.1); }
+    .day-label.sun { color: #2a9d8f; background: rgba(42, 157, 143, 0.1); }
+    .day-label.monthly { color: #d4a574; background: rgba(212, 165, 116, 0.1); }
+
+    .event-cards { display: flex; flex-direction: column; gap: 12px; }
+    .event-card {
+      background: #1a1614;
+      border-radius: 10px;
+      padding: 20px 24px;
+      border-left: 3px solid;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .event-card.thu { border-left-color: #c0392b; }
+    .event-card.fri { border-left-color: #d4a574; }
+    .event-card.sat { border-left-color: #d4a574; }
+    .event-card.sun { border-left-color: #2a9d8f; }
+    .event-card.monthly { border-left-color: #d4a574; }
+    .event-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .event-details {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.55);
+      line-height: 1.7;
+    }
+    .event-details strong {
+      color: rgba(224, 221, 216, 0.8);
+      font-weight: 500;
+    }
+    .vibe-check {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: #d4a574;
+      padding: 4px 12px;
+      background: rgba(212, 165, 116, 0.08);
+      border-radius: 4px;
+    }
+
+    /* ===== SUBSCRIBE FORM ===== */
+    .subscribe-block {
+      margin-top: 56px;
+      background: #1a1614;
+      border: 1px solid rgba(212, 165, 116, 0.15);
+      border-radius: 14px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+    .subscribe-block h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .subscribe-block p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.55);
+      margin-bottom: 24px;
+    }
+    .subscribe-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .subscribe-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 12px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #e0ddd8;
+      background: #0d0b0a;
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      border-radius: 50px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .subscribe-form input[type="email"]:focus {
+      border-color: #d4a574;
+      box-shadow: 0 0 12px rgba(212, 165, 116, 0.15);
+    }
+    .subscribe-form button {
+      padding: 12px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      background: #c0392b;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(192, 57, 43, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .subscribe-form button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 24px rgba(192, 57, 43, 0.45);
+    }
+
+    /* ===== CONCERTS ===== */
+    .concert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .concert-card {
+      background: #1a1614;
+      border-radius: 14px;
+      padding: 32px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s, border-color 0.3s;
+    }
+    .concert-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(212, 165, 116, 0.25);
+    }
+    .concert-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c0392b;
+      margin-bottom: 10px;
+    }
+    .concert-name {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .concert-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(224, 221, 216, 0.55);
+      line-height: 1.65;
+    }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      position: relative;
+      padding: 100px 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .bottom-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      filter: brightness(0.2);
+      z-index: 0;
+    }
+    .bottom-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(192, 57, 43, 0.35), rgba(212, 165, 116, 0.3));
+      z-index: 1;
+    }
+    .bottom-cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .bottom-cta h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .bottom-cta p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .btn-glow {
+      display: inline-block;
+      padding: 16px 44px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      background: #c0392b;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      box-shadow: 0 0 30px rgba(192, 57, 43, 0.4), 0 0 80px rgba(192, 57, 43, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(192, 57, 43, 0.55), 0 0 100px rgba(192, 57, 43, 0.25);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(224, 221, 216, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.4rem; }
+      .hero-sub { font-size: 1rem; }
+
+      .sticky-nav { gap: 8px; padding: 12px 12px; }
+      .nav-pill { padding: 8px 16px; font-size: 0.8rem; }
+
+      .changed-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      .section { padding: 56px 20px; }
+      .section-title { font-size: 1.6rem; }
+
+      .hood-grid { grid-template-columns: 1fr; }
+      .concert-grid { grid-template-columns: 1fr; }
+
+      .subscribe-form { flex-direction: column; align-items: center; }
+      .subscribe-form input[type="email"] { min-width: 0; width: 100%; }
+
+      .bottom-cta { padding: 72px 20px; }
+
+      .changed-section { padding: 56px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Link -->
+  <a href="index.html" class="back-link">&larr; Back to all versions</a>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">The Floor Remembers You</h1>
+      <p class="hero-sub">It's been a while. The music is still playing. Chicago's Latin dance scene is bigger than ever.</p>
+      <a href="#socials" class="btn-primary">Come Back to the Floor</a>
+    </div>
+  </section>
+
+  <!-- ===== STICKY NAV ===== -->
+  <nav class="sticky-nav">
+    <a href="#changed" class="nav-pill">What's New</a>
+    <a href="#neighborhoods" class="nav-pill">The Scene</a>
+    <a href="#lessons" class="nav-pill">Lessons</a>
+    <a href="#socials" class="nav-pill">Socials</a>
+    <a href="#concerts" class="nav-pill">Events</a>
+  </nav>
+
+  <!-- ===== WHAT'S CHANGED, WHAT HASN'T ===== -->
+  <section class="changed-section" id="changed">
+    <div class="changed-inner">
+      <h2 class="changed-heading">What's Changed, What Hasn't</h2>
+      <p class="changed-subtitle">You've been away. Here's what you need to know.</p>
+      <div class="changed-grid">
+
+        <!-- Still the Same -->
+        <div class="changed-col">
+          <h3 class="gold">Still the Same</h3>
+          <ul class="changed-list gold">
+            <li>The joy of connection on the dance floor</li>
+            <li>The way the music tells your body what to do</li>
+            <li>A community that <a href="#socials">welcomes everyone back</a></li>
+            <li>The feeling after your first dance back &mdash; unforgettable</li>
+          </ul>
+        </div>
+
+        <!-- What's New -->
+        <div class="changed-col">
+          <h3 class="teal">What's New</h3>
+          <ul class="changed-list teal">
+            <li>Bachata has exploded &mdash; it's <a href="#lessons">everywhere now</a></li>
+            <li>Kizomba is the newest addition to the scene</li>
+            <li>More <a href="#neighborhoods">venues</a>, more nights, more <a href="#socials">options</a> than ever</li>
+            <li>The <a href="#concerts">Salsa Congress</a> is now in its 25th year</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEIGHBORHOODS / DISCOVERY ===== -->
+  <section class="section" id="neighborhoods">
+    <h2 class="section-title">The Scene Has Grown</h2>
+    <p class="section-subtitle">Every neighborhood has its own story. Some of these places were here when you left. Some are new.</p>
+    <div class="hood-grid">
+
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">South Loop</div>
+          <div class="hood-desc">Latin Street Music &amp; Dancing &mdash; still going strong after 27+ years. Some things never change.</div>
+        </div>
+      </div>
+
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">Logan Square</div>
+          <div class="hood-desc">Dance Academy of Salsa &mdash; family-run since 2002. A new generation of salseros.</div>
+        </div>
+      </div>
+
+      <div class="hood-card-plain">
+        <div class="hood-name">Six Corners</div>
+        <div class="hood-desc">Dennis PaSamba &mdash; 33+ years. One of Chicago's longest-running dance institutions.</div>
+      </div>
+
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">West Loop</div>
+          <div class="hood-desc">Latin Rhythms Academy + Alhambra Palace Thursdays. The neighborhood has become a dance hub.</div>
+        </div>
+      </div>
+
+      <div class="hood-card-plain">
+        <div class="hood-name">Wrigleyville</div>
+        <div class="hood-desc">Cubby Bear Sundays &mdash; still the Sunday night tradition.</div>
+      </div>
+
+      <div class="hood-card-plain">
+        <div class="hood-name">River North</div>
+        <div class="hood-desc">Havana Grill &mdash; 1940s art-deco and live bands, just like the old days.</div>
+      </div>
+
+      <div class="hood-card">
+        <div class="hood-card-bg" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="hood-card-overlay"></div>
+        <div class="hood-card-content">
+          <div class="hood-name">Rosemont</div>
+          <div class="hood-desc">The Salsa Congress &mdash; 25 years and counting.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== LESSONS ===== -->
+  <section class="section" id="lessons">
+    <h2 class="section-title">Get Back On the Floor</h2>
+    <p class="section-subtitle">Whether you're picking up where you left off or trying something that didn't exist when you last danced.</p>
+
+    <!-- Brush Up Your Skills -->
+    <div class="lesson-group">
+      <h3 class="lesson-group-heading red">Brush Up Your Skills</h3>
+      <div class="school-cards">
+        <div class="school-card red">
+          <div class="school-name">Latin Rhythms Academy</div>
+          <div class="school-meta">Curriculum-based. Pick up where you left off.<br><span style="color: rgba(224,221,216,0.4);">West Loop</span></div>
+        </div>
+        <div class="school-card red">
+          <div class="school-name">Latin Street Music &amp; Dancing</div>
+          <div class="school-meta">80+ weekly classes. Find your level quickly.<br><span style="color: rgba(224,221,216,0.4);">600 W Roosevelt Rd, South Loop</span></div>
+        </div>
+        <div class="school-card red">
+          <div class="school-name">Dance Academy of Salsa</div>
+          <div class="school-meta">Drop-in or 4-week courses. Great for refreshing fundamentals.<br><span style="color: rgba(224,221,216,0.4);">2246 N Western Ave, Logan Square</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Try Something New -->
+    <div class="lesson-group">
+      <h3 class="lesson-group-heading teal">Try Something New</h3>
+      <div class="school-cards">
+        <div class="school-card teal">
+          <div class="school-name">Dennis PaSamba</div>
+          <div class="school-meta">Kizomba is the newest Latin dance. PaSamba teaches it.<br><span style="color: rgba(224,221,216,0.4);">4820 W Irving Park Rd, Six Corners</span></div>
+        </div>
+        <div class="school-card teal">
+          <div class="school-name">Latin Rhythms Academy</div>
+          <div class="school-meta">Bachata has evolved since you last danced. Try their bachata program.<br><span style="color: rgba(224,221,216,0.4);">West Loop</span></div>
+        </div>
+        <div class="school-card teal">
+          <div class="school-name">Chicago International Salsa Congress</div>
+          <div class="school-meta">The reunion you didn't know you needed. 60+ workshops.<br><span style="color: rgba(224,221,216,0.4);">Westin O'Hare, Rosemont &middot; Annual &mdash; February</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIALS — THIS WEEK ===== -->
+  <section class="section" id="socials">
+    <h2 class="section-title">This Week</h2>
+    <p class="section-subtitle">Your re-entry points. Every one of these is welcoming to returning dancers.</p>
+
+    <!-- Thursday -->
+    <div class="day-block">
+      <div class="day-label thu">Thursday</div>
+      <div class="event-cards">
+        <div class="event-card thu">
+          <div class="event-name">Salsa &amp; Bachata at Alhambra Palace</div>
+          <div class="event-details">
+            <strong>1240 W Randolph St, West Loop</strong><br>
+            8pm&ndash;1am &middot; Lesson at 8pm, social at 9pm<br>
+            $10 before 9pm, $15 after &middot; DJs Matador &amp; Jesus Castro
+          </div>
+          <div class="vibe-check">Mixed crowd, great energy. You'll fit right in.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Friday -->
+    <div class="day-block">
+      <div class="day-label fri">Friday</div>
+      <div class="event-cards">
+        <div class="event-card fri">
+          <div class="event-name">Dennis PaSamba Friday Social</div>
+          <div class="event-details">
+            <strong>4820 W Irving Park Rd, Six Corners</strong><br>
+            Free lesson at 7pm, social until 10:30pm &middot; $10
+          </div>
+          <div class="vibe-check">Community-driven, welcoming to all levels. Free lesson at 7pm to shake off the rust.</div>
+        </div>
+        <div class="event-card fri">
+          <div class="event-name">Havana Grill Latin Nights</div>
+          <div class="event-details">
+            <strong>412 N Clark St, River North</strong><br>
+            Live Latin bands &middot; Music starts 11:30pm &middot; No cover
+          </div>
+          <div class="vibe-check">Late-night, live bands. Just like the old days.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saturday -->
+    <div class="day-block">
+      <div class="day-label sat">Saturday</div>
+      <div class="event-cards">
+        <div class="event-card sat">
+          <div class="event-name">Havana Grill Latin Nights</div>
+          <div class="event-details">
+            <strong>412 N Clark St, River North</strong><br>
+            Live Latin bands &middot; Music starts 11:30pm &middot; No cover
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sunday -->
+    <div class="day-block">
+      <div class="day-label sun">Sunday</div>
+      <div class="event-cards">
+        <div class="event-card sun">
+          <div class="event-name">Salsa Sundays at The Cubby Bear</div>
+          <div class="event-details">
+            <strong>1059 W Addison St, Wrigleyville</strong><br>
+            7pm&ndash;1am &middot; Free lesson by Latin Rhythms at 8:15pm<br>
+            DJ Marz &middot; $15 cover
+          </div>
+          <div class="vibe-check">Relaxed, all-levels. The free lesson at 8:15 is a great warm-up after years away.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly -->
+    <div class="day-block">
+      <div class="day-label monthly">Monthly</div>
+      <div class="event-cards">
+        <div class="event-card monthly">
+          <div class="event-name">Mayambo Monthly Social</div>
+          <div class="event-details">
+            <strong>Location varies</strong> &middot; <a href="https://mayambo.com" style="color: #d4a574; text-decoration: underline;">mayambo.com</a><br>
+            Salsa-focused community event
+          </div>
+          <div class="vibe-check">The insiders' social. You'll feel right at home.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe -->
+    <div class="subscribe-block">
+      <h3>Get Back in the Rhythm</h3>
+      <p>Weekly updates on socials, events, and classes. No spam &mdash; just the scene.</p>
+      <form class="subscribe-form" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== CONCERTS & EVENTS ===== -->
+  <section class="section" id="concerts">
+    <h2 class="section-title">Events Worth Coming Back For</h2>
+    <p class="section-subtitle">The moments that remind you why you fell in love with dance in the first place.</p>
+    <div class="concert-grid">
+      <div class="concert-card">
+        <div class="concert-date">February &middot; Annual</div>
+        <div class="concert-name">Chicago International Salsa Congress</div>
+        <div class="concert-desc">
+          The reunion. Westin O'Hare, Rosemont. 25 years of bringing dancers together &mdash; 60+ workshops, evening showcases, and social dancing until 3am. If there's one event to mark your comeback, this is it.
+        </div>
+      </div>
+      <div class="concert-card">
+        <div class="concert-date">Next Date TBD</div>
+        <div class="concert-name">Mayambo Monthly Social</div>
+        <div class="concert-desc">
+          Location varies. The salsa-focused gathering where you'll see familiar faces and meet the new generation. Check <a href="https://mayambo.com" style="color: #d4a574; text-decoration: underline;">mayambo.com</a> for the next date.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="bottom-cta">
+    <div class="bottom-cta-bg"></div>
+    <div class="bottom-cta-overlay"></div>
+    <div class="bottom-cta-content">
+      <h2>The Music Never Stopped</h2>
+      <p>You may have taken a break, but the floor has been waiting. Come back to the dance you love.</p>
+      <a href="#socials" class="btn-glow">Find Your Next Dance</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    V20 &mdash; The Comeback Dancer
+  </footer>
+
+</body>
+</html>
