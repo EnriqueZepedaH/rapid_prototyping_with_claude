@@ -259,8 +259,21 @@
     }
     .event-row {
       display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.75rem 0;
+    }
+    .event-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: brightness(0.8);
+    }
+    .event-info {
+      display: flex;
       align-items: baseline;
-      padding: 10px 0;
       gap: 16px;
       flex-wrap: wrap;
     }
@@ -337,7 +350,24 @@
     .subscribe-btn:hover { opacity: 0.7; }
 
     /* ===== GETTING STARTED ===== */
-    .getting-started { padding-bottom: 80px; }
+    .getting-started-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .getting-started-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.1);
+      z-index: 0;
+    }
+    .getting-started {
+      padding-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
     .getting-started-intro {
       font-size: 0.95rem;
       font-weight: 300;
@@ -394,8 +424,19 @@
     .level-heading.beginner { border-left: 3px solid #2a9d8f; }
     .level-heading.advanced { border-left: 3px solid #d4a574; }
     .school-entry {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
       padding: 20px 0;
       border-bottom: 1px solid #1a1a1a;
+    }
+    .school-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: brightness(0.8);
     }
     .school-entry:last-child { border-bottom: none; }
     .school-name {
@@ -436,27 +477,44 @@
     }
 
     /* ===== NEIGHBORHOODS ===== */
-    .hood-item {
-      padding: 24px 0;
+    .hood-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
     }
-    .hood-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
+    .hood-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hood-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35);
+      transition: filter 0.3s;
+    }
+    .hood-card:hover img {
+      filter: brightness(0.5);
+    }
+    .hood-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 1.25rem;
+    }
+    .hood-card-content h3 {
+      font-size: 1.3rem;
       font-weight: 400;
-      color: #fff;
-      display: inline;
+      margin-bottom: 0.25rem;
     }
-    .hood-note {
-      font-family: 'Inter', sans-serif;
+    .hood-card-content p {
       font-size: 0.8rem;
-      font-weight: 300;
-      color: #d4a574;
-      margin-left: 16px;
-      display: inline;
-    }
-    .hood-divider {
-      height: 1px;
-      background: rgba(212, 165, 116, 0.12);
+      color: rgba(255,255,255,0.7);
     }
 
     /* ===== CONCERTS ===== */
@@ -537,6 +595,10 @@
       .featured-venue { font-size: 1.5rem; }
       .gs-grid { grid-template-columns: 1fr; gap: 36px; }
       .event-row { flex-wrap: wrap; }
+      .event-thumb { width: 50px; height: 50px; }
+      .school-thumb { width: 50px; height: 50px; }
+      .hood-grid { grid-template-columns: 1fr 1fr; }
+      .hood-card { height: 150px; }
       .subscribe-row {
         flex-direction: column;
         align-items: stretch;
@@ -586,6 +648,7 @@
     <p class="section-label">Tonight</p>
 
     <div class="featured-card">
+      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80" alt="Alhambra Palace dance night" style="width:100%; height:200px; object-fit:cover; border-radius:4px 4px 0 0; margin-bottom:1.5rem; filter:brightness(0.8) saturate(1.2);">
       <h2 class="featured-venue">Salsa &amp; Bachata at Alhambra Palace</h2>
       <p class="featured-address">1240 W Randolph St, West Loop</p>
 
@@ -628,10 +691,13 @@
       <span class="day-line"></span>
     </div>
     <div class="event-row">
-      <span class="event-time">8pm</span>
-      <span class="event-venue">Alhambra Palace</span>
-      <span class="event-meta">&middot; West Loop &middot; $10/$15</span>
-      <span class="free-tag">Free Lesson 8pm</span>
+      <img class="event-thumb" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=200&q=80" alt="Alhambra Palace">
+      <div class="event-info">
+        <span class="event-time">8pm</span>
+        <span class="event-venue">Alhambra Palace</span>
+        <span class="event-meta">&middot; West Loop &middot; $10/$15</span>
+        <span class="free-tag">Free Lesson 8pm</span>
+      </div>
     </div>
 
     <!-- Friday -->
@@ -640,15 +706,21 @@
       <span class="day-line"></span>
     </div>
     <div class="event-row">
-      <span class="event-time">7pm</span>
-      <span class="event-venue">Dennis PaSamba Social</span>
-      <span class="event-meta">&middot; Six Corners &middot; $10</span>
-      <span class="free-tag">Free Lesson 7pm</span>
+      <img class="event-thumb" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=200&q=80" alt="Dennis PaSamba Social">
+      <div class="event-info">
+        <span class="event-time">7pm</span>
+        <span class="event-venue">Dennis PaSamba Social</span>
+        <span class="event-meta">&middot; Six Corners &middot; $10</span>
+        <span class="free-tag">Free Lesson 7pm</span>
+      </div>
     </div>
     <div class="event-row">
-      <span class="event-time">11:30pm</span>
-      <span class="event-venue">Havana Grill</span>
-      <span class="event-meta">&middot; River North &middot; Free</span>
+      <img class="event-thumb" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=200&q=80" alt="Havana Grill">
+      <div class="event-info">
+        <span class="event-time">11:30pm</span>
+        <span class="event-venue">Havana Grill</span>
+        <span class="event-meta">&middot; River North &middot; Free</span>
+      </div>
     </div>
 
     <!-- Saturday -->
@@ -657,9 +729,12 @@
       <span class="day-line"></span>
     </div>
     <div class="event-row">
-      <span class="event-time">11:30pm</span>
-      <span class="event-venue">Havana Grill</span>
-      <span class="event-meta">&middot; River North &middot; Free</span>
+      <img class="event-thumb" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=200&q=80" alt="Havana Grill">
+      <div class="event-info">
+        <span class="event-time">11:30pm</span>
+        <span class="event-venue">Havana Grill</span>
+        <span class="event-meta">&middot; River North &middot; Free</span>
+      </div>
     </div>
 
     <!-- Sunday -->
@@ -668,10 +743,13 @@
       <span class="day-line"></span>
     </div>
     <div class="event-row">
-      <span class="event-time">7pm</span>
-      <span class="event-venue">Cubby Bear</span>
-      <span class="event-meta">&middot; Wrigleyville &middot; $15</span>
-      <span class="free-tag">Free Lesson 8:15pm</span>
+      <img class="event-thumb" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=200&q=80" alt="Cubby Bear">
+      <div class="event-info">
+        <span class="event-time">7pm</span>
+        <span class="event-venue">Cubby Bear</span>
+        <span class="event-meta">&middot; Wrigleyville &middot; $15</span>
+        <span class="free-tag">Free Lesson 8:15pm</span>
+      </div>
     </div>
 
     <!-- Monthly -->
@@ -680,9 +758,12 @@
       <span class="day-line"></span>
     </div>
     <div class="event-row">
-      <span class="event-time">&mdash;</span>
-      <span class="event-venue">Mayambo Social</span>
-      <span class="event-meta">&middot; Location varies</span>
+      <img class="event-thumb" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&q=80" alt="Mayambo Social">
+      <div class="event-info">
+        <span class="event-time">&mdash;</span>
+        <span class="event-venue">Mayambo Social</span>
+        <span class="event-meta">&middot; Location varies</span>
+      </div>
     </div>
 
     <!-- Subscribe -->
@@ -696,28 +777,31 @@
   <div style="max-width:900px;margin:0 auto;padding:0 24px;"><div class="gold-line"></div></div>
 
   <!-- ===== 5. GETTING STARTED ===== -->
-  <section class="section getting-started" id="getting-started">
-    <p class="section-label">Getting Started</p>
-    <p class="getting-started-intro">Every dancer in this city started exactly where you are. Here's what to know.</p>
+  <div class="getting-started-wrap">
+    <img class="getting-started-bg" src="https://images.unsplash.com/photo-1524117074681-31bd4de22ad3?w=1600&q=80" alt="">
+    <section class="section getting-started" id="getting-started">
+      <p class="section-label">Getting Started</p>
+      <p class="getting-started-intro">Every dancer in this city started exactly where you are. Here's what to know.</p>
 
-    <div class="gs-grid">
-      <div class="gs-item">
-        <div class="gs-icon">&#10003;</div>
-        <h3>No Experience Needed</h3>
-        <p>Classes start from zero. Instructors teach every step.</p>
+      <div class="gs-grid">
+        <div class="gs-item">
+          <div class="gs-icon">&#10003;</div>
+          <h3>No Experience Needed</h3>
+          <p>Classes start from zero. Instructors teach every step.</p>
+        </div>
+        <div class="gs-item">
+          <div class="gs-icon">&#10003;</div>
+          <h3>No Partner Required</h3>
+          <p>Most classes rotate partners. Come solo, leave with friends.</p>
+        </div>
+        <div class="gs-item">
+          <div class="gs-icon">&#10003;</div>
+          <h3>What to Wear</h3>
+          <p>Comfortable clothes, smooth-soled shoes. That's it.</p>
+        </div>
       </div>
-      <div class="gs-item">
-        <div class="gs-icon">&#10003;</div>
-        <h3>No Partner Required</h3>
-        <p>Most classes rotate partners. Come solo, leave with friends.</p>
-      </div>
-      <div class="gs-item">
-        <div class="gs-icon">&#10003;</div>
-        <h3>What to Wear</h3>
-        <p>Comfortable clothes, smooth-soled shoes. That's it.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <div style="max-width:900px;margin:0 auto;padding:0 24px;"><div class="gold-line"></div></div>
 
@@ -730,36 +814,45 @@
       <h2 class="level-heading beginner">Start Here</h2>
 
       <div class="school-entry">
-        <p class="school-name">Latin Street Music &amp; Dancing</p>
-        <p class="school-meta">600 W Roosevelt Rd, South Loop &middot; Mon&ndash;Fri 6&ndash;10pm, Sat 12&ndash;5pm</p>
-        <p class="school-desc">"27+ years. 80+ weekly classes. The largest program in the city."</p>
-        <div class="style-tags">
-          <span class="style-tag">Salsa</span>
-          <span class="style-tag">Bachata</span>
-          <span class="style-tag">Cumbia</span>
+        <img class="school-thumb" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=200&q=80" alt="Latin Street Music">
+        <div>
+          <p class="school-name">Latin Street Music &amp; Dancing</p>
+          <p class="school-meta">600 W Roosevelt Rd, South Loop &middot; Mon&ndash;Fri 6&ndash;10pm, Sat 12&ndash;5pm</p>
+          <p class="school-desc">"27+ years. 80+ weekly classes. The largest program in the city."</p>
+          <div class="style-tags">
+            <span class="style-tag">Salsa</span>
+            <span class="style-tag">Bachata</span>
+            <span class="style-tag">Cumbia</span>
+          </div>
         </div>
       </div>
 
       <div class="school-entry">
-        <p class="school-name">Dance Academy of Salsa</p>
-        <p class="school-meta">2246 N Western Ave, Logan Square &middot; Mon&ndash;Fri 5:30&ndash;10pm, Sat 1:30&ndash;5pm</p>
-        <p class="school-desc">"Family-owned since 2002. Drop-in ($14) or 4-week courses ($110)."</p>
-        <div class="style-tags">
-          <span class="style-tag">Salsa</span>
-          <span class="style-tag">Bachata</span>
-          <span class="style-tag">Merengue</span>
+        <img class="school-thumb" src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=200&q=80" alt="Dance Academy of Salsa">
+        <div>
+          <p class="school-name">Dance Academy of Salsa</p>
+          <p class="school-meta">2246 N Western Ave, Logan Square &middot; Mon&ndash;Fri 5:30&ndash;10pm, Sat 1:30&ndash;5pm</p>
+          <p class="school-desc">"Family-owned since 2002. Drop-in ($14) or 4-week courses ($110)."</p>
+          <div class="style-tags">
+            <span class="style-tag">Salsa</span>
+            <span class="style-tag">Bachata</span>
+            <span class="style-tag">Merengue</span>
+          </div>
         </div>
       </div>
 
       <div class="school-entry">
-        <p class="school-name">Dennis PaSamba Dance Company</p>
-        <p class="school-meta">4820 W Irving Park Rd, Six Corners &middot; Evenings</p>
-        <p class="school-desc">"33+ years. $15 drop-in. Free parking."</p>
-        <div class="style-tags">
-          <span class="style-tag">Salsa</span>
-          <span class="style-tag">Bachata</span>
-          <span class="style-tag">Cumbia</span>
-          <span class="style-tag">Kizomba</span>
+        <img class="school-thumb" src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=200&q=80" alt="Dennis PaSamba Dance Company">
+        <div>
+          <p class="school-name">Dennis PaSamba Dance Company</p>
+          <p class="school-meta">4820 W Irving Park Rd, Six Corners &middot; Evenings</p>
+          <p class="school-desc">"33+ years. $15 drop-in. Free parking."</p>
+          <div class="style-tags">
+            <span class="style-tag">Salsa</span>
+            <span class="style-tag">Bachata</span>
+            <span class="style-tag">Cumbia</span>
+            <span class="style-tag">Kizomba</span>
+          </div>
         </div>
       </div>
     </div>
@@ -769,23 +862,29 @@
       <h2 class="level-heading advanced">Level Up</h2>
 
       <div class="school-entry">
-        <p class="school-name">Latin Rhythms Academy</p>
-        <p class="school-meta">West Loop &middot; Mon&ndash;Fri evenings, Sat mornings</p>
-        <p class="school-desc">"Curriculum-based. $90/4-week session."</p>
-        <div class="style-tags">
-          <span class="style-tag">Salsa</span>
-          <span class="style-tag">Mambo</span>
-          <span class="style-tag">Bachata</span>
-          <span class="style-tag">Kizomba</span>
+        <img class="school-thumb" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=200&q=80" alt="Latin Rhythms Academy">
+        <div>
+          <p class="school-name">Latin Rhythms Academy</p>
+          <p class="school-meta">West Loop &middot; Mon&ndash;Fri evenings, Sat mornings</p>
+          <p class="school-desc">"Curriculum-based. $90/4-week session."</p>
+          <div class="style-tags">
+            <span class="style-tag">Salsa</span>
+            <span class="style-tag">Mambo</span>
+            <span class="style-tag">Bachata</span>
+            <span class="style-tag">Kizomba</span>
+          </div>
         </div>
       </div>
 
       <div class="school-entry">
-        <p class="school-name">Chicago Intl Salsa Congress</p>
-        <p class="school-meta">Westin O'Hare, Rosemont &middot; Annual, February</p>
-        <p class="school-desc">"60+ workshops. World-class instructors. The Midwest's biggest event."</p>
-        <div class="style-tags">
-          <span class="style-tag">All Styles</span>
+        <img class="school-thumb" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=200&q=80" alt="Chicago Intl Salsa Congress">
+        <div>
+          <p class="school-name">Chicago Intl Salsa Congress</p>
+          <p class="school-meta">Westin O'Hare, Rosemont &middot; Annual, February</p>
+          <p class="school-desc">"60+ workshops. World-class instructors. The Midwest's biggest event."</p>
+          <div class="style-tags">
+            <span class="style-tag">All Styles</span>
+          </div>
         </div>
       </div>
     </div>
@@ -797,45 +896,56 @@
   <section class="section" id="neighborhoods">
     <p class="section-label">By Neighborhood</p>
 
-    <div class="hood-item">
-      <span class="hood-name">South Loop</span>
-      <span class="hood-note">Latin Street Music &amp; Dancing. Chicago's oldest institution.</span>
-    </div>
-    <div class="hood-divider"></div>
-
-    <div class="hood-item">
-      <span class="hood-name">Logan Square</span>
-      <span class="hood-note">Dance Academy of Salsa. Family-run since 2002.</span>
-    </div>
-    <div class="hood-divider"></div>
-
-    <div class="hood-item">
-      <span class="hood-name">Six Corners</span>
-      <span class="hood-note">Dennis PaSamba. Lessons + Friday socials.</span>
-    </div>
-    <div class="hood-divider"></div>
-
-    <div class="hood-item">
-      <span class="hood-name">West Loop</span>
-      <span class="hood-note">Latin Rhythms Academy + Alhambra Palace Thursdays.</span>
-    </div>
-    <div class="hood-divider"></div>
-
-    <div class="hood-item">
-      <span class="hood-name">Wrigleyville</span>
-      <span class="hood-note">Cubby Bear Sundays. The Sunday night tradition.</span>
-    </div>
-    <div class="hood-divider"></div>
-
-    <div class="hood-item">
-      <span class="hood-name">River North</span>
-      <span class="hood-note">Havana Grill. Live music Fridays &amp; Saturdays.</span>
-    </div>
-    <div class="hood-divider"></div>
-
-    <div class="hood-item">
-      <span class="hood-name">Rosemont</span>
-      <span class="hood-note">Salsa Congress. Once a year, every February.</span>
+    <div class="hood-grid">
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=600&q=80" alt="South Loop">
+        <div class="hood-card-content">
+          <h3>South Loop</h3>
+          <p>Latin Street Music &amp; Dancing. Chicago's oldest institution.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=600&q=80" alt="Logan Square">
+        <div class="hood-card-content">
+          <h3>Logan Square</h3>
+          <p>Dance Academy of Salsa. Family-run since 2002.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80" alt="Six Corners">
+        <div class="hood-card-content">
+          <h3>Six Corners</h3>
+          <p>Dennis PaSamba. Lessons + Friday socials.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="West Loop">
+        <div class="hood-card-content">
+          <h3>West Loop</h3>
+          <p>Latin Rhythms Academy + Alhambra Palace Thursdays.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80" alt="Wrigleyville">
+        <div class="hood-card-content">
+          <h3>Wrigleyville</h3>
+          <p>Cubby Bear Sundays. The Sunday night tradition.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80" alt="River North">
+        <div class="hood-card-content">
+          <h3>River North</h3>
+          <p>Havana Grill. Live music Fridays &amp; Saturdays.</p>
+        </div>
+      </div>
+      <div class="hood-card">
+        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80" alt="Rosemont">
+        <div class="hood-card-content">
+          <h3>Rosemont</h3>
+          <p>Salsa Congress. Once a year, every February.</p>
+        </div>
+      </div>
     </div>
   </section>
 
