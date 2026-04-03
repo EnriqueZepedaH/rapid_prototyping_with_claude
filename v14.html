@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Dance Chicago — Minimalist Noir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: #888;
+      background: #000;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #fff;
+      line-height: 1.2;
+      font-weight: 300;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #888;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .back-link:hover { color: #e8a449; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #000;
+      padding: 0 24px;
+    }
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-bottom: 40px;
+    }
+    .hero-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 48px;
+    }
+    .hero-nav a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #e8a449;
+      letter-spacing: 0.05em;
+      transition: opacity 0.3s;
+    }
+    .hero-nav a:hover { opacity: 0.7; }
+    .hero-nav-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #e8a449;
+      margin: 0 20px;
+      flex-shrink: 0;
+    }
+    .hero-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #e8a449;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-variant: small-caps;
+    }
+
+    /* ===== SHARED ===== */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+    .section-title {
+      font-size: 3rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 60px;
+    }
+    .gold-line {
+      width: 100%;
+      height: 1px;
+      background: #e8a449;
+      opacity: 0.3;
+    }
+    .dark-line {
+      width: 100%;
+      height: 1px;
+      background: #222;
+    }
+
+    /* ===== NEIGHBORHOODS ===== */
+    .hood-item {
+      padding: 28px 0;
+    }
+    .hood-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #fff;
+      display: inline;
+    }
+    .hood-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: #e8a449;
+      margin-left: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== LESSONS ===== */
+    .lesson-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: baseline;
+      padding: 24px 0;
+      gap: 24px;
+    }
+    .lesson-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    .lesson-hood {
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+    }
+    .lesson-schedule {
+      font-size: 0.85rem;
+      color: #888;
+      text-align: right;
+    }
+    .lesson-tags {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+    .lesson-tag {
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: #e8a449;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(232, 164, 73, 0.25);
+      padding: 2px 10px;
+      border-radius: 2px;
+    }
+    .lesson-entry { border-bottom: 1px solid #222; }
+    .lesson-entry:last-child { border-bottom: none; }
+
+    /* ===== SOCIALS ===== */
+    .day-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #e8a449;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 32px 0 16px 0;
+    }
+    .event-row {
+      display: flex;
+      align-items: baseline;
+      padding: 8px 0;
+    }
+    .event-time {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #e8a449;
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .event-detail {
+      font-size: 0.85rem;
+      color: #888;
+    }
+    .event-detail .venue-name {
+      color: #fff;
+      font-weight: 400;
+    }
+
+    /* ===== SUBSCRIBE ===== */
+    .subscribe-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .subscribe-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .subscribe-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .subscribe-input {
+      flex: 1;
+      min-width: 200px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #e8a449;
+      padding: 8px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #fff;
+      outline: none;
+    }
+    .subscribe-input::placeholder { color: #555; }
+    .subscribe-btn {
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #e8a449;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 0;
+    }
+    .subscribe-btn:hover { opacity: 0.7; }
+
+    /* ===== CONCERTS ===== */
+    .concert-card {
+      border-top: 2px solid #e8a449;
+      padding: 32px 0;
+      margin-bottom: 32px;
+    }
+    .concert-card:last-child { margin-bottom: 0; }
+    .concert-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .concert-meta {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .concert-meta span {
+      margin-right: 16px;
+    }
+    .concert-desc {
+      font-size: 0.9rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      text-align: center;
+      padding: 120px 24px;
+      background: #000;
+    }
+    .bottom-cta h2 {
+      font-size: 3rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 40px;
+    }
+    .btn-gold-outline {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #e8a449;
+      border: 1px solid #e8a449;
+      padding: 14px 40px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-gold-outline:hover {
+      background: #e8a449;
+      color: #000;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.75rem;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.6rem; }
+      .hero-nav a { font-size: 1.1rem; }
+      .hero-nav-dot { margin: 0 12px; }
+      .section-title { font-size: 2.2rem; }
+      .bottom-cta h2 { font-size: 2.2rem; }
+      .hood-name { font-size: 1.4rem; }
+
+      .lesson-row {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .lesson-hood,
+      .lesson-schedule {
+        text-align: left;
+      }
+      .lesson-tags {
+        padding-top: 8px;
+      }
+
+      .subscribe-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+      .subscribe-label { text-align: center; }
+      .subscribe-btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Link -->
+  <a href="index.html" style="position:fixed;top:20px;left:20px;z-index:1000;font-size:0.75rem;font-weight:400;color:#888;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;">Back</a>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h1 class="hero-title">Latin Dance Chicago</h1>
+    <div class="hero-nav">
+      <a href="#learn">Learn</a>
+      <div class="hero-nav-dot"></div>
+      <a href="#dance">Dance</a>
+      <div class="hero-nav-dot"></div>
+      <a href="#experience">Experience</a>
+    </div>
+    <p class="hero-tagline">No experience needed &middot; No partner required</p>
+  </section>
+
+  <!-- ===== NEIGHBORHOODS ===== -->
+  <section class="section">
+    <h2 class="section-title">Neighborhoods</h2>
+
+    <div class="hood-item">
+      <span class="hood-name">South Loop</span>
+      <span class="hood-count">1 studio</span>
+    </div>
+    <div class="gold-line"></div>
+
+    <div class="hood-item">
+      <span class="hood-name">Logan Square</span>
+      <span class="hood-count">1 studio</span>
+    </div>
+    <div class="gold-line"></div>
+
+    <div class="hood-item">
+      <span class="hood-name">Six Corners</span>
+      <span class="hood-count">1 studio</span>
+    </div>
+    <div class="gold-line"></div>
+
+    <div class="hood-item">
+      <span class="hood-name">West Loop</span>
+      <span class="hood-count">1 studio &middot; 1 venue</span>
+    </div>
+    <div class="gold-line"></div>
+
+    <div class="hood-item">
+      <span class="hood-name">River North</span>
+      <span class="hood-count">1 venue</span>
+    </div>
+    <div class="gold-line"></div>
+
+    <div class="hood-item">
+      <span class="hood-name">Wrigleyville</span>
+      <span class="hood-count">1 venue</span>
+    </div>
+    <div class="gold-line"></div>
+
+    <div class="hood-item">
+      <span class="hood-name">Rosemont</span>
+      <span class="hood-count">1 event</span>
+    </div>
+  </section>
+
+  <!-- ===== LESSONS ===== -->
+  <section class="section" id="learn">
+    <h2 class="section-title">Learn</h2>
+
+    <div class="lesson-entry">
+      <div class="lesson-row">
+        <span class="lesson-name">Latin Street Music &amp; Dancing</span>
+        <span class="lesson-hood">South Loop</span>
+        <span class="lesson-schedule">Mon&ndash;Fri 6&ndash;10pm, Sat 12&ndash;5pm</span>
+      </div>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Salsa</span>
+        <span class="lesson-tag">Bachata</span>
+        <span class="lesson-tag">Cumbia</span>
+      </div>
+    </div>
+
+    <div class="lesson-entry">
+      <div class="lesson-row">
+        <span class="lesson-name">Dance Academy of Salsa</span>
+        <span class="lesson-hood">Logan Square</span>
+        <span class="lesson-schedule">Mon&ndash;Fri 5:30&ndash;10pm, Sat 1:30&ndash;5pm</span>
+      </div>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Salsa</span>
+        <span class="lesson-tag">Bachata</span>
+        <span class="lesson-tag">Merengue</span>
+      </div>
+    </div>
+
+    <div class="lesson-entry">
+      <div class="lesson-row">
+        <span class="lesson-name">Dennis PaSamba Dance Company</span>
+        <span class="lesson-hood">Six Corners</span>
+        <span class="lesson-schedule">Evenings</span>
+      </div>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Salsa</span>
+        <span class="lesson-tag">Bachata</span>
+        <span class="lesson-tag">Cumbia</span>
+        <span class="lesson-tag">Kizomba</span>
+      </div>
+    </div>
+
+    <div class="lesson-entry">
+      <div class="lesson-row">
+        <span class="lesson-name">Latin Rhythms Academy</span>
+        <span class="lesson-hood">West Loop</span>
+        <span class="lesson-schedule">Mon&ndash;Fri evenings, Sat mornings</span>
+      </div>
+      <div class="lesson-tags">
+        <span class="lesson-tag">Salsa</span>
+        <span class="lesson-tag">Mambo</span>
+        <span class="lesson-tag">Bachata</span>
+        <span class="lesson-tag">Kizomba</span>
+      </div>
+    </div>
+
+    <div class="lesson-entry">
+      <div class="lesson-row">
+        <span class="lesson-name">Chicago Intl Salsa Congress</span>
+        <span class="lesson-hood">Rosemont</span>
+        <span class="lesson-schedule">Annual, February</span>
+      </div>
+      <div class="lesson-tags">
+        <span class="lesson-tag">All Styles</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIALS ===== -->
+  <section class="section" id="dance">
+    <h2 class="section-title">Dance</h2>
+
+    <div class="gold-line"></div>
+    <div class="day-header">Thursday</div>
+    <div class="event-row">
+      <span class="event-time">8pm</span>
+      <span class="event-detail"><span class="venue-name">Alhambra Palace</span> &middot; West Loop &middot; $10/$15</span>
+    </div>
+
+    <div class="gold-line"></div>
+    <div class="day-header">Friday</div>
+    <div class="event-row">
+      <span class="event-time">7pm</span>
+      <span class="event-detail"><span class="venue-name">Dennis PaSamba Social</span> &middot; Six Corners &middot; $10</span>
+    </div>
+    <div class="event-row">
+      <span class="event-time">11:30pm</span>
+      <span class="event-detail"><span class="venue-name">Havana Grill</span> &middot; River North &middot; Free</span>
+    </div>
+
+    <div class="gold-line"></div>
+    <div class="day-header">Saturday</div>
+    <div class="event-row">
+      <span class="event-time">11:30pm</span>
+      <span class="event-detail"><span class="venue-name">Havana Grill</span> &middot; River North &middot; Free</span>
+    </div>
+
+    <div class="gold-line"></div>
+    <div class="day-header">Sunday</div>
+    <div class="event-row">
+      <span class="event-time">7pm</span>
+      <span class="event-detail"><span class="venue-name">Cubby Bear</span> &middot; Wrigleyville &middot; $15</span>
+    </div>
+
+    <div class="gold-line"></div>
+    <div class="day-header">Monthly</div>
+    <div class="event-row">
+      <span class="event-time">&mdash;</span>
+      <span class="event-detail"><span class="venue-name">Mayambo Social</span> &middot; Location varies</span>
+    </div>
+  </section>
+
+  <!-- ===== SUBSCRIBE ===== -->
+  <div class="subscribe-section">
+    <div class="subscribe-inner">
+      <span class="subscribe-label">Weekly schedule, delivered.</span>
+      <input type="email" class="subscribe-input" placeholder="your@email.com">
+      <button class="subscribe-btn">Send</button>
+    </div>
+  </div>
+
+  <!-- ===== CONCERTS ===== -->
+  <section class="section" id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="concert-card">
+      <h3 class="concert-name">Chicago Intl Salsa Congress</h3>
+      <div class="concert-meta">
+        <span>February</span>
+        <span>Rosemont</span>
+      </div>
+      <p class="concert-desc">"60+ workshops. The Midwest's biggest salsa event."</p>
+    </div>
+
+    <div class="concert-card">
+      <h3 class="concert-name">Mayambo Monthly Social</h3>
+      <div class="concert-meta">
+        <span>Monthly</span>
+        <span>Location varies</span>
+      </div>
+      <p class="concert-desc">"Salsa-focused. Location varies."</p>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA ===== -->
+  <section class="bottom-cta">
+    <h2>Step Onto the Floor</h2>
+    <a href="#dance" class="btn-gold-outline">Find Your Night</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    V14 &mdash; Minimalist Noir
+  </footer>
+
+</body>
+</html>
