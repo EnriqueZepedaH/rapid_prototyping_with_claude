@@ -647,33 +647,51 @@
       line-height: 1.7;
     }
 
-    /* YouTube embed */
-    .video-container {
-      position: relative;
-      width: 100%;
+    /* Social links grid */
+    .social-links-block {
+      margin: 48px auto 56px;
       max-width: 720px;
-      margin: 0 auto 16px;
-      padding-bottom: 56.25%;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .social-card {
+      display: block;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 12px;
-      overflow: hidden;
-      background: #111113;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      padding: 24px;
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+    .social-card:hover {
+      background: rgba(201,169,110,0.05);
+      border-color: rgba(201,169,110,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
     }
-    .video-caption {
+    .social-icon {
+      font-size: 1.2rem;
+      color: #c9a96e;
+      margin-bottom: 10px;
+    }
+    .social-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #f5f5f5;
+      margin-bottom: 6px;
+    }
+    .social-card:hover .social-name {
+      color: #c9a96e;
+    }
+    .social-desc {
       font-size: 0.8rem;
       font-weight: 300;
-      color: #3f3f46;
-      font-style: italic;
-      text-align: center;
-      margin-bottom: 56px;
+      color: #71717a;
+      line-height: 1.5;
     }
 
     /* First Night Checklist */
@@ -1132,6 +1150,10 @@
       }
       .day-thumb { display: none; }
 
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
       .glass-cards {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -1437,11 +1459,33 @@
         </div>
       </div>
 
-      <!-- YouTube Video -->
-      <div class="video-container fade-in fade-in-d5">
-        <iframe src="https://www.youtube.com/embed/S_2Eilj-yzg" title="Social dancing at a salsa congress" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!-- See Chicago Dancing -->
+      <div class="social-links-block fade-in fade-in-d5">
+        <div class="overline" style="text-align:center; margin-bottom:12px;">See Chicago Dancing</div>
+        <p style="text-align:center; font-size:0.95rem; color:#71717a; margin-bottom:28px; max-width:480px; margin-left:auto; margin-right:auto;">Follow these accounts to see what the Chicago Latin dance scene looks like — real nights, real dancers, real energy.</p>
+        <div class="social-grid">
+          <a href="https://www.instagram.com/latinstreetdancing/" target="_blank" rel="noopener" class="social-card">
+            <div class="social-icon">&#9734;</div>
+            <div class="social-name">@latinstreetdancing</div>
+            <div class="social-desc">Classes, socials &amp; events — 27+ years of Chicago Latin dance</div>
+          </a>
+          <a href="https://www.instagram.com/danceacademyofsalsa/" target="_blank" rel="noopener" class="social-card">
+            <div class="social-icon">&#9734;</div>
+            <div class="social-name">@danceacademyofsalsa</div>
+            <div class="social-desc">Family-owned Logan Square studio — salsa, bachata &amp; more</div>
+          </a>
+          <a href="https://www.instagram.com/dennispasamba/" target="_blank" rel="noopener" class="social-card">
+            <div class="social-icon">&#9734;</div>
+            <div class="social-name">@dennispasamba</div>
+            <div class="social-desc">Friday night socials, classes &amp; community in Six Corners</div>
+          </a>
+          <a href="https://www.instagram.com/sba_chicago/" target="_blank" rel="noopener" class="social-card">
+            <div class="social-icon">&#9734;</div>
+            <div class="social-name">@sba_chicago</div>
+            <div class="social-desc">Sensual Bachata Academy — bachata events across the city</div>
+          </a>
+        </div>
       </div>
-      <p class="video-caption fade-in fade-in-d5">Social dancing at a salsa congress. This could be you in a few months.</p>
 
       <!-- First Night Checklist -->
       <div class="checklist-card fade-in fade-in-d6">
